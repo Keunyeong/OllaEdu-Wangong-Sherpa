@@ -57,7 +57,7 @@ table {
     box-sizing: border-box;
   }
   body {
-    font-family: "Roboto","Helvetica", "Arial", sans-serif;
+    font-family: "Noto Sans KR","Roboto", "Arial", sans-serif;
     padding: 0;
     margin: 0;
   }
