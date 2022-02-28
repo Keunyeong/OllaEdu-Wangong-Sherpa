@@ -1,7 +1,12 @@
 import React from "react";
+import MonthlyGraph from "../elements/MonthlyGraph";
 
 const MonthlyReport = () => {
-  return <div>REPORTMAIN</div>;
+  return (
+    <div>
+      <MonthlyGraph></MonthlyGraph>
+    </div>
+  );
 };
 
 export default MonthlyReport;
