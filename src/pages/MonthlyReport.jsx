@@ -1,5 +1,5 @@
 import React from "react";
-import MonthlyGraph from "../elements/MonthlyGraph";
+import MonthlyGraph from "../elements";
 
 const MonthlyReport = () => {
   return (
