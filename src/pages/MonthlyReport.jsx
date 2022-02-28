@@ -1,13 +1,7 @@
 import React from "react";
-import { Card } from "../elements";
 
 const MonthlyReport = () => {
-  return (
-    <div>
-      MonthlyReport
-      <Card></Card>
-    </div>
-  );
+  return <div></div>;
 };
 
 export default MonthlyReport;
