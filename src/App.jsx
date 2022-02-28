@@ -1,13 +1,27 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import { ReportMain } from "./constructors";
+import styled from "styled-components";
+import { ReportMain, Nav, Header } from "./constructors";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <ReportMain />
-    </BrowserRouter>
+    <APP>
+      <Nav />
+      <MAIN>
+        <ReportMain />
+        <Header></Header>
+      </MAIN>
+    </APP>
   );
 };
+
+const APP = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+`;
+const MAIN = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 export default App;
