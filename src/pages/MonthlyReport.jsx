@@ -1,7 +1,7 @@
 import React from "react";
 
 const MonthlyReport = () => {
-  return <div></div>;
+  return <div>REPORTMAIN</div>;
 };
 
 export default MonthlyReport;
