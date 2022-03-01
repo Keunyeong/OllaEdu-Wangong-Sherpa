@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { NavLogo, policeman, police } from "../assets";
+import { NavLogo } from "../assets";
 import ReportList from "../elements/ReportList";
 import MenuList from "../elements/MenuList";
 
-const Nav = () => {
+const Nav = props => {
   const reportList = useRef();
   const [noticeClick, setNoticeClick] = useState(false);
   const [mypageClick, setMypageClick] = useState(false);
@@ -12,6 +12,22 @@ const Nav = () => {
   const [monthlyReportOn, setMonthlyReport] = useState(true);
   const [weeklyReportOn, setWeeklyReport] = useState(false);
   const [physicalReportOn, setPhysicalReport] = useState(false);
+  let jobIcon = "./src/assets/nav/policeman.png";
+  let jobName = "./src/assets/nav/police.png";
+  let jobIconAlt = "POLICEMAN";
+  let jobNameAlt = "POLICE";
+  if (props.depart === "fire") {
+    jobIcon = "./src/assets/nav/firefighter.png";
+    jobName = "./src/assets/nav/fire.png";
+    jobIconAlt = "FIREFIGHTER";
+    jobNameAlt = "FIRE";
+  } else if (props.depart === "admin") {
+    jobIcon = "./src/assets/nav/administrator.png";
+    jobName = "./src/assets/nav/admin.png";
+    jobIconAlt = "ADMINISTRATOR";
+    jobNameAlt = "ADMIN";
+  }
+
   const click = list => {
     if (list === "notice") {
       setNoticeClick(true);
@@ -48,6 +64,7 @@ const Nav = () => {
     );
   };
   useEffect(() => {
+    console.log(props.depart);
     if (reportClick) {
       reportList.current.style.height = `${(133 / 1512) * 100 + "vw"}`;
     } else {
@@ -60,64 +77,70 @@ const Nav = () => {
   }, [reportClick]);
   const listOn = () => {};
   return (
-    <Navbar>
+    <Navbar depart={props.depart}>
       <img className="logo" src={NavLogo} alt="NAVLOGO" />
-      <img className="job-logo" src={policeman} alt="POLICEMAN" />
-      <img className="job" src={police} alt="POLICE" />
+      <img className="job-logo" src={jobIcon} alt={jobIconAlt} />
+      <img className="job" src={jobName} alt={jobNameAlt} />
       <div className="menu">
         <MenuList
           list="notice"
-          job="police"
+          job={props.depart}
           click={click}
           clickState={noticeClick}
+          depart={props.depart}
         >
           공지사항
         </MenuList>
         <MenuList
           list="mypage"
-          job="police"
+          job={props.depart}
           click={click}
           clickState={mypageClick}
+          depart={props.depart}
         >
           마이페이지
         </MenuList>
         <MenuList
           list="report"
-          job="police"
+          job={props.depart}
           click={click}
           clickState={reportClick}
+          depart={props.depart}
         >
           성적 현황
         </MenuList>
         <div className="report-list" ref={reportList}>
           <ReportList
             list="monthly"
-            job="police"
+            job={props.depart}
             click={clickReport}
             clickState={monthlyReportOn}
+            depart={props.depart}
           >
             모의고사
           </ReportList>
           <ReportList
             list="weekly"
-            job="police"
+            job={props.depart}
             click={clickReport}
             clickState={weeklyReportOn}
+            depart={props.depart}
           >
             중간종합
           </ReportList>
           <ReportList
             list="physical"
-            job="police"
+            job={props.depart}
             click={clickReport}
             clickState={physicalReportOn}
+            depart={props.depart}
           >
             체력증감
           </ReportList>
         </div>
       </div>
       <div className="footer">
-        <div className="d_day">
+        <div className="d_day" depart={props.depart}>
           D-<span>209</span>
         </div>
         <div className="test_date">
@@ -140,7 +163,15 @@ const Navbar = styled.div`
   position: relative;
   height: 100vh;
   width: ${(200 / 1512) * 100 + "vw"};
-  background: #1482ef;
+  background: ${props => {
+    if (props.depart === "police") {
+      return "#1482ef";
+    } else if (props.depart === "fire") {
+      return "#F48065";
+    } else if (props.depart === "admin") {
+      return "#13C383";
+    }
+  }};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -171,7 +202,7 @@ const Navbar = styled.div`
     width: ${(200 / 1512) * 100 + "vw"};
     height: 0;
     overflow: hidden;
-    transition: all 0.5s ease-out;
+    transition: all 0.3s ease-out;
   }
   .footer {
     position: absolute;
@@ -183,7 +214,15 @@ const Navbar = styled.div`
     font-size: ${(14 / 1512) * 100 + "vw"};
     .d_day {
       background-color: #ffffffc8;
-      color: #1482ef;
+      color: ${props => {
+        if (props.depart === "police") {
+          return "#1482ef";
+        } else if (props.depart === "fire") {
+          return "#F48065";
+        } else if (props.depart === "admin") {
+          return "#13C383";
+        }
+      }};
       font-weight: 600;
       font-size: ${(30 / 1512) * 100 + "vw"};
       line-height: ${(30 / 1512) * 100 + "vw"};

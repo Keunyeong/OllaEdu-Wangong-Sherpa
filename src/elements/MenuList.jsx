@@ -10,18 +10,33 @@ const MenuList = ({ children, list, job, click, clickState }) => {
   useEffect(() => {
     if (clickState) {
       menuList.current.style.background = "#fff";
-      menuList.current.style.color = "#1482ef";
+
+      if (job === "police") {
+        menuList.current.style.color = "#1482ef";
+      } else if (job === "fire") {
+        menuList.current.style.color = "#F48065";
+      } else if (job === "admin") {
+        menuList.current.style.color = "#13C383";
+      }
     } else {
-      menuList.current.style.background = "#1482ef";
+      if (job === "police") {
+        menuList.current.style.background = "#1482ef";
+      } else if (job === "fire") {
+        menuList.current.style.background = "#F48065";
+      } else if (job === "admin") {
+        menuList.current.style.background = "#13C383";
+      }
+
       menuList.current.style.color = "#fff";
     }
-  }, [clickState]);
+  }, [clickState, job]);
   return (
     <List
       ref={menuList}
       onClick={() => {
         click(list);
       }}
+      depart={job}
     >
       {!clickState ? (
         <img src={src} alt={`${upperList}`} />
@@ -38,9 +53,9 @@ const MenuList = ({ children, list, job, click, clickState }) => {
           />
         ) : (
           <img
-            className="arrow arrow_down"
-            src={`./src/assets/nav/arrow_down_${job}.png`}
-            alt="ARROWDOWN"
+            className="arrow arrow_up"
+            src={`./src/assets/nav/arrow_up_${job}.png`}
+            alt="ARROWUP"
           />
         ))}
     </List>
@@ -61,10 +76,6 @@ const List = styled.div`
   }
   .arrow {
     margin-left: ${(10 / 1512) * 100 + "vw"};
-  }
-  &:hover {
-    background-color: "#fff";
-    color: "#1482ef";
   }
 `;
 

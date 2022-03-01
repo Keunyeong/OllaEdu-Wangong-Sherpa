@@ -9,18 +9,31 @@ const ReportList = ({ children, list, job, click, clickState }) => {
   useEffect(() => {
     if (clickState) {
       reportList.current.style.background = "#fff";
-      reportList.current.style.color = "#1482ef";
+      if (job === "police") {
+        reportList.current.style.color = "#1482ef";
+      } else if (job === "fire") {
+        reportList.current.style.color = "#F48065";
+      } else if (job === "admin") {
+        reportList.current.style.color = "#13C383";
+      }
     } else {
-      reportList.current.style.background = "#1482ef";
+      if (job === "police") {
+        reportList.current.style.background = "#1482ef";
+      } else if (job === "fire") {
+        reportList.current.style.background = "#F48065";
+      } else if (job === "admin") {
+        reportList.current.style.background = "#13C383";
+      }
       reportList.current.style.color = "#fff";
     }
-  }, [clickState]);
+  }, [clickState, job]);
   return (
     <List
       ref={reportList}
       onClick={() => {
         click(list);
       }}
+      depart={job}
     >
       {!clickState ? (
         <img src={src} alt={`${upperList}`} />
