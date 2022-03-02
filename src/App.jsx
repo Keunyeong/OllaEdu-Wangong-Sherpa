@@ -5,7 +5,7 @@ import { ReportMain, Nav, Header } from "./constructors";
 const App = () => {
   return (
     <APP>
-      <Nav depart="fire" />
+      <Nav depart="police" />
       <MAIN>
         <ReportMain />
         <Header></Header>

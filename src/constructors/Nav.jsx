@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { NavLogo } from "../assets";
-import ReportList from "../elements/ReportList";
 import MenuList from "../elements/MenuList";
 
 const Nav = props => {
@@ -88,6 +87,7 @@ const Nav = props => {
           click={click}
           clickState={noticeClick}
           depart={props.depart}
+          icon="Icon"
         >
           공지사항
         </MenuList>
@@ -97,6 +97,7 @@ const Nav = props => {
           click={click}
           clickState={mypageClick}
           depart={props.depart}
+          icon="Icon"
         >
           마이페이지
         </MenuList>
@@ -106,37 +107,41 @@ const Nav = props => {
           click={click}
           clickState={reportClick}
           depart={props.depart}
+          icon="Icon"
         >
           성적 현황
         </MenuList>
         <div className="report-list" ref={reportList}>
-          <ReportList
+          <MenuList
             list="monthly"
             job={props.depart}
             click={clickReport}
             clickState={monthlyReportOn}
             depart={props.depart}
+            icon="_reportIcon"
           >
             모의고사
-          </ReportList>
-          <ReportList
+          </MenuList>
+          <MenuList
             list="weekly"
             job={props.depart}
             click={clickReport}
             clickState={weeklyReportOn}
             depart={props.depart}
+            icon="_reportIcon"
           >
             중간종합
-          </ReportList>
-          <ReportList
+          </MenuList>
+          <MenuList
             list="physical"
             job={props.depart}
             click={clickReport}
             clickState={physicalReportOn}
             depart={props.depart}
+            icon="_reportIcon"
           >
             체력증감
-          </ReportList>
+          </MenuList>
         </div>
       </div>
       <div className="footer">
@@ -202,7 +207,7 @@ const Navbar = styled.div`
     width: ${(200 / 1512) * 100 + "vw"};
     height: 0;
     overflow: hidden;
-    transition: all 0.3s ease-out;
+    transition: height 0.3s ease-out;
   }
   .footer {
     position: absolute;
