@@ -7,8 +7,8 @@ const App = () => {
     <APP>
       <Nav depart="police" />
       <MAIN>
-        <ReportMain />
         <Header></Header>
+        <ReportMain />
       </MAIN>
     </APP>
   );

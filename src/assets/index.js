@@ -15,3 +15,7 @@ export { default as physical_reportIcon } from "./nav/physical_reportIcon.png";
 export { default as monthly_reportIcon_police } from "./nav/monthly_reportIcon_police.png";
 export { default as weekly_reportIcon_police } from "./nav/weekly_reportIcon_police.png";
 export { default as physical_reportIcon_police } from "./nav/physical_reportIcon_police.png";
+export { default as Cloud } from "./cloud.svg";
+export { default as Star } from "./star.svg";
+export { default as Dropdown_up } from "./dropdown_up.svg";
+export { default as Dropdown_down } from "./dropdown_down.svg";
