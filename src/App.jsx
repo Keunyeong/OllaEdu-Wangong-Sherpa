@@ -5,10 +5,10 @@ import { ReportMain, Nav, Header } from "./constructors";
 const App = () => {
   return (
     <APP>
-      <Nav />
+      <Nav depart="police" />
       <MAIN>
-        <ReportMain />
         <Header></Header>
+        <ReportMain />
       </MAIN>
     </APP>
   );

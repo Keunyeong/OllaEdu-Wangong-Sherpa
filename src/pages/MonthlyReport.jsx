@@ -73,9 +73,9 @@ const MonthlyReport = () => {
 export default MonthlyReport;
 
 const Page = styled.section`
+  width: ${(1312 / 1512) * 100 + "vw"};
+  height: ${(915 / 982) * 100 + "vh"};
   position: relative;
-  max-width: 82em;
-  max-height: 915px;
   padding: 0 3.5em;
   height: calc(100vh-3.063em);
   background-color: #f5f5f5;

@@ -44,7 +44,8 @@ const Header = () => {
 const HEADER = styled.div`
   font-family: Noto Sans KR;
   background-color: #ffffff;
-  height: 4.1875rem;
+  height: ${(67 / 982) * 100 + "vh"};
+  width: ${(1312 / 1512) * 100 + "vw"};
   padding: 0 ${(20 / 1512) * 100 + "vw"};
   display: flex;
   justify-content: space-between;
