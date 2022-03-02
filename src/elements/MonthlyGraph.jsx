@@ -105,7 +105,8 @@ const MonthlyGraph = () => {
       .select(chart.current)
       .append("svg")
       .attr("width", w)
-      .attr("height", h);
+      .attr("height", h)
+      .attr("viewbox", `0 0 ${w} ${h}`);
 
     svg
       .selectAll("rect")
