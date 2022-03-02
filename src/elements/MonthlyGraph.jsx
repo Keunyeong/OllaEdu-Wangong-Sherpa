@@ -50,7 +50,7 @@ const arr = [
   { date: 202111, totalScore: 295 },
   { date: 202112, totalScore: 270 },
   { date: 202201, totalScore: 310 },
-  { date: 202202, totalScore: 320 },
+  { date: 202202, totalScore: 320 }
 ];
 
 const MonthlyGraph = () => {
@@ -75,19 +75,19 @@ const MonthlyGraph = () => {
       }
     }
     obj.totalScore = 0;
-    arr.forEach((d) => {
+    arr.forEach(d => {
       if (d.date === obj.date) {
         obj.totalScore = d.totalScore;
       }
     });
     scoreList.push(obj);
   }
-  console.log(scoreList);
+
   const [data, setData] = useState(scoreList.reverse());
   const chart = useRef();
   useEffect(() => {
     let max = 0;
-    data.forEach((d) => {
+    data.forEach(d => {
       if (d.totalScore > max) max = d.totalScore;
     });
     const w = 670;
@@ -113,24 +113,24 @@ const MonthlyGraph = () => {
       .enter()
       .append("rect")
       .attr("x", (d, i) => xScale(i))
-      .attr("y", (d) => h)
+      .attr("y", d => h)
       .attr("width", xScale.bandwidth())
-      .attr("height", (d) => 0);
+      .attr("height", d => 0);
     svg
       .selectAll("text")
       .data(data)
       .enter()
       .append("text")
       .attr("x", (d, i) => xScale(i))
-      .attr("y", (d) => h)
+      .attr("y", d => h)
       .text(0);
 
     svg
       .selectAll("text")
       .transition()
       .duration(100)
-      .attr("y", (d) => h - (1 - (350 - d.totalScore) / 350) * h)
-      .text((d) => d.totalScore)
+      .attr("y", d => h - (1 - (350 - d.totalScore) / 350) * h)
+      .text(d => d.totalScore)
       .delay((d, i) => {
         return i * 500;
       });
@@ -139,8 +139,8 @@ const MonthlyGraph = () => {
       .transition()
       .duration(3000)
       .delay((d, i) => i * 100)
-      .attr("y", (d) => h - yScale(d.totalScore) + 3)
-      .attr("height", (d) => yScale(d.totalScore))
+      .attr("y", d => h - yScale(d.totalScore) + 3)
+      .attr("height", d => yScale(d.totalScore))
       .attr("fill", (d, i) => {
         if (i === data.length - 1) {
           return "#F8AB0D";
