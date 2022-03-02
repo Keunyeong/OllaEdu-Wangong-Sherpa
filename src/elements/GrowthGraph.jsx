@@ -135,10 +135,16 @@ const Text = styled.div`
   }
 `;
 
+const SubjectSpan = styled.span`
+  font-size: 1.1em;
+  font-weight: 700;
+`;
+
+
 const Span = styled.span`
   display: flex;
   height: 1.5625rem;
-  font-size: 0.4rem;
+  font-size: 0.750em;
   justify-content: space-between;
   align-items: center;
 `;
@@ -146,6 +152,7 @@ const Span = styled.span`
 const Svg = styled.svg`
   width: 0.625rem;
   height: 0.625rem;
+  margin-right: 2px;
 `;
 
 const SmallCircle = styled.circle`
