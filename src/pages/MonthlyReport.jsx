@@ -11,9 +11,6 @@ import {
 import { CardWrapper, Dropdown } from "../components";
 
 const MonthlyReport = () => {
-<<<<<<< HEAD
-  return <div>REPORTMAIN</div>;
-=======
   return (
     <Page>
       <Title>모의고사 분석</Title>
@@ -71,7 +68,6 @@ const MonthlyReport = () => {
       </Wrapper>
     </Page>
   );
->>>>>>> feature/MainPage
 };
 
 export default MonthlyReport;
