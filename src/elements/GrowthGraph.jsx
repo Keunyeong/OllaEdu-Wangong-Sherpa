@@ -13,7 +13,7 @@ const GrowthGraph = () => {
   const [data, setData] = useState(scoreArr);
   const width = 130;
   const height = 110;
-  console.log(data);
+
   useEffect(() => {
     const svg = d3
       .select(score.current)
@@ -140,11 +140,10 @@ const SubjectSpan = styled.span`
   font-weight: 700;
 `;
 
-
 const Span = styled.span`
   display: flex;
   height: 1.5625rem;
-  font-size: 0.750em;
+  font-size: 0.75em;
   justify-content: space-between;
   align-items: center;
 `;

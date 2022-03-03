@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { Context } from "../context/Context";
 import {
   ProgressBar,
   Table,
@@ -11,6 +12,8 @@ import {
 import { CardWrapper, Dropdown } from "../components";
 
 const MonthlyReport = () => {
+  const { data } = useContext(Context);
+
   return (
     <Page>
       <Title>모의고사 분석</Title>
