@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { Logo } from "../assets";
 
 const Login = () => {
   const [user, setUser] = useState({ id: "", pw: "" });
@@ -24,7 +25,10 @@ const Login = () => {
   };
   return (
     <LoginPage>
-      <div className="logo"></div>
+      <div className="logo">
+        <img src={Logo} alt="Logo" />
+        <h1>합격을 향한 토탈 맞춤형 솔루션</h1>
+      </div>
       <div className="login">
         <form onSubmit={handleSubmit}>
           <strong>당신의 꿈을 응원합니다!</strong>
@@ -57,10 +61,22 @@ const LoginPage = styled.div`
   justify-content: center;
   width: 100%;
   height: 100vh;
+
   .logo {
     width: 100%;
     background-color: #5358cb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 500;
+    color: #ffffff;
+    img {
+      margin-bottom: 44.72px;
+    }
   }
+
   .login {
     width: 100%;
     margin: auto;
