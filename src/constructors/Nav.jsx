@@ -57,22 +57,13 @@ const Nav = props => {
       setPhysicalReport(true);
     }
   };
-  const handleResize = () => {
-    console.log(
-      `화면 사이즈 width: ${window.innerWidth} height: ${window.innerHeight}`
-    );
-  };
+
   useEffect(() => {
-    console.log(props.depart);
     if (reportClick) {
       reportList.current.style.height = `${(133 / 1512) * 100 + "vw"}`;
     } else {
       reportList.current.style.height = 0;
     }
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
   }, [reportClick]);
   const listOn = () => {};
   return (
