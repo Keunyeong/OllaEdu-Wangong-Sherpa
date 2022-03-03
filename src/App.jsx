@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ReportMain, Nav, Header } from "./constructors";
+import { ContextProvider } from "./context/Context";
 
 const App = () => {
   return (
@@ -8,7 +9,9 @@ const App = () => {
       <Nav depart="police" />
       <MAIN>
         <Header></Header>
-        <ReportMain />
+        <ContextProvider>
+          <ReportMain />
+        </ContextProvider>
       </MAIN>
     </APP>
   );
