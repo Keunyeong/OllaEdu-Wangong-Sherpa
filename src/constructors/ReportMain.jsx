@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import styled from "styled-components";
 import MonthlyReport from "../pages/MonthlyReport";
-import Notice from "../pages/notice/Notice";
+import Mypage from "../pages/Mypage";
 
 const ReportMain = () => {
   return (
-    <Routes>
-      <Route path='/notice' element={<Notice />} />
-      <Route path='/' element={<MonthlyReport />} />
-    </Routes>
+    <Main>
+      <Routes>
+        <Route path="/" element={<MonthlyReport />} />
+        <Route path="/mypage/*" element={<Mypage />} />
+      </Routes>
+    </Main>
   );
 };
+
+const Main = styled.main`
+  background-color: #f5f5f5;
+  height: ${(917 / 982) * 100 + "vh"}; ;
+`;
 
 export default ReportMain;
