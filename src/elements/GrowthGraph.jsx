@@ -63,6 +63,7 @@ const GrowthGraph = () => {
       .attr("y", d => {
         return 10;
       })
+      .attr("font-size","0.6rem")
       .text((d, i) => {
         if (i === 0) {
           return null;
@@ -80,7 +81,7 @@ const GrowthGraph = () => {
       </ChartBox>
 
       <SpanBox>
-        <span>{data[0]}</span>
+        <SubjectSpan>{data[0]}</SubjectSpan>
         <Span>
           <Svg>
             <SmallCircle fill="#D8D8D8" />
@@ -114,6 +115,7 @@ const ChartBox = styled.div`
 `;
 
 const SpanBox = styled.div`
+  width: 4.676rem;
   box-sizing: border-box;
   padding-top: 30px;
 `;
@@ -136,14 +138,15 @@ const Text = styled.div`
 `;
 
 const SubjectSpan = styled.span`
-  font-size: 1.1em;
   font-weight: 700;
+  line-height: 203%;
 `;
 
 const Span = styled.span`
+  font-size: 0.875rem;
+  font-weight: 500;
   display: flex;
   height: 1.5625rem;
-  font-size: 0.75em;
   justify-content: space-between;
   align-items: center;
 `;
@@ -151,13 +154,12 @@ const Span = styled.span`
 const Svg = styled.svg`
   width: 0.625rem;
   height: 0.625rem;
-  margin-right: 2px;
 `;
 
 const SmallCircle = styled.circle`
   cx: 0.3125rem;
   cy: 0.3125rem;
-  r: 0.2125rem;
+  r: 0.3125rem;
 `;
 
 export default GrowthGraph;
