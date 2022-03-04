@@ -1,18 +1,38 @@
-import React, { useState, useMemo } from "react";
+import React, {
+  useState,
+  useMemo,
+  useEffect,
+  useRef,
+  useCallback
+} from "react";
 import styled from "styled-components";
 import { Dropdown_up, Dropdown_down } from "../assets";
 
 const year = new Date().getFullYear();
 const Dropdown = () => {
+  const ref = useRef();
   const [toggle, setToggle] = useState(false);
   const [select, setSelect] = useState(year);
 
+  useEffect(() => {
+    const checkIfClickedOutside = e => {
+      if (toggle && ref.current && !ref.current.contains(e.target)) {
+        setToggle(false);
+      }
+    };
+    document.addEventListener("mousedown", checkIfClickedOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [toggle]);
+
   const yearArr = useMemo(() => {
-    return Array.from({ length: year - 1999 }, (value, index) => 2000 + index);
+    return Array.from({ length: 12 }, (value, index) => 1 + index);
   }, []);
 
   return (
-    <Wrapper>
+    <Wrapper ref={ref}>
       <ListHeader
         onClick={() => {
           setToggle(!toggle);

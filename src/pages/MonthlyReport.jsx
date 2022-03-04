@@ -10,6 +10,7 @@ import {
   TotalGraph
 } from "../elements";
 import { CardWrapper, Dropdown } from "../components";
+import { Cloud } from "../assets";
 
 const MonthlyReport = () => {
   const { data } = useContext(Context);
@@ -17,6 +18,17 @@ const MonthlyReport = () => {
   return (
     <Page>
       <Title>모의고사 분석</Title>
+      <DropdownContainer>
+        <DropdownWrapper>
+          <Dropdown />
+          <DropdownLabel>년</DropdownLabel>
+        </DropdownWrapper>
+        <DropdownWrapper>
+          <Dropdown />
+          <DropdownLabel>월</DropdownLabel>
+        </DropdownWrapper>
+        <CloudIcon src={Cloud} alt="download pdf" />
+      </DropdownContainer>
       <Wrapper>
         <Swap1>
           <CardWrapper title="정규 모의고사 총점" children={<TotalGraph />} />
@@ -90,7 +102,7 @@ const MonthlyReport = () => {
 export default MonthlyReport;
 
 const Page = styled.section`
-  width: ${(1312 / 1512) * 100 + "vw"};
+  width: ${(1412 / 1512) * 100 + "vw"};
   height: ${(915 / 982) * 100 + "vh"};
   position: relative;
   padding: 0 3.5em 2.938em 3.5em;
@@ -102,6 +114,32 @@ const Page = styled.section`
   &::-webkit-scrollbar {
     display: none;
   }
+`;
+
+const DropdownContainer = styled.div`
+  position: absolute;
+  top: 2em;
+  right: 3.813em;
+  width: 22.188em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const DropdownLabel = styled.span`
+  font-size: 1.125em;
+  font-weight: 500;
+  line-height: 1.625em;
+  margin-left: 0.213em;
+`;
+
+const CloudIcon = styled.img`
+  width: 2.875em;
+  height: 1.625em;
+`;
+
+const DropdownWrapper = styled.div`
+  display: flex;
 `;
 
 const Title = styled.h1`
@@ -136,17 +174,20 @@ const Paragraph = styled.p`
 `;
 
 const Swap1 = styled.div`
+  flex: 1/3;
   @media only screen and (max-width: 1511px) {
     order: 1;
   } ;
 `;
 
 const Swap2 = styled.div`
+  flex: 1/3;
   @media only screen and (max-width: 1511px) {
     order: 2;
   } ;
 `;
 const Swap3 = styled.div`
+  flex: 1/3;
   @media only screen and (max-width: 1511px) {
     order: 3;
   } ;

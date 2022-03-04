@@ -43,6 +43,8 @@ export const loadData = () => async (dispatch, state) => {
 
     return group;
   }, {});
+
+  console.log(응시월);
   dispatch(setLoading(false));
   dispatch(setData({ 응시월, 응시내역 }));
 };

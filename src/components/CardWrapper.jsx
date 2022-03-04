@@ -14,7 +14,7 @@ const CardWrapper = ({
   return (
     <Article max={max}>
       <TitleContainer>
-        <StarIcon src={Star} />
+        <StarIcon src={Star} alt="starIcon" />
         <Title>{title}</Title>
       </TitleContainer>
       <Card width={width} height={height} padding={padding}>
