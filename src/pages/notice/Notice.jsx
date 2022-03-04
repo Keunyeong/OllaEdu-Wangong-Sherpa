@@ -33,6 +33,7 @@ const Section = styled.section`
 
 const Notice = ({ main }) => {
   const params = useParams();
+  console.log(main);
   return (
     <Main>
       <NoticeMenu />

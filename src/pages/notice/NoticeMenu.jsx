@@ -34,7 +34,7 @@ export default function NoticeMenu({locate}) {
     <Ul>
         <List>
           <NavLink 
-          to="/notice/home"
+          to="home"
           style={ ({isActive}) => ({background : isActive ? "#DFE0FF" : "#FFF"}) }
           >
             <span>공지사항</span>
@@ -43,7 +43,7 @@ export default function NoticeMenu({locate}) {
         </List>
         <List>
           <NavLink 
-          to="/notice/news"
+          to="news"
           style={ ({isActive}) => ({background: isActive ? "#DFE0FF" : "#FFF"}) }
           >
            <span>학원소식</span>
@@ -52,7 +52,7 @@ export default function NoticeMenu({locate}) {
         </List>
         <List>
           <NavLink 
-          to="/notice/schedule"
+          to="schedule"
           style={ ({isActive}) => ({background: isActive ? "#DFE0FF" : "#FFF"}) }
           >
            <span>정기외박 일정</span>
@@ -61,7 +61,7 @@ export default function NoticeMenu({locate}) {
         </List>
         <List>
           <NavLink 
-          to="/notice/pay"
+          to="pay"
           style={ ({isActive}) => ({background: isActive ? "#DFE0FF" : "#FFF"}) }
           >
            <span>학원비 납입 안내</span>
@@ -70,7 +70,7 @@ export default function NoticeMenu({locate}) {
         </List>
         <List>
           <NavLink 
-          to="/notice/event"
+          to="event"
           style={ ({isActive}) => ({background: isActive ? "#DFE0FF" : "#FFF"}) }
           >
            <span>이벤트</span>

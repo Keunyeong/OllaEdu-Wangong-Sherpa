@@ -25,25 +25,25 @@ const Section = styled.section`
 `;
 export default function NoticeLocation() {
   const params = useParams();
-  
-  let locate;
-  if(params.location==="home"){
-    locate="공지사항";
-  } else if (params.location==="news") {
-    locate="학원소식";
-  } else if (params.location==="schedule") {
-    locate="정기외박 일정";
-  } else if (params.location==="pay") {
-    locate="학원비 납입 안내";
-  } else if (params.location==="event") {
-    locate="이벤트";
-  } 
+  console.log(params)
+  // let locate;
+  // if(params.location==="home"){
+  //   locate="공지사항";
+  // } else if (params.location==="news") {
+  //   locate="학원소식";
+  // } else if (params.location==="schedule") {
+  //   locate="정기외박 일정";
+  // } else if (params.location==="pay") {
+  //   locate="학원비 납입 안내";
+  // } else if (params.location==="event") {
+  //   locate="이벤트";
+  // } 
 
   return (
     <Main>
-      <NoticeMenu locate={params.location} />
+      <NoticeMenu  />
       <Section>
-        <NoticeBoard locate={locate} />
+        <NoticeBoard />
       </Section>
     </Main>
   );
