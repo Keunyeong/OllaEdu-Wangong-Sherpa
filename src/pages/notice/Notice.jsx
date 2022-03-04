@@ -6,7 +6,8 @@ import NoticeMenu from "./NoticeMenu";
 const Div = styled.div`
 width: ${(1200 / 1512) * 100 + "vw"};
   height: ${(782 / 982) * 100 + "vh"};
-  margin: auto;
+  margin: ${(60 / 982) * 100 + "vh"} ${(56 / 1512) * 100 + "vw"};
+  
   border-radius: 20px;
   box-shadow: 0rem 0.5rem 1.375rem -0.375rem rgba(24, 39, 75, 0.12),
     0rem 0.875rem 4rem -0.25rem rgba(24, 39, 75, 0.12);
