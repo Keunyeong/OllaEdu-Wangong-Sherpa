@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes, NavLink, useParams } from "react-router-d
 import styled from "styled-components";
 import NoticeMenu from "./NoticeMenu";
 
-const Div = styled.div`
+const Main = styled.main`
 width: ${(1200 / 1512) * 100 + "vw"};
   height: ${(782 / 982) * 100 + "vh"};
   margin: ${(60 / 982) * 100 + "vh"} ${(56 / 1512) * 100 + "vw"};
@@ -29,10 +29,10 @@ const Notice = ({main}) => {
   const params = useParams();
   console.log(main)
   return (
-    <Div>
+    <Main>
       <NoticeMenu />
       {main==="main"?<Section>공지사항</Section>:null}
-    </Div>
+    </Main>
     
   );
 }

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import NoticeMenu from "./NoticeMenu";
 import styled from "styled-components";
-const Div = styled.div`
+const Main = styled.main`
 width: ${(1200 / 1512) * 100 + "vw"};
   height: ${(782 / 982) * 100 + "vh"};
   margin: ${(60 / 982) * 100 + "vh"} ${(56 / 1512) * 100 + "vw"};
@@ -26,9 +26,9 @@ export default function NoticeLocation() {
   const params = useParams();
   console.log(params)
   return (
-    <Div>
-      <NoticeMenu />
+    <Main>
+      <NoticeMenu locate={params.location} />
       <Section>{params.location}</Section>
-    </Div>
+    </Main>
   );
 }
