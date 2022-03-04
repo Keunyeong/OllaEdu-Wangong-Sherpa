@@ -1,16 +1,10 @@
-import React, {
-  useState,
-  useMemo,
-  useEffect,
-  useRef,
-  useCallback
-} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Dropdown_up, Dropdown_down } from "../assets";
 
 const month = Array.from({ length: 12 }, (value, index) => 1 + index);
 
-const Dropdown = (arr = month) => {
+const Dropdown = ({ arr = month }) => {
   const ref = useRef();
   const [toggle, setToggle] = useState(false);
 
@@ -27,10 +21,6 @@ const Dropdown = (arr = month) => {
     };
   }, [toggle]);
 
-  const yearArr = useMemo(() => {
-    return;
-  }, []);
-
   return (
     <Wrapper ref={ref}>
       <ListHeader
@@ -46,7 +36,7 @@ const Dropdown = (arr = month) => {
         )}
         {toggle && (
           <ListConatiner>
-            {Arr.map((yr, idx) => (
+            {arr.map((yr, idx) => (
               <List key={yr}>{yr}</List>
             ))}
           </ListConatiner>
@@ -57,6 +47,7 @@ const Dropdown = (arr = month) => {
 };
 
 export default Dropdown;
+
 const Wrapper = styled.div`
   font-weight: 500;
   line-height: 1.646em;
