@@ -8,8 +8,9 @@ import React, {
 import styled from "styled-components";
 import { Dropdown_up, Dropdown_down } from "../assets";
 
-const year = new Date().getFullYear();
-const Dropdown = () => {
+const month = Array.from({ length: 12 }, (value, index) => 1 + index);
+
+const Dropdown = (arr = month) => {
   const ref = useRef();
   const [toggle, setToggle] = useState(false);
   const [select, setSelect] = useState(year);
@@ -28,7 +29,7 @@ const Dropdown = () => {
   }, [toggle]);
 
   const yearArr = useMemo(() => {
-    return Array.from({ length: 12 }, (value, index) => 1 + index);
+    return;
   }, []);
 
   return (
@@ -46,7 +47,7 @@ const Dropdown = () => {
         )}
         {toggle && (
           <ListConatiner>
-            {yearArr.map((yr, idx) => (
+            {Arr.map((yr, idx) => (
               <List key={yr}>{yr}</List>
             ))}
           </ListConatiner>
