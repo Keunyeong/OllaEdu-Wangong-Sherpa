@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import NoticeMenu from "./NoticeMenu";
 import styled from "styled-components";
+import NoticeBoard from "./NoticeBoard";
 const Main = styled.main`
 width: ${(1200 / 1512) * 100 + "vw"};
   height: ${(782 / 982) * 100 + "vh"};
@@ -24,11 +25,26 @@ const Section = styled.section`
 `;
 export default function NoticeLocation() {
   const params = useParams();
-  console.log(params)
+  
+  let locate;
+  if(params.location==="home"){
+    locate="공지사항";
+  } else if (params.location==="news") {
+    locate="학원소식";
+  } else if (params.location==="schedule") {
+    locate="정기외박 일정";
+  } else if (params.location==="pay") {
+    locate="학원비 납입 안내";
+  } else if (params.location==="event") {
+    locate="이벤트";
+  } 
+
   return (
     <Main>
       <NoticeMenu locate={params.location} />
-      <Section>{params.location}</Section>
+      <Section>
+        <NoticeBoard locate={locate} />
+      </Section>
     </Main>
   );
 }
