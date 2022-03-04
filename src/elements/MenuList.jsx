@@ -1,15 +1,14 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const MenuList = ({ children, list, job, icon, path, click, setClick }) => {
   const url = useLocation();
-  let urlPath = `/${path}`;
+  let urlPath = `/main/${path}`;
   const [clickState, setClickState] = useState(false);
   const upperList = list.toUpperCase();
-  const src = `./src/assets/nav/${list}${icon}.png`;
-  const src_job = `./src/assets/nav/${list}${icon}_${job}.png`;
-  console.log(urlPath === url.pathname);
+  const src = `../src/assets/nav/${list}${icon}.png`;
+  const src_job = `../src/assets/nav/${list}${icon}_${job}.png`;
   useEffect(() => {
     if (urlPath === url.pathname) {
       if (list === "report") {

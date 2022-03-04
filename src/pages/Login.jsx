@@ -1,8 +1,10 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Logo } from "../assets";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({ id: "", pw: "" });
 
   const handleInputId = e => {
@@ -21,6 +23,7 @@ const Login = () => {
       console.log("id:", user.id);
       console.log("password:", user.pw);
       setUser({ id: "", pw: "" });
+      navigate("/main/monthly");
     }
   };
   return (
