@@ -1,30 +1,16 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import styled from "styled-components";
-import { ReportMain, Nav, Header } from "./constructors";
-import { ContextProvider } from "./context/Context";
+import Main from "./pages/Main";
+import Login from "./pages/Login";
 
 const App = () => {
   return (
-    <APP>
-      <Nav depart="police" />
-      <MAIN>
-        <Header></Header>
-        <ContextProvider>
-          <ReportMain />
-        </ContextProvider>
-      </MAIN>
-    </APP>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/main/*" element={<Main />} />
+    </Routes>
   );
 };
-
-const APP = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100%;
-`;
-const MAIN = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
 export default App;

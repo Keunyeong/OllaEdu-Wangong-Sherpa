@@ -90,7 +90,7 @@ const MonthlyReport = () => {
 export default MonthlyReport;
 
 const Page = styled.section`
-  width: ${(1312 / 1512) * 100 + "vw"};
+  width: ${(1412 / 1512) * 100 + "vw"};
   height: ${(915 / 982) * 100 + "vh"};
   position: relative;
   padding: 0 3.5em 2.938em 3.5em;

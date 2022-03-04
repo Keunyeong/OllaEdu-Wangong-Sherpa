@@ -1,71 +1,34 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import { NavLogo } from "../assets";
 import MenuList from "../elements/MenuList";
 
 const Nav = props => {
+  const [click, setClick] = useState(false);
   const reportList = useRef();
-  const [noticeClick, setNoticeClick] = useState(false);
-  const [mypageClick, setMypageClick] = useState(false);
-  const [reportClick, setReportClick] = useState(true);
-  const [monthlyReportOn, setMonthlyReport] = useState(true);
-  const [weeklyReportOn, setWeeklyReport] = useState(false);
-  const [physicalReportOn, setPhysicalReport] = useState(false);
-  let jobIcon = "./src/assets/nav/policeman.png";
-  let jobName = "./src/assets/nav/police.png";
+  let jobIcon = "../src/assets/nav/policeman.png";
+  let jobName = "../src/assets/nav/police.png";
   let jobIconAlt = "POLICEMAN";
   let jobNameAlt = "POLICE";
   if (props.depart === "fire") {
-    jobIcon = "./src/assets/nav/firefighter.png";
-    jobName = "./src/assets/nav/fire.png";
+    jobIcon = "../src/assets/nav/firefighter.png";
+    jobName = "../src/assets/nav/fire.png";
     jobIconAlt = "FIREFIGHTER";
     jobNameAlt = "FIRE";
   } else if (props.depart === "admin") {
-    jobIcon = "./src/assets/nav/administrator.png";
-    jobName = "./src/assets/nav/admin.png";
+    jobIcon = "../src/assets/nav/administrator.png";
+    jobName = "../src/assets/nav/admin.png";
     jobIconAlt = "ADMINISTRATOR";
     jobNameAlt = "ADMIN";
   }
-
-  const click = list => {
-    if (list === "notice") {
-      setNoticeClick(true);
-      setMypageClick(false);
-      setReportClick(false);
-    } else if (list === "mypage") {
-      setNoticeClick(false);
-      setMypageClick(true);
-      setReportClick(false);
-    } else if (list === "report") {
-      setNoticeClick(false);
-      setMypageClick(false);
-      setReportClick(true);
-    }
-  };
-  const clickReport = list => {
-    if (list === "monthly") {
-      setMonthlyReport(true);
-      setWeeklyReport(false);
-      setPhysicalReport(false);
-    } else if (list === "weekly") {
-      setMonthlyReport(false);
-      setWeeklyReport(true);
-      setPhysicalReport(false);
-    } else if (list === "physical") {
-      setMonthlyReport(false);
-      setWeeklyReport(false);
-      setPhysicalReport(true);
-    }
-  };
-
   useEffect(() => {
-    if (reportClick) {
-      reportList.current.style.height = `${(133 / 1512) * 100 + "vw"}`;
+    if (click) {
+      reportList.current.style.height = `${(200 / 982) * 100}vh`;
     } else {
       reportList.current.style.height = 0;
     }
-  }, [reportClick]);
-  const listOn = () => {};
+  }, [click]);
+
   return (
     <Navbar depart={props.depart}>
       <img className="logo" src={NavLogo} alt="NAVLOGO" />
@@ -74,62 +37,62 @@ const Nav = props => {
       <div className="menu">
         <MenuList
           list="notice"
+          path="notice"
           job={props.depart}
-          click={click}
-          clickState={noticeClick}
           depart={props.depart}
           icon="Icon"
-        >
-          공지사항
-        </MenuList>
+          click={click}
+          setClick={setClick}
+        ></MenuList>
         <MenuList
           list="mypage"
+          path="mypage"
           job={props.depart}
-          click={click}
-          clickState={mypageClick}
           depart={props.depart}
           icon="Icon"
-        >
-          마이페이지
-        </MenuList>
+          click={click}
+          setClick={setClick}
+        ></MenuList>
         <MenuList
           list="report"
+          path="monthly"
           job={props.depart}
-          click={click}
-          clickState={reportClick}
           depart={props.depart}
           icon="Icon"
-        >
-          성적 현황
-        </MenuList>
-        <div className="report-list" ref={reportList}>
+          click={click}
+          setClick={setClick}
+        ></MenuList>
+        <div className={"report-list"} ref={reportList}>
           <MenuList
             list="monthly"
+            path="monthly"
             job={props.depart}
-            click={clickReport}
-            clickState={monthlyReportOn}
             depart={props.depart}
             icon="_reportIcon"
+            click={click}
+            setClick={setClick}
           >
             모의고사
           </MenuList>
           <MenuList
             list="weekly"
+            path="weekly"
             job={props.depart}
-            click={clickReport}
-            clickState={weeklyReportOn}
             depart={props.depart}
             icon="_reportIcon"
+            click={click}
+            setClick={setClick}
           >
             중간종합
           </MenuList>
           <MenuList
             list="physical"
+            path="physical"
             job={props.depart}
-            click={clickReport}
-            clickState={physicalReportOn}
             depart={props.depart}
             icon="_reportIcon"
+            click={click}
+            setClick={setClick}
           >
             체력증감
           </MenuList>
@@ -140,13 +103,11 @@ const Nav = props => {
           D-<span>209</span>
         </div>
         <div className="test_date">
-          <h4>최종 시험응시일</h4>
           <h5>
-            <span>2022</span>년<span>5</span>월<span>22</span>일
+            <span>2022</span>.<span>5</span>.<span>22</span>
           </h5>
         </div>
         <div className="phone">
-          <img src="./src/assets/nav/phone.png" alt="" />
           <span>054-823-9112</span>
         </div>
       </div>
@@ -158,7 +119,7 @@ const Navbar = styled.div`
   font-family: Noto Sans KR;
   position: relative;
   height: 100vh;
-  width: ${(200 / 1512) * 100 + "vw"};
+  width: ${(100 / 1512) * 100 + "vw"};
   background: ${props => {
     if (props.depart === "police") {
       return "#1482ef";
@@ -172,11 +133,11 @@ const Navbar = styled.div`
   flex-direction: column;
   align-items: center;
   .logo {
-    width: ${(150 / 1512) * 100 + "vw"};
-    margin-top: ${(20 / 982) * 100 + "vh"};
+    width: ${(86 / 1512) * 100 + "vw"};
+    margin-top: ${(18 / 982) * 100 + "vh"};
   }
   .job-logo {
-    width: ${(72 / 1512) * 100 + "vw"};
+    width: ${(42 / 1512) * 100 + "vw"};
     margin-top: ${(14 / 982) * 100 + "vh"};
   }
   .job {
@@ -195,7 +156,7 @@ const Navbar = styled.div`
     display: flex;
     flex-direction: column;
     color: #ffffffc8;
-    width: ${(200 / 1512) * 100 + "vw"};
+    width: ${(100 / 1512) * 100 + "vw"};
     height: 0;
     overflow: hidden;
     transition: height 0.3s ease-out;
@@ -220,14 +181,14 @@ const Navbar = styled.div`
         }
       }};
       font-weight: 600;
-      font-size: ${(30 / 1512) * 100 + "vw"};
+      font-size: ${(16 / 1512) * 100 + "vw"};
       line-height: ${(30 / 1512) * 100 + "vw"};
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: ${(40 / 1512) * 100 + "vw"};
-      width: ${(122 / 1512) * 100 + "vw"};
-      height: ${(50 / 1512) * 100 + "vw"};
+      width: ${(64 / 1512) * 100 + "vw"};
+      height: ${(40 / 1512) * 100 + "vw"};
     }
     .test_date {
       margin-top: ${(14.5 / 1512) * 100 + "vw"};
@@ -246,7 +207,7 @@ const Navbar = styled.div`
       }
     }
     .phone {
-      font-size: ${(16 / 1512) * 100 + "vw"};
+      font-size: ${(8 / 1512) * 100 + "vw"};
       display: flex;
       align-items: center;
       justify-content: center;
@@ -254,10 +215,6 @@ const Navbar = styled.div`
       width: ${(200 / 1512) * 100 + "vw"};
       border-top: 1px solid #e8e8e8;
       margin-top: ${(30 / 1512) * 100 + "vw"};
-      img {
-        width: ${(20 / 1512) * 100 + "vw"};
-        margin-right: ${(5 / 1512) * 100 + "vw"};
-      }
     }
   }
 `;

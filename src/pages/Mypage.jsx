@@ -3,7 +3,6 @@ import List from "../elements/List";
 import MypageMain from "../constructors/MypageMain";
 
 const Mypage = () => {
-  console.log(window.location.pathname);
   const menuClick = e => {
     e.target.style.background = "#DFE0FF";
   };
@@ -11,7 +10,7 @@ const Mypage = () => {
     <Page>
       <div className="menu">
         <div className="profile">
-          <img src="./src/assets/mypage_avatar.png" alt="" />
+          <img src="../src/assets/mypage_avatar.png" alt="" />
           <span className="name">강병성</span>
           <span className="class">소방1반</span>
           <span className="location">안동캠퍼스</span>
@@ -30,7 +29,7 @@ const Mypage = () => {
 const Page = styled.div`
   background-color: #fff;
   border-radius: ${(20 / 1512) * 100 + "vw"};
-  width: ${(1200 / 1512) * 100 + "vw"};
+  width: ${(1300 / 1512) * 100 + "vw"};
   height: ${(782 / 982) * 100 + "vh"};
   margin: ${(60 / 982) * 100 + "vh"} ${(56 / 1512) * 100 + "vw"};
   display: flex;

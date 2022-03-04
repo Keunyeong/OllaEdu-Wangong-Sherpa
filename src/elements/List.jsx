@@ -7,7 +7,7 @@ const List = ({ children, menuClick }) => {
         menuClick(e);
       }}
     >
-      {children} <img src="./src/assets/arrow_right.png" alt="ARROWRIGHT" />{" "}
+      {children} <img src="../src/assets/arrow_right.png" alt="ARROWRIGHT" />{" "}
     </MenuLi>
   );
 };
