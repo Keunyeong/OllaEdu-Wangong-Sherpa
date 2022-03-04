@@ -1,7 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
+import { NavLink, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import ArrowRight from "../../assets/arrow_right.png";
 import ArrowRightSelected from "../../assets/arrow_right_selected.png";
+import Notice from "./Notice";
 
 const Ul = styled.ul`
 box-sizing: border-box;
@@ -28,55 +30,58 @@ const List = styled.li`
   }
 `;
 
-export default function NoticeMenu({locate}) {
-  console.log(locate)
+export default function NoticeMenu({locate, bool}) {
+  useEffect(() => {
+    console.log(`locate: ${locate}`);
+  }, [locate]);
+  
   return (
     <Ul>
-        <List>
-          <NavLink 
-          to="home"
-          style={ ({isActive}) => ({background : isActive ? "#DFE0FF" : "#FFF"}) }
-          >
-            <span>공지사항</span>
-            {locate==="home" ?<img src={ArrowRightSelected} alt="ArrowRightSelected" /> : <img src={ArrowRight} alt="ArrowRight" />}
-            </NavLink>
-        </List>
-        <List>
-          <NavLink 
-          to="news"
-          style={ ({isActive}) => ({background: isActive ? "#DFE0FF" : "#FFF"}) }
-          >
-           <span>학원소식</span>
-           {locate==="news" ?<img src={ArrowRightSelected} alt="ArrowRightSelected" /> : <img src={ArrowRight} alt="ArrowRight" />}
-            </NavLink>
-        </List>
-        <List>
-          <NavLink 
-          to="schedule"
-          style={ ({isActive}) => ({background: isActive ? "#DFE0FF" : "#FFF"}) }
-          >
-           <span>정기외박 일정</span>
-           {locate==="schedule" ?<img src={ArrowRightSelected} alt="ArrowRightSelected" /> : <img src={ArrowRight} alt="ArrowRight" />}
-            </NavLink>
-        </List>
-        <List>
-          <NavLink 
-          to="pay"
-          style={ ({isActive}) => ({background: isActive ? "#DFE0FF" : "#FFF"}) }
-          >
-           <span>학원비 납입 안내</span>
-           {locate==="pay" ?<img src={ArrowRightSelected} alt="ArrowRightSelected" /> : <img src={ArrowRight} alt="ArrowRight" />}
-            </NavLink>
-        </List>
-        <List>
-          <NavLink 
-          to="event"
-          style={ ({isActive}) => ({background: isActive ? "#DFE0FF" : "#FFF"}) }
-          >
-           <span>이벤트</span>
-           {locate==="event" ?<img src={ArrowRightSelected} alt="ArrowRightSelected" /> : <img src={ArrowRight} alt="ArrowRight" />}
-            </NavLink>
-        </List>
-      </Ul>
+      <List>
+        <NavLink 
+        to="home"
+        style={ ({isActive}) => ({background : isActive||bool ? "#DFE0FF" : "#FFF"}) }
+        >
+          <span>공지사항</span>
+          {locate==="home" ?<img src={ArrowRightSelected} alt="ArrowRightSelected" /> : <img src={ArrowRight} alt="ArrowRight" />}
+          </NavLink>
+      </List>
+      <List>
+        <NavLink 
+        to="news"
+        style={ ({isActive}) => ({background: isActive ? "#DFE0FF" : "#FFF"}) }
+        >
+          <span>학원소식</span>
+          {locate==="news" ?<img src={ArrowRightSelected} alt="ArrowRightSelected" /> : <img src={ArrowRight} alt="ArrowRight" />}
+          </NavLink>
+      </List>
+      <List>
+        <NavLink 
+        to="schedule"
+        style={ ({isActive}) => ({background: isActive ? "#DFE0FF" : "#FFF"}) }
+        >
+          <span>정기외박 일정</span>
+          {locate==="schedule" ?<img src={ArrowRightSelected} alt="ArrowRightSelected" /> : <img src={ArrowRight} alt="ArrowRight" />}
+          </NavLink>
+      </List>
+      <List>
+        <NavLink 
+        to="pay"
+        style={ ({isActive}) => ({background: isActive ? "#DFE0FF" : "#FFF"}) }
+        >
+          <span>학원비 납입 안내</span>
+          {locate==="pay" ?<img src={ArrowRightSelected} alt="ArrowRightSelected" /> : <img src={ArrowRight} alt="ArrowRight" />}
+          </NavLink>
+      </List>
+      <List>
+        <NavLink 
+        to="event"
+        style={ ({isActive}) => ({background: isActive ? "#DFE0FF" : "#FFF"}) }
+        >
+          <span>이벤트</span>
+          {locate==="event" ?<img src={ArrowRightSelected} alt="ArrowRightSelected" /> : <img src={ArrowRight} alt="ArrowRight" />}
+          </NavLink>
+      </List>
+    </Ul>
   );
 }

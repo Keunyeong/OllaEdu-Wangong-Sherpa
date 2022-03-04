@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter,
   Route,
   Routes,
   NavLink,
-  useParams
+  useParams,
+  Outlet
 } from "react-router-dom";
 import styled from "styled-components";
+import NoticeBoard from "./NoticeBoard";
 import NoticeMenu from "./NoticeMenu";
 
 const Main = styled.main`
@@ -31,15 +33,18 @@ const Section = styled.section`
   background-color: #f1f2f2;
 `;
 
-const Notice = ({ main }) => {
+const Notice = () => {
   const params = useParams();
-  console.log(main);
+  const [trues, setTrues] = useState(true);
+  console.log(params.id)
   return (
     <Main>
-      <NoticeMenu />
-      {main==="main"?<Section>공지사항</Section>:null}
+      {params.id===undefined ? <NoticeMenu locate="home" bool={trues} /> : <NoticeMenu locate={params.id} /> }
+      
+      <Section>
+      {params.id===undefined ? <NoticeBoard locate="home" /> : <NoticeBoard locate={params.id}/> }
+      </Section>
     </Main>
-    
   );
 };
 export default Notice;
