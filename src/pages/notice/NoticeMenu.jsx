@@ -11,26 +11,25 @@ height: ${(782 / 982) * 100 + "vh"};
 border-radius: 20px 0 0 20px;
 `;
 const List = styled.li`
-  
-  display: flex;
-  align-items: center;
-  justify-content: right;
   height: 20%;
   text-align: center;
 
   a {
+    display: flex;
+    align-items: center;
+    justify-content: right;
     width: 100%;
     height: 100%;
   }
 
-  span {
+  a > span {
     font-size: ${(18 / 1512) * 100 + "vw"};
     margin-right: 1rem;
   }
 `;
-//background-color: ${props => props.color};
 
-export default function NoticeMenu() {
+export default function NoticeMenu({locate}) {
+  console.log(locate)
   return (
     <Ul>
         <List>
@@ -38,7 +37,8 @@ export default function NoticeMenu() {
           to="/notice/home"
           style={ ({isActive}) => ({background : isActive ? "#DFE0FF" : "#FFF"}) }
           >
-            공지사항
+            <span>공지사항</span>
+            {locate==="home" ?<img src={ArrowRightSelected} alt="ArrowRightSelected" /> : <img src={ArrowRight} alt="ArrowRight" />}
             </NavLink>
         </List>
         <List>
@@ -46,7 +46,35 @@ export default function NoticeMenu() {
           to="/notice/news"
           style={ ({isActive}) => ({background: isActive ? "#DFE0FF" : "#FFF"}) }
           >
-           학원소식
+           <span>학원소식</span>
+           {locate==="news" ?<img src={ArrowRightSelected} alt="ArrowRightSelected" /> : <img src={ArrowRight} alt="ArrowRight" />}
+            </NavLink>
+        </List>
+        <List>
+          <NavLink 
+          to="/notice/schedule"
+          style={ ({isActive}) => ({background: isActive ? "#DFE0FF" : "#FFF"}) }
+          >
+           <span>정기외박 일정</span>
+           {locate==="schedule" ?<img src={ArrowRightSelected} alt="ArrowRightSelected" /> : <img src={ArrowRight} alt="ArrowRight" />}
+            </NavLink>
+        </List>
+        <List>
+          <NavLink 
+          to="/notice/pay"
+          style={ ({isActive}) => ({background: isActive ? "#DFE0FF" : "#FFF"}) }
+          >
+           <span>학원비 납입 안내</span>
+           {locate==="pay" ?<img src={ArrowRightSelected} alt="ArrowRightSelected" /> : <img src={ArrowRight} alt="ArrowRight" />}
+            </NavLink>
+        </List>
+        <List>
+          <NavLink 
+          to="/notice/event"
+          style={ ({isActive}) => ({background: isActive ? "#DFE0FF" : "#FFF"}) }
+          >
+           <span>이벤트</span>
+           {locate==="event" ?<img src={ArrowRightSelected} alt="ArrowRightSelected" /> : <img src={ArrowRight} alt="ArrowRight" />}
             </NavLink>
         </List>
       </Ul>
