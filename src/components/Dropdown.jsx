@@ -83,9 +83,10 @@ const ListConatiner = styled.ul`
   max-height: 12.25em;
   background-color: #d8d8d8;
   overflow-y: auto;
+  border-radius: 0.223em;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  border-radius: 0.223em;
+
   &::-webkit-scrollbar {
     display: none;
   }
