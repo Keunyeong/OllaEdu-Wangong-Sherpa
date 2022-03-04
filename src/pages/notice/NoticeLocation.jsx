@@ -1,8 +1,6 @@
-import React from "react";
-import { BrowserRouter, Route, Routes, NavLink, useParams } from "react-router-dom";
-import styled from "styled-components";
+import { useParams } from "react-router-dom";
 import NoticeMenu from "./NoticeMenu";
-
+import styled from "styled-components";
 const Div = styled.div`
 width: ${(1200 / 1512) * 100 + "vw"};
   height: ${(782 / 982) * 100 + "vh"};
@@ -23,16 +21,13 @@ const Section = styled.section`
   border-left: 1px solid #D8D8D8;
   background-color: #F1F2F2;
 `;
-
-const Notice = ({main}) => {
+export default function NoticeLocation() {
   const params = useParams();
-  console.log(main)
+  console.log(params)
   return (
     <Div>
       <NoticeMenu />
-      {main==="main"?<Section>공지사항</Section>:null}
+      <Section>{params.location}</Section>
     </Div>
-    
   );
 }
-export default Notice;
