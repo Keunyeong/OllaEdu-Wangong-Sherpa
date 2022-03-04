@@ -13,7 +13,6 @@ const month = Array.from({ length: 12 }, (value, index) => 1 + index);
 const Dropdown = (arr = month) => {
   const ref = useRef();
   const [toggle, setToggle] = useState(false);
-  const [select, setSelect] = useState(year);
 
   useEffect(() => {
     const checkIfClickedOutside = e => {
