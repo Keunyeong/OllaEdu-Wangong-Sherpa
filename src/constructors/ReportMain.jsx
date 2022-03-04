@@ -11,10 +11,10 @@ const ReportMain = () => {
   return (
     <Main>
       <Routes>
-        <Route path="/" element={<MonthlyReport />} />
-        <Route path="/notice" element={<Notice main="main" />} />
-        <Route path="/notice/:location" element={<NoticeLocation />} />
-        <Route path="/mypage/*" element={<Mypage />} />
+        <Route path="monthly" element={<MonthlyReport />} />
+        <Route path="notice" element={<Notice main="main" />} />
+        <Route path="notice/:location" element={<NoticeLocation />} />
+        <Route path="mypage/*" element={<Mypage />} />
       </Routes>
     </Main>
   );
@@ -22,7 +22,7 @@ const ReportMain = () => {
 
 const Main = styled.main`
   background-color: #f5f5f5;
-  height: ${(917 / 982) * 100 + "vh"}; ;
+  height: ${(917 / 982) * 100 + "vh"};
 `;
 
 export default ReportMain;
