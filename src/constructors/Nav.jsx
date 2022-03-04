@@ -6,18 +6,18 @@ import MenuList from "../elements/MenuList";
 const Nav = props => {
   const [click, setClick] = useState(false);
   const reportList = useRef();
-  let jobIcon = "./src/assets/nav/policeman.png";
-  let jobName = "./src/assets/nav/police.png";
+  let jobIcon = "../src/assets/nav/policeman.png";
+  let jobName = "../src/assets/nav/police.png";
   let jobIconAlt = "POLICEMAN";
   let jobNameAlt = "POLICE";
   if (props.depart === "fire") {
-    jobIcon = "./src/assets/nav/firefighter.png";
-    jobName = "./src/assets/nav/fire.png";
+    jobIcon = "../src/assets/nav/firefighter.png";
+    jobName = "../src/assets/nav/fire.png";
     jobIconAlt = "FIREFIGHTER";
     jobNameAlt = "FIRE";
   } else if (props.depart === "admin") {
-    jobIcon = "./src/assets/nav/administrator.png";
-    jobName = "./src/assets/nav/admin.png";
+    jobIcon = "../src/assets/nav/administrator.png";
+    jobName = "../src/assets/nav/admin.png";
     jobIconAlt = "ADMINISTRATOR";
     jobNameAlt = "ADMIN";
   }
