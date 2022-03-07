@@ -1,12 +1,6 @@
 export { default as NavLogo } from "./nav/NavLogo.png";
 export { default as policeman } from "./nav/policeman.png";
 export { default as police } from "./nav/police.png";
-export { default as noticeIcon } from "./nav/noticeIcon.png";
-export { default as noticeIcon_police } from "./nav/noticeIcon_police.png";
-export { default as reportIcon } from "./nav/reportIcon.png";
-export { default as reportIcon_police } from "./nav/reportIcon_police.png";
-export { default as mypageIcon } from "./nav/mypageIcon.png";
-export { default as mypageIcon_police } from "./nav/mypageIcon_police.png";
 export { default as arrow_down } from "./nav/arrow_down.png";
 export { default as arrow_down_police } from "./nav/arrow_down_police.png";
 export { default as monthly_reportIcon } from "./nav/monthly_reportIcon.png";
