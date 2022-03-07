@@ -21,19 +21,16 @@ const Nav = props => {
     jobIconAlt = "ADMINISTRATOR";
     jobNameAlt = "ADMIN";
   }
-  useEffect(() => {
-    if (click) {
-      reportList.current.style.height = `${(200 / 982) * 100}vh`;
-    } else {
-      reportList.current.style.height = 0;
-    }
-  }, [click]);
 
   return (
     <Navbar depart={props.depart}>
-      <img className="logo" src={NavLogo} alt="NAVLOGO" />
-      <img className="job-logo" src={jobIcon} alt={jobIconAlt} />
-      <img className="job" src={jobName} alt={jobNameAlt} />
+      <div className="logobox">
+        <img className="logo" src={NavLogo} alt="NAVLOGO" />
+        <img className="job" src={jobName} alt={jobNameAlt} />
+      </div>
+      <div className="toggle">
+        <img src="../src/assets/nav/toggle.svg" alt="TOGGLE" />
+      </div>
       <div className="menu">
         <MenuList
           list="notice"
@@ -43,7 +40,9 @@ const Nav = props => {
           icon="Icon"
           click={click}
           setClick={setClick}
-        ></MenuList>
+        >
+          공지사항
+        </MenuList>
         <MenuList
           list="mypage"
           path="mypage"
@@ -52,7 +51,9 @@ const Nav = props => {
           icon="Icon"
           click={click}
           setClick={setClick}
-        ></MenuList>
+        >
+          마이페이지
+        </MenuList>
         <MenuList
           list="report"
           path="monthly"
@@ -61,8 +62,10 @@ const Nav = props => {
           icon="Icon"
           click={click}
           setClick={setClick}
-        ></MenuList>
-        <div className={"report-list"} ref={reportList}>
+        >
+          성적현황
+        </MenuList>
+        {/* <div className={"report-list"} ref={reportList}>
           <MenuList
             list="monthly"
             path="monthly"
@@ -96,19 +99,9 @@ const Nav = props => {
           >
             체력증감
           </MenuList>
-        </div>
-      </div>
-      <div className="footer">
+        </div> */}
         <div className="d_day" depart={props.depart}>
           D-<span>209</span>
-        </div>
-        <div className="test_date">
-          <h5>
-            <span>2022</span>.<span>5</span>.<span>22</span>
-          </h5>
-        </div>
-        <div className="phone">
-          <span>054-823-9112</span>
         </div>
       </div>
     </Navbar>
@@ -118,8 +111,8 @@ const Nav = props => {
 const Navbar = styled.div`
   font-family: Noto Sans KR;
   position: relative;
-  height: 100vh;
-  width: ${(100 / 1512) * 100 + "vw"};
+  width: 100vw;
+  height: ${(56 / 1512) * 100 + "vw"};
   background: ${props => {
     if (props.depart === "police") {
       return "#1482ef";
@@ -130,46 +123,33 @@ const Navbar = styled.div`
     }
   }};
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  .logo {
-    width: ${(86 / 1512) * 100 + "vw"};
-    margin-top: ${(18 / 982) * 100 + "vh"};
-  }
-  .job-logo {
-    width: ${(42 / 1512) * 100 + "vw"};
-    margin-top: ${(14 / 982) * 100 + "vh"};
-  }
-  .job {
-    width: ${(26 / 1512) * 100 + "vw"};
-    margin-top: ${(5 / 982) * 100 + "vh"};
+  .logobox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: ${(40 / 1512) * 100 + "vw"};
+    .logo {
+      width: ${(86 / 1512) * 100 + "vw"};
+    }
+    .job {
+      width: ${(26 / 1512) * 100 + "vw"};
+      padding-top: ${(5 / 1512) * 100 + "vw"};
+      margin-right: ${(10 / 1512) * 100 + "vw"};
+    }
   }
   .menu {
     display: flex;
-    flex-direction: column;
-    font-size: ${(20 / 1512) * 100 + "vw"};
+    align-items: center;
+    font-size: ${(14 / 1512) * 100 + "vw"};
     font-family: Noto Sans KR;
     font-weight: 600;
-    margin-top: ${(134.67 / 982) * 100 + "vh"};
-  }
-  .report-list {
-    display: flex;
-    flex-direction: column;
-    color: #ffffffc8;
-    width: ${(100 / 1512) * 100 + "vw"};
-    height: 0;
-    overflow: hidden;
-    transition: height 0.3s ease-out;
-  }
-  .footer {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #ffffffc8;
-    font-size: ${(14 / 1512) * 100 + "vw"};
+    margin-right: ${(40 / 1512) * 100 + "vw"};
+
     .d_day {
+      margin-left: ${(40 / 1512) * 100 + "vw"};
+
       background-color: #ffffffc8;
       color: ${props => {
         if (props.depart === "police") {
@@ -186,37 +166,33 @@ const Navbar = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: ${(4 / 1512) * 100 + "vw"} ${(10 / 1512) * 100 + "vw"};
       border-radius: ${(40 / 1512) * 100 + "vw"};
-      width: ${(64 / 1512) * 100 + "vw"};
-      height: ${(40 / 1512) * 100 + "vw"};
     }
-    .test_date {
-      margin-top: ${(14.5 / 1512) * 100 + "vw"};
-      h4 {
-        font-weight: 500;
-        font-size: ${(12 / 1512) * 100 + "vw"};
-        line-height: ${(17 / 1512) * 100 + "vw"};
-        text-align: center;
-      }
-      h5 {
-        font-weight: 500;
-        font-size: ${(14 / 1512) * 100 + "vw"};
-        line-height: ${(20 / 1512) * 100 + "vw"};
-        margin-top: ${(5 / 1512) * 100 + "vw"};
-        text-align: center;
-      }
-    }
-    .phone {
-      font-size: ${(8 / 1512) * 100 + "vw"};
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: ${(59 / 1512) * 100 + "vw"};
-      width: ${(200 / 1512) * 100 + "vw"};
-      border-top: 1px solid #e8e8e8;
-      margin-top: ${(30 / 1512) * 100 + "vw"};
+    @media screen and (max-width: 667px) {
+      display: none;
     }
   }
+  .toggle {
+    display: none;
+    @media screen and (max-width: 667px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: ${(40 / 1512) * 100 + "vw"};
+      img {
+        width: ${(24 / 1512) * 100 + "vw"};
+      }
+    }
+  }
+  /* .report-list {
+    display: flex;
+    color: #ffffffc8;
+    width: ${(100 / 1512) * 100 + "vw"};
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+  } */
 `;
 
 export default Nav;
