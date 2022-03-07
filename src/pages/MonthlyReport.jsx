@@ -61,7 +61,9 @@ const MonthlyReport = () => {
             children={
               <CombineChart>
                 <Table />
-                <IrregularPieGraph />
+                <LittleChartContainer>
+                  <IrregularPieGraph />
+                </LittleChartContainer>
               </CombineChart>
             }
           />
@@ -161,11 +163,17 @@ const CombineChart = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   column-gap: 2.5em;
   row-gap: 2.5em;
   @media only screen and (min-width: 1512px) {
     flex-wrap: nowrap;
   } ;
+`;
+
+const LittleChartContainer = styled.div`
+  width: 18.5em;
+  height: 13em;
 `;
 
 const Paragraph = styled.p`
