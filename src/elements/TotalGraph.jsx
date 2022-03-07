@@ -41,10 +41,10 @@ const TotalGraph = () => {
     const svg = d3
       .select(arcChart.current)
       .append("svg")
-      .attr("width", "100%")
-      .attr("height", "100%")
+      .attr("width", "12.0625rem")
+      .attr("height", "12.0625rem")
       .append("g")
-      .attr("transform", `translate(${296 / 2},${208 / 2})`);
+      .attr("transform", `translate(${6.03125 * rem},${6.03125 * rem})`);
 
     const numberDOM = svg
       .append("text")
@@ -89,7 +89,22 @@ const TotalGraph = () => {
   }, []);
 
   return (
-    <GraphContainer ref={arcChart} width="100%" height="100%"></GraphContainer>
+    <GraphContainer ref={arcChart} width="100%" height="100%">
+      <Index>
+        <Span>
+          <Svg>
+            <SmallCircle fill="#214BA7" />
+          </Svg>
+          목표 점수
+        </Span>
+        <Span>
+          <Svg>
+            <SmallCircle fill="#F8AB0D" />
+          </Svg>
+          당월 점수
+        </Span>
+      </Index>
+    </GraphContainer>
   );
 };
 

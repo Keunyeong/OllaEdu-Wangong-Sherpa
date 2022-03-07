@@ -42,8 +42,8 @@ const MonthlyReport = () => {
         </Swap3>
         <Swap4>
           <CardWrapper
-            width="49.5em"
-            height="17em"
+            width="38.500em"
+            height="13.000em"
             title="총점 월별 추이"
             children={<MonthlyGraph />}
           />

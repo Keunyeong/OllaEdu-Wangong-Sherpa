@@ -5,7 +5,7 @@ import { ContextProvider } from "../context/Context";
 const Main = () => {
   return (
     <Page>
-      <Nav depart="admin" />
+      <Nav depart="police" />
 
       <ContextProvider>
         <ReportMain />
