@@ -78,9 +78,9 @@ const IrregularPieChart = ({ width = 296, height = 208 }) => {
   return (
     <svg
       ref={chart}
-      width="100%"
-      height="100%"
-      viewBox={`0 0 100% 100%`}
+      width={width}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
       preserveAspectRatio="xMinYMin meet"
     ></svg>
   );
