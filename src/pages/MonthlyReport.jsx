@@ -104,10 +104,9 @@ const MonthlyReport = () => {
 export default MonthlyReport;
 
 const Page = styled.section`
-  width: ${(1412 / 1512) * 100 + "vw"};
   height: ${(915 / 982) * 100 + "vh"};
   position: relative;
-  padding: 0 3.5em 2.938em 3.5em;
+  padding: 0 17.875em 8.938em 18.125em;
   background-color: #f5f5f5;
   overflow-y: auto;
   -ms-overflow-style: none;
