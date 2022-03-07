@@ -56,7 +56,7 @@ const Wrapper = styled.div`
 const ListHeader = styled.div`
   position: relative;
   width: 6.633em;
-  min-height: 1.647em;
+  min-height: 1.25em;
   background-color: #d8d8d8;
   border-radius: 0.223em;
 `;

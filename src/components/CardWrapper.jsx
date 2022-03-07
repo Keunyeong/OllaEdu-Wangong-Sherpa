@@ -4,8 +4,8 @@ import { Card } from "../elements";
 import { Star } from "../assets";
 
 const CardWrapper = ({
-  width = "24em",
-  height = "17em",
+  width = "18.5em",
+  height = "13em",
   title,
   children,
   padding = "none",
