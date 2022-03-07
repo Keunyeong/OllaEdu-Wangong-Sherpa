@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import List from "../elements/List";
+import MypageMenu from "../elements/MypageMenu";
 import MypageMain from "../constructors/MypageMain";
 
 const Mypage = () => {
@@ -16,9 +16,9 @@ const Mypage = () => {
           <span className="location">안동캠퍼스</span>
         </div>
         <div className="list">
-          <List menuClick={menuClick}>기본정보</List>
-          <List menuClick={menuClick}>시간표</List>
-          <List menuClick={menuClick}>질문과 답변</List>
+          <MypageMenu menuClick={menuClick}>기본정보</MypageMenu>
+          <MypageMenu menuClick={menuClick}>시간표</MypageMenu>
+          <MypageMenu menuClick={menuClick}>질문과 답변</MypageMenu>
         </div>
       </div>
       <div className="main"></div>
@@ -29,9 +29,8 @@ const Mypage = () => {
 const Page = styled.div`
   background-color: #fff;
   border-radius: ${(20 / 1512) * 100 + "vw"};
-  width: ${(1300 / 1512) * 100 + "vw"};
+  width: 80vw;
   height: ${(782 / 982) * 100 + "vh"};
-  margin: ${(60 / 982) * 100 + "vh"} ${(56 / 1512) * 100 + "vw"};
   display: flex;
   box-shadow: 0px 8px 22px -6px rgba(24, 39, 75, 0.12),
     0px 14px 64px -4px rgba(24, 39, 75, 0.12);
