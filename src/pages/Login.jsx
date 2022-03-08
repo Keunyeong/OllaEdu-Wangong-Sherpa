@@ -23,7 +23,7 @@ const Login = () => {
       console.log("id:", user.id);
       console.log("password:", user.pw);
       setUser({ id: "", pw: "" });
-      navigate("/main/monthly");
+      navigate("/report/monthly");
     }
   };
   return (

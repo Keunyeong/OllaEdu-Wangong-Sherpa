@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import { useEffect } from "react";
 import styled from "styled-components";
 
 const NavToggleList = ({ list, job, path, state }) => {
