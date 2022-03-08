@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const List = ({ children, menuClick }) => {
+const MypageMenu = ({ children, menuClick }) => {
   return (
     <MenuLi
       onClick={e => {
@@ -29,4 +29,4 @@ const MenuLi = styled.div`
   }
 `;
 
-export default List;
+export default MypageMenu;

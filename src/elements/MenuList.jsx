@@ -1,20 +1,35 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
+import NavToggleList from "./NavToggleList";
 
 const MenuList = ({ children, list, job, icon, path }) => {
   const url = useLocation();
-  let urlPath = `/main/${path}`;
-
+  const el = useRef();
+  const [toggleOn, setToggleOn] = useState(false);
+  const toggle = () => {
+    setToggleOn(!toggleOn);
+  };
+  const handleCloseToggle = e => {
+    if (toggleOn && (!el.current || !el.current.contains(e.target))) {
+      setToggleOn(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("click", handleCloseToggle);
+    return () => {
+      window.addEventListener("click", handleCloseToggle);
+    };
+  }, [toggleOn]);
+  let cn = "list";
+  if (String(url.pathname).split("/")[1] === list) {
+    cn = "list selected";
+  } else {
+    cn = "list";
+  }
   return (
     <List>
-      <NavLink
-        depart={job}
-        icon={icon}
-        className={({ isActive }) => {
-          return isActive ? "list selected" : "list";
-        }}
-        to={urlPath}
-      >
+      <div depart={job} icon={icon} className={cn} onClick={toggle} ref={el}>
         <div className="icon">
           {list === "mypage" ? (
             <svg
@@ -31,14 +46,14 @@ const MenuList = ({ children, list, job, icon, path }) => {
             </svg>
           ) : list === "notice" ? (
             <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M5.24995 9.75C5.24995 7.95979 5.96111 6.2429 7.22698 4.97703C8.49285 3.71116 10.2097 3 11.9999 3C13.7902 3 15.507 3.71116 16.7729 4.97703C18.0388 6.2429 18.7499 7.95979 18.7499 9.75V12.606L20.1959 16.221C20.2416 16.3348 20.2586 16.458 20.2455 16.5799C20.2324 16.7018 20.1897 16.8187 20.121 16.9202C20.0523 17.0217 19.9598 17.1049 19.8515 17.1624C19.7433 17.2199 19.6225 17.25 19.4999 17.25H4.49995C4.37736 17.25 4.25664 17.2199 4.14837 17.1624C4.0401 17.1049 3.94757 17.0217 3.87889 16.9202C3.8102 16.8187 3.76746 16.7018 3.75439 16.5799C3.74133 16.458 3.75834 16.3348 3.80395 16.221L5.24995 12.606V9.75ZM9.09295 18.75C9.25814 19.395 9.63372 19.9665 10.1602 20.374C10.6868 20.7815 11.3341 21.0018 11.9999 21C13.4039 21 14.5754 20.0475 14.9069 18.75H9.09295Z"
+                d="M2.24983 6.75C2.24983 4.95979 2.96098 3.2429 4.22685 1.97703C5.49272 0.711159 7.20961 0 8.99983 0C10.79 0 12.5069 0.711159 13.7728 1.97703C15.0387 3.2429 15.7498 4.95979 15.7498 6.75V9.606L17.1958 13.221C17.2414 13.3348 17.2584 13.458 17.2454 13.5799C17.2323 13.7018 17.1896 13.8187 17.1209 13.9202C17.0522 14.0217 16.9597 14.1049 16.8514 14.1624C16.7431 14.2199 16.6224 14.25 16.4998 14.25H1.49983C1.37723 14.25 1.25652 14.2199 1.14825 14.1624C1.03997 14.1049 0.947446 14.0217 0.878763 13.9202C0.81008 13.8187 0.767335 13.7018 0.754271 13.5799C0.741207 13.458 0.758222 13.3348 0.803826 13.221L2.24983 9.606V6.75ZM6.09282 15.75C6.25802 16.395 6.6336 16.9665 7.16012 17.374C7.68664 17.7815 8.33402 18.0018 8.99983 18C10.4038 18 11.5753 17.0475 11.9068 15.75H6.09282Z"
                 fill="white"
               />
             </svg>
@@ -57,9 +72,9 @@ const MenuList = ({ children, list, job, icon, path }) => {
             </svg>
           )}
         </div>
-        {children}
-      </NavLink>
-      <NavList></NavList>
+        <span>{children}</span>
+      </div>
+      <NavToggleList state={toggleOn} list={list} job={job} />
     </List>
   );
 };
@@ -67,19 +82,21 @@ const MenuList = ({ children, list, job, icon, path }) => {
 const List = styled.div`
   position: relative;
   .list {
+    width: ${(126 / 1512) * 100 + "vw"};
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 0 ${(20 / 1512) * 100 + "vw"};
+    justify-content: center;
     color: #ffffffc8;
-    height: ${(61 / 1512) * 100 + "vw"};
+    height: ${(56 / 1512) * 100 + "vw"};
     font-weight: 600;
     font-size: ${(14 / 1512) * 100 + "vw"};
     line-height: ${(30 / 1512) * 100 + "vw"};
     cursor: pointer;
     .icon {
-      padding-top: ${(8 / 1512) * 100 + "vw"};
-      width: ${(30 / 1512) * 100 + "vw"};
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: ${(24 / 1512) * 100 + "vw"};
       margin-right: ${(10 / 1512) * 100 + "vw"};
       @media screen and (max-width: 991px) {
         display: none;
@@ -95,7 +112,15 @@ const List = styled.div`
           return "#13C383";
         }
       }};
-      background-color: #fff;
+      background-color: ${props => {
+        if (props.children[0].props.depart === "police") {
+          return "#bcd6f0";
+        } else if (props.children[0].props.depart === "fire") {
+          return "#f7d5cd";
+        } else if (props.children[0].props.depart === "admin") {
+          return "#c7f7e6";
+        }
+      }};
       div {
         svg {
           path {
@@ -141,10 +166,6 @@ const List = styled.div`
       }
     }
   }
-`;
-
-const NavList = styled.div`
-  position: absolute;
 `;
 
 export default MenuList;

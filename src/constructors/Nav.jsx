@@ -1,26 +1,46 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { NavLogo } from "../assets";
 import MenuList from "../elements/MenuList";
 
 const Nav = props => {
   const [click, setClick] = useState(false);
-  const reportList = useRef();
+  const [menuToggle, setMenuToggle] = useState("toggle_menu_list");
+  const el = useRef();
   let jobIcon = "../src/assets/nav/policeman.png";
   let jobName = "../src/assets/nav/police.png";
-  let jobIconAlt = "POLICEMAN";
   let jobNameAlt = "POLICE";
   if (props.depart === "fire") {
     jobIcon = "../src/assets/nav/firefighter.png";
     jobName = "../src/assets/nav/fire.png";
-    jobIconAlt = "FIREFIGHTER";
     jobNameAlt = "FIRE";
   } else if (props.depart === "admin") {
     jobIcon = "../src/assets/nav/administrator.png";
     jobName = "../src/assets/nav/admin.png";
-    jobIconAlt = "ADMINISTRATOR";
     jobNameAlt = "ADMIN";
   }
+  const toggleEvent = () => {
+    setMenuToggle(!menuToggle);
+    if (menuToggle === "toggle_menu_list") {
+      setMenuToggle("toggle_menu_list view");
+    } else {
+      setMenuToggle("toggle_menu_list");
+    }
+  };
+  const handleCloseToggle = e => {
+    if (
+      menuToggle === "toggle_menu_list view" &&
+      (!el.current || !el.current.contains(e.target))
+    ) {
+      setMenuToggle("toggle_menu_list");
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("click", handleCloseToggle);
+    return () => {
+      window.addEventListener("click", handleCloseToggle);
+    };
+  }, [menuToggle]);
 
   return (
     <Navbar depart={props.depart}>
@@ -28,8 +48,13 @@ const Nav = props => {
         <img className="logo" src={NavLogo} alt="NAVLOGO" />
         <img className="job" src={jobName} alt={jobNameAlt} />
       </div>
-      <div className="toggle">
+      <div className="toggle" onClick={toggleEvent} ref={el}>
         <img src="../src/assets/nav/toggle.svg" alt="TOGGLE" />
+        <div className={menuToggle} depart={props.depart}>
+          <div className="toggle_list">공지사항</div>
+          <div className="toggle_list">마이페이지</div>
+          <div className="toggle_list">성적현황</div>
+        </div>
       </div>
       <div className="menu">
         <MenuList
@@ -65,41 +90,6 @@ const Nav = props => {
         >
           성적현황
         </MenuList>
-        {/* <div className={"report-list"} ref={reportList}>
-          <MenuList
-            list="monthly"
-            path="monthly"
-            job={props.depart}
-            depart={props.depart}
-            icon="_reportIcon"
-            click={click}
-            setClick={setClick}
-          >
-            모의고사
-          </MenuList>
-          <MenuList
-            list="weekly"
-            path="weekly"
-            job={props.depart}
-            depart={props.depart}
-            icon="_reportIcon"
-            click={click}
-            setClick={setClick}
-          >
-            중간종합
-          </MenuList>
-          <MenuList
-            list="physical"
-            path="physical"
-            job={props.depart}
-            depart={props.depart}
-            icon="_reportIcon"
-            click={click}
-            setClick={setClick}
-          >
-            체력증감
-          </MenuList>
-        </div> */}
         <div className="d_day" depart={props.depart}>
           D-<span>209</span>
         </div>
@@ -184,15 +174,38 @@ const Navbar = styled.div`
         width: ${(24 / 1512) * 100 + "vw"};
       }
     }
+    .toggle_menu_list {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 100vw;
+      position: absolute;
+      top: ${(56 / 1512) * 100 + "vw"};
+      left: 0;
+      z-index: 99;
+      background-color: ${props => {
+        if (props.depart === "police") {
+          return "#1482ef";
+        } else if (props.depart === "fire") {
+          return "#F48065";
+        } else if (props.depart === "admin") {
+          return "#13C383";
+        }
+      }};
+      color: #ffffffc8;
+      height: 0;
+      .toggle_list {
+        display: flex;
+        align-items: center;
+        height: ${(60 / 1512) * 100 + "vw"};
+        font-size: ${(20 / 1512) * 100 + "vw"};
+      }
+      &.view {
+        display: flex;
+        height: auto;
+      }
+    }
   }
-  /* .report-list {
-    display: flex;
-    color: #ffffffc8;
-    width: ${(100 / 1512) * 100 + "vw"};
-    height: 0;
-    overflow: hidden;
-    transition: height 0.3s ease-out;
-  } */
 `;
 
 export default Nav;
