@@ -72,5 +72,5 @@ export const tryLogin = userData => async (dispatch, state, navigate) => {
     });
 
   dispatch(setLoading(false));
-  navigate("/main/monthly");
+  navigate("/report/monthly");
 };
