@@ -11,7 +11,7 @@ const ReportMain = () => {
       <Routes>
         <Route path="report/*" element={<MonthlyReport />} />
         <Route path="notice" element={<Notice />}>
-          <Route path=":id"  />
+          <Route path=":id" />
         </Route>
         <Route path="mypage/*" element={<Mypage />} />
       </Routes>
