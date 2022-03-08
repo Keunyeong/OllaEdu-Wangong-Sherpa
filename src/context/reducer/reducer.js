@@ -4,6 +4,8 @@ const reducer = (state, action) => {
       return { ...state, data: action.payload };
     case "SET_LOADING":
       return { ...state, isLoading: action.payload };
+    case "SET_LOGIN":
+      return { ...state, isLogin: action.payload };
     default:
       return state;
   }

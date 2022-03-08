@@ -8,6 +8,11 @@ export const setLoading = isLoad => ({
   payload: isLoad
 });
 
+export const setLogin = isLogin => ({
+  type: "SET_LOGIN",
+  payload: isLogin
+});
+
 export const loadData = () => async (dispatch, state) => {
   dispatch(setLoading(true));
   const data = await fetch(
@@ -48,4 +53,24 @@ export const loadData = () => async (dispatch, state) => {
   console.log(응시내역);
   dispatch(setLoading(false));
   dispatch(setData({ 응시월, 응시내역 }));
+};
+
+export const tryLogin = userData => async (dispatch, state, navigate) => {
+  dispatch(setLoading(true));
+
+  await fetch("https://kimcodi.kr/external_api/report/login.php", {
+    method: "POST",
+    body: JSON.stringify({
+      api_key: "EZVrTC4VVKNeeGQ7wbxdP4NzMNpgEmC2",
+      user_id: userData.id,
+      user_pw: userData.pw
+    })
+  })
+    .then(res => res.json())
+    .then(res => {
+      dispatch(setLogin(true));
+    });
+
+  dispatch(setLoading(false));
+  navigate("/main/monthly");
 };
