@@ -4,8 +4,8 @@ import { Card } from "../elements";
 import { Star } from "../assets";
 
 const CardWrapper = ({
-  width = "24em",
-  height = "17em",
+  width = "18.5em",
+  height = "13em",
   title,
   children,
   padding = "none",
@@ -14,21 +14,21 @@ const CardWrapper = ({
   return (
     <Article max={max}>
       <TitleContainer>
-        <StarIcon src={Star} />
+        <StarIcon src={Star} alt="starIcon" />
         <Title>{title}</Title>
       </TitleContainer>
-      <Card width={width} height={height} padding={padding}>
-        {children}
-      </Card>
+      <Center>
+        <Card width={width} height={height} padding={padding}>
+          {children}
+        </Card>
+      </Center>
     </Article>
   );
 };
 
 export default CardWrapper;
 
-const Article = styled.article`
-  width: ${props => (props.max ? props.max : "")};
-`;
+const Article = styled.article``;
 
 const TitleContainer = styled.div`
   display: flex;
@@ -47,4 +47,12 @@ const Title = styled.h3`
   font-weight: 700;
   line-height: 1.5em;
   margin-left: 0.25em;
+`;
+
+const Center = styled.div`
+  @media (max-width: 667px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;

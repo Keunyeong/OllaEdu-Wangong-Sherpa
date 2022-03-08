@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import MonthlyReport from "../pages/MonthlyReport";
 import Mypage from "../pages/Mypage";
+import Login from "../pages/Login";
 import Notice from "../pages/notice/Notice";
 import NoticeLocation from "../pages/notice/NoticeLocation";
 

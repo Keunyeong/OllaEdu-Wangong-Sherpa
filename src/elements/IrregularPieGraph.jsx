@@ -11,13 +11,13 @@ const data = [
 
 const color = "#F48065";
 
-const IrregularPieChart = ({ width = 269, height = 258 }) => {
+const IrregularPieChart = ({ width = 296, height = 208 }) => {
   const chart = useRef();
   useEffect(() => {
     data.sort((a, b) => b.score - a.score);
 
     const pieData = d3.pie().value(1);
-    const scale = d3.scaleLinear().domain([0, 100]).range([0, 120]);
+    const scale = d3.scaleLinear().domain([0, 100]).range([0, 92]);
     const arc = d3.arc().innerRadius(0);
 
     const svg = d3
@@ -81,6 +81,7 @@ const IrregularPieChart = ({ width = 269, height = 258 }) => {
       width={width}
       height={height}
       viewBox={`0 0 ${width} ${height}`}
+      preserveAspectRatio="xMinYMin meet"
     ></svg>
   );
 };

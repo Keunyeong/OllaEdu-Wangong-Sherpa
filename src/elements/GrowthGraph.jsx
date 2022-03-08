@@ -63,7 +63,7 @@ const GrowthGraph = () => {
       .attr("y", d => {
         return 10;
       })
-      .attr("font-size","0.6rem")
+      .attr("font-size", "0.6rem")
       .text((d, i) => {
         if (i === 0) {
           return null;
