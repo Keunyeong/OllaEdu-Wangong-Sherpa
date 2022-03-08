@@ -1,18 +1,28 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Dropdown_up, Dropdown_down } from "../assets";
 
-const year = new Date().getFullYear();
-const Dropdown = () => {
-  const [toggle, setToggle] = useState(false);
-  const [select, setSelect] = useState(year);
+const month = Array.from({ length: 12 }, (value, index) => 1 + index);
 
-  const yearArr = useMemo(() => {
-    return Array.from({ length: year - 1999 }, (value, index) => 2000 + index);
-  }, []);
+const Dropdown = ({ arr = month }) => {
+  const ref = useRef();
+  const [toggle, setToggle] = useState(false);
+
+  useEffect(() => {
+    const checkIfClickedOutside = e => {
+      if (toggle && ref.current && !ref.current.contains(e.target)) {
+        setToggle(false);
+      }
+    };
+    document.addEventListener("mousedown", checkIfClickedOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [toggle]);
 
   return (
-    <Wrapper>
+    <Wrapper ref={ref}>
       <ListHeader
         onClick={() => {
           setToggle(!toggle);
@@ -26,7 +36,7 @@ const Dropdown = () => {
         )}
         {toggle && (
           <ListConatiner>
-            {yearArr.map((yr, idx) => (
+            {arr.map((yr, idx) => (
               <List key={yr}>{yr}</List>
             ))}
           </ListConatiner>
@@ -37,6 +47,7 @@ const Dropdown = () => {
 };
 
 export default Dropdown;
+
 const Wrapper = styled.div`
   font-weight: 500;
   line-height: 1.646em;
@@ -45,7 +56,7 @@ const Wrapper = styled.div`
 const ListHeader = styled.div`
   position: relative;
   width: 6.633em;
-  min-height: 1.647em;
+  min-height: 1.25em;
   background-color: #d8d8d8;
   border-radius: 0.223em;
 `;
@@ -72,9 +83,10 @@ const ListConatiner = styled.ul`
   max-height: 12.25em;
   background-color: #d8d8d8;
   overflow-y: auto;
+  border-radius: 0.223em;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  border-radius: 0.223em;
+
   &::-webkit-scrollbar {
     display: none;
   }

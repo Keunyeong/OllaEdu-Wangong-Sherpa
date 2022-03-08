@@ -20,6 +20,9 @@ const CardContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2.063em;
   padding: ${props => props.padding};
+
+  @media (max-width: 667px) {
+    width: 100%;
+  }
 `;

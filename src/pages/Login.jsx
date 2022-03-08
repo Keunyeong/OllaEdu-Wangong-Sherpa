@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
 import { Logo } from "../assets";
-import { useNavigate } from "react-router-dom";
+import { Context } from "../context/Context";
+import { tryLogin } from "../context/reducer/action";
 
 const Login = () => {
-  const navigate = useNavigate();
+  const { dispatch } = useContext(Context);
   const [user, setUser] = useState({ id: "", pw: "" });
 
   const handleInputId = e => {
@@ -20,10 +21,7 @@ const Login = () => {
     if (user.id === "" || user.pw === "") {
       alert("아이디와 비밀번호를 입력하세요");
     } else {
-      console.log("id:", user.id);
-      console.log("password:", user.pw);
-      setUser({ id: "", pw: "" });
-      navigate("/report/monthly");
+      dispatch(tryLogin(user));
     }
   };
   return (

@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter,
   Route,
   Routes,
   NavLink,
-  useParams
+  useParams,
+  Outlet
 } from "react-router-dom";
 import styled from "styled-components";
+import NoticeBoard from "./NoticeBoard";
 import NoticeMenu from "./NoticeMenu";
 
-const Div = styled.div`
-  width: ${(1300 / 1512) * 100 + "vw"};
+const Main = styled.main`
+width: ${(1200 / 1512) * 100 + "vw"};
   height: ${(782 / 982) * 100 + "vh"};
-  margin: auto;
+  margin: ${(60 / 982) * 100 + "vh"} ${(56 / 1512) * 100 + "vw"};
+  
   border-radius: 20px;
   box-shadow: 0rem 0.5rem 1.375rem -0.375rem rgba(24, 39, 75, 0.12),
     0rem 0.875rem 4rem -0.25rem rgba(24, 39, 75, 0.12);
@@ -30,13 +33,18 @@ const Section = styled.section`
   background-color: #f1f2f2;
 `;
 
-const Notice = ({ main }) => {
+const Notice = () => {
   const params = useParams();
+  const [trues, setTrues] = useState(true);
+  console.log(params.id)
   return (
-    <Div>
-      <NoticeMenu />
-      {main === "main" ? <Section>공지사항</Section> : null}
-    </Div>
+    <Main>
+      {params.id===undefined ? <NoticeMenu locate="home" bool={trues} /> : <NoticeMenu locate={params.id} /> }
+      
+      <Section>
+      {params.id===undefined ? <NoticeBoard locate="home" /> : <NoticeBoard locate={params.id}/> }
+      </Section>
+    </Main>
   );
 };
 export default Notice;

@@ -1,8 +1,8 @@
-import { createContext, useEffect, useReducer } from "react";
-import reducer from "./reducer/Reducer";
-import { loadData } from "./reducer/Action";
+import { createContext, useEffect } from "react";
+import reducer from "./reducer/reducer";
+import { loadData } from "./reducer/action";
 import { useMwReducer } from "../hooks";
-import INITIAL_STATE from "./Store";
+import INITIAL_STATE from "./store";
 
 export const Context = createContext(INITIAL_STATE);
 
