@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import NoticeMenu from "./NoticeMenu";
 import styled from "styled-components";
 import NoticeBoard from "./NoticeBoard";
+import { useEffect } from "react";
 const Main = styled.main`
 width: ${(1200 / 1512) * 100 + "vw"};
   height: ${(782 / 982) * 100 + "vh"};
@@ -24,18 +25,19 @@ const Section = styled.section`
   background-color: #F1F2F2;
 `;
 export default function NoticeLocation() {
-  const params = useParams();
-  console.log(params)
+  // const {location} = useParams();
+  // console.log(location)
+  // useEffect(() => {console.log(`path: ${path}`)}, [path])
   // let locate;
-  // if(params.location==="home"){
+  // if(path==="home"){
   //   locate="공지사항";
-  // } else if (params.location==="news") {
+  // } else if (path==="news") {
   //   locate="학원소식";
-  // } else if (params.location==="schedule") {
+  // } else if (path==="schedule") {
   //   locate="정기외박 일정";
-  // } else if (params.location==="pay") {
+  // } else if (path==="pay") {
   //   locate="학원비 납입 안내";
-  // } else if (params.location==="event") {
+  // } else if (path==="event") {
   //   locate="이벤트";
   // } 
 
@@ -43,7 +45,7 @@ export default function NoticeLocation() {
     <Main>
       <NoticeMenu  />
       <Section>
-        <NoticeBoard />
+        hi
       </Section>
     </Main>
   );

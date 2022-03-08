@@ -5,15 +5,15 @@ import MonthlyReport from "../pages/MonthlyReport";
 import Mypage from "../pages/Mypage";
 import Login from "../pages/Login";
 import Notice from "../pages/notice/Notice";
-import NoticeLocation from "../pages/notice/NoticeLocation";
 
 const ReportMain = () => {
   return (
     <Main>
       <Routes>
         <Route path="monthly" element={<MonthlyReport />} />
-        <Route path="notice" element={<Notice main="main" />} />
-        <Route path="notice/:location" element={<NoticeLocation />} />
+        <Route path="notice" element={<Notice />}>
+          <Route path=":id"  />
+        </Route>
         <Route path="mypage/*" element={<Mypage />} />
       </Routes>
     </Main>
