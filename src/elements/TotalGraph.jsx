@@ -4,15 +4,9 @@ import styled from "styled-components";
 import { arc } from "d3";
 import * as d3 from "d3";
 
-const rem = Number(
-  window
-    .getComputedStyle(document.querySelector("html"), null)
-    .fontSize.replace("px", "")
-);
-
 const 만점 = 500;
-const 학생총점 = 275;
-const 목표점수 = 195;
+const 학생총점 = 455;
+const 목표점수 = 440;
 const 학생등급 = 학생총점 / 만점;
 const 목표등급 = 목표점수 / 만점;
 
@@ -22,36 +16,36 @@ const scores = {
   targetGrade: 목표등급
 };
 
-const TotalGraph = () => {
+const TotalGraph = ({ width = 296 }) => {
   const arcChart = useRef();
   const [data, setData] = useState(scores);
   useEffect(() => {
     const outerArc = arc()
-      .innerRadius(5.375 * rem)
-      .outerRadius(6.03125 * rem)
+      .innerRadius(0.225 * width)
+      .outerRadius(0.252 * width)
       .startAngle(0)
       .cornerRadius(50);
 
     const innerArc = arc()
-      .innerRadius(3.727 * rem)
-      .outerRadius(4.516 * rem)
+      .innerRadius(0.156 * width)
+      .outerRadius(0.189 * width)
       .startAngle(0)
       .cornerRadius(50);
 
     const svg = d3
       .select(arcChart.current)
       .append("svg")
-      .attr("width", "12.0625rem")
-      .attr("height", "12.0625rem")
+      .attr("width", 0.504 * width)
+      .attr("height", 0.504 * width)
       .append("g")
-      .attr("transform", `translate(${6.03125 * rem},${6.03125 * rem})`);
+      .attr("transform", `translate(${0.252 * width}, ${0.252 * width})`);
 
     const numberDOM = svg
       .append("text")
       .attr("text-anchor", "middle")
       .attr("alignment-baseline", "middle")
       .attr("font-weight", 700)
-      .attr("font-size", "2.055em");
+      .attr("font-size", "1.59em");
 
     const backgroundArc = svg
       .append("path")
@@ -62,7 +56,7 @@ const TotalGraph = () => {
     const targetChart = svg
       .append("path")
       .datum({ endAngle: -2 * Math.PI * data.targetGrade })
-      .style("fill", "#214BA7")
+      .style("fill", "#7C5EF1")
       .transition()
       .duration(750)
       .attrTween("d", function (d) {
@@ -93,7 +87,7 @@ const TotalGraph = () => {
       <Index>
         <Span>
           <Svg>
-            <SmallCircle fill="#214BA7" />
+            <SmallCircle fill="#7C5EF1" />
           </Svg>
           목표 점수
         </Span>
@@ -111,34 +105,32 @@ const TotalGraph = () => {
 export default TotalGraph;
 
 const GraphContainer = styled.div`
-  height: 100%;
   display: flex;
   flex-direction: row-reverse;
-  justify-content: center;
   align-items: center;
 `;
 
 const Index = styled.div`
-  width: 4.676rem;
-  font-size: 0.875rem;
+  width: 57.55px;
+  font-size: 0.677em;
   font-weight: 500;
-  margin-left: 1.731rem;
+  margin-left: 20.72px;
 `;
 
 const Span = styled.span`
   display: flex;
-  height: 1.5625rem;
+  height: 20px;
   justify-content: space-between;
   align-items: center;
 `;
 
 const Svg = styled.svg`
-  width: 0.625rem;
-  height: 0.625rem;
+  width: 7.74px;
+  height: 7.74px;
 `;
 
 const SmallCircle = styled.circle`
-  cx: 0.3125rem;
-  cy: 0.3125rem;
-  r: 0.3125rem;
+  cx: 3.87px;
+  cy: 3.87px;
+  r: 3.87px;
 `;
