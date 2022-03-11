@@ -9,7 +9,7 @@ const NavToggleList = ({ list, job, path, state }) => {
     urlArr = ["/notice/main", "/notice/schedule", "/notice/academy"];
   } else if (list === "mypage") {
     listArr = ["기본정보", "시간표", "QnA"];
-    urlArr = ["/mypage/main", "/mypage/schedule", "/mypage/academy"];
+    urlArr = ["/mypage/main", "/mypage/schedule", "/mypage/qna"];
   }
   return (
     <ToggleList job={job} className="toggle_list" state={state}>
@@ -29,21 +29,21 @@ const ToggleList = styled.div`
   display: ${props => {
     return props.state ? "block" : "none";
   }};
-  width: ${(126 / 1512) * 100 + "vw"};
+  width: 7.875rem;
   position: absolute;
-  top: ${(56 / 1512) * 100 + "vw"};
+  top: 3.5rem;
   left: 0;
   z-index: 99;
-  border-radius: 0 0 ${(10 / 1512) * 100 + "vw"} ${(10 / 1512) * 100 + "vw"};
+  border-radius: 0 0 0.625rem 0.625rem;
   background-color: #fff;
   .navlist {
-    height: ${(40 / 1512) * 100 + "vw"};
+    height: 2.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     color: ${props => {
       if (props.job === "police") {
-        return "#1482ef";
+        return "#58A2EB";
       } else if (props.job === "fire") {
         return "#F48065";
       } else if (props.job === "admin") {
@@ -53,7 +53,7 @@ const ToggleList = styled.div`
     :hover {
       color: ${props => {
         if (props.job === "police") {
-          return "#1482ef";
+          return "#58A2EB";
         } else if (props.job === "fire") {
           return "#F48065";
         } else if (props.job === "admin") {
@@ -88,6 +88,9 @@ const ToggleList = styled.div`
     width: ${(1 / 1512) * 100 + "vw"};
     height: ${(10 / 12) * 100 + "%"};
     border-radius: 1px;
+  }
+  @media screen and (max-width: 991px) {
+    width: 6.25rem;
   }
 `;
 

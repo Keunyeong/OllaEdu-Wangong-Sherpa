@@ -82,22 +82,22 @@ const MenuList = ({ children, list, job, icon, path }) => {
 const List = styled.div`
   position: relative;
   .list {
-    width: ${(126 / 1512) * 100 + "vw"};
+    width: 7.875rem;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #ffffffc8;
-    height: ${(56 / 1512) * 100 + "vw"};
+    height: 3.5rem;
     font-weight: 600;
-    font-size: ${(14 / 1512) * 100 + "vw"};
-    line-height: ${(30 / 1512) * 100 + "vw"};
+    font-size: 0.875rem;
+    line-height: 1.875rem;
     cursor: pointer;
     .icon {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: ${(24 / 1512) * 100 + "vw"};
-      margin-right: ${(10 / 1512) * 100 + "vw"};
+      width: 1.5rem;
+      margin-right: 0.625rem;
       @media screen and (max-width: 991px) {
         display: none;
       }
@@ -105,7 +105,7 @@ const List = styled.div`
     &:hover {
       color: ${props => {
         if (props.children[0].props.depart === "police") {
-          return "#1482ef";
+          return "#58A2EB";
         } else if (props.children[0].props.depart === "fire") {
           return "#F48065";
         } else if (props.children[0].props.depart === "admin") {
@@ -126,7 +126,7 @@ const List = styled.div`
           path {
             fill: ${props => {
               if (props.children[0].props.depart === "police") {
-                return "#1482ef";
+                return "#58A2EB";
               } else if (props.children[0].props.depart === "fire") {
                 return "#F48065";
               } else if (props.children[0].props.depart === "admin") {
@@ -141,7 +141,7 @@ const List = styled.div`
     &.selected {
       color: ${props => {
         if (props.children[0].props.depart === "police") {
-          return "#1482ef";
+          return "#58A2EB";
         } else if (props.children[0].props.depart === "fire") {
           return "#F48065";
         } else if (props.children[0].props.depart === "admin") {
@@ -154,7 +154,7 @@ const List = styled.div`
           path {
             fill: ${props => {
               if (props.children[0].props.depart === "police") {
-                return "#1482ef";
+                return "#58A2EB";
               } else if (props.children[0].props.depart === "fire") {
                 return "#F48065";
               } else if (props.children[0].props.depart === "admin") {
@@ -164,6 +164,9 @@ const List = styled.div`
           }
         }
       }
+    }
+    @media screen and (max-width: 991px) {
+      width: 6.25rem;
     }
   }
 `;

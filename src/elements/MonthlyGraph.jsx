@@ -50,7 +50,8 @@ const arr = [
   { date: 202111, totalScore: 295 },
   { date: 202112, totalScore: 270 },
   { date: 202201, totalScore: 310 },
-  { date: 202202, totalScore: 320 }
+  { date: 202202, totalScore: 320 },
+  { date: 202203, totalScore: 310 }
 ];
 
 const MonthlyGraph = () => {
@@ -90,8 +91,8 @@ const MonthlyGraph = () => {
     data.forEach(d => {
       if (d.totalScore > max) max = d.totalScore;
     });
-    const w = 670;
-    const h = 210;
+    let w = 540;
+    const h = 200;
     const xScale = d3
       .scaleBand() // 균일한 band(묶음, 단)으로 연속 range를 나눔
       .domain(d3.range(data.length)) // 스케일에 대한 입력 domain 설정(dataset길이만큼 범위를 설정)
@@ -165,7 +166,7 @@ const Chart = styled.div`
       ry: 0.3rem;
     }
     text {
-      font-size: 0.8rem;
+      font-size: 0.5rem;
     }
   }
 `;
