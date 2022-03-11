@@ -14,6 +14,7 @@ import {
 } from "../elements";
 import { CardWrapper, Dropdown } from "../components";
 import { RankList } from "../containers";
+import Sliders from "../components/slider/Slider";
 import { Cloud } from "../assets";
 
 const options = {};
@@ -92,7 +93,7 @@ const MonthlyReport = () => {
           <Swap2>
             <CardWrapper
               title="과목별 추이"
-              children={isLoading ? <SkeletonBar /> : <GrowthGraph />}
+              children={isLoading ? <SkeletonBar /> : <Sliders />}
             />
           </Swap2>
           <Swap3>
