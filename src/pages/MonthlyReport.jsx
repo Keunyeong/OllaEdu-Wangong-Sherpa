@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import ReactToPdf from "react-to-pdf";
 import styled from "styled-components";
@@ -15,7 +15,6 @@ import {
 import { CardWrapper, Dropdown } from "../components";
 import { RankList } from "../containers";
 import { Cloud } from "../assets";
-import { useEffect } from "react/cjs/react.development";
 
 const options = {};
 
