@@ -3,7 +3,7 @@ import styled from "styled-components";
 import MonthlyReport from "../pages/MonthlyReport";
 import Mypage from "../pages/Mypage";
 import Login from "../pages/Login";
-import Notice from "../pages/notice/Notice";
+import { Notice } from "../pages/notice/Notice";
 
 const ReportMain = () => {
   return (
