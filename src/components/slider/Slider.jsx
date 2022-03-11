@@ -82,7 +82,7 @@ const Slider = styled.div`
   transition: opacity ease-in-out 0.4s;
 
   @media (max-width: 667px) {
-    left: 35%;
+    left: 29%;
   }
 `;
 const ContainerDots = styled.div`
