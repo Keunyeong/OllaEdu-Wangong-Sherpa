@@ -1,90 +1,73 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 import styled from "styled-components";
-import BtnSlider from './BtnSlider';
-import { GrowthGraph } from '../../elements';
+import BtnSlider from "./BtnSlider";
+import { GrowthGraph } from "../../elements";
 
-const dataSlider = [
-  {
-    title: "헌법",
-    lastMonth: 72,
-    thisMonth: 84
-  },
-  {
-    title: "행정학",
-    lastMonth: 72,
-    thisMonth: 84
-  },
-  {
-    title: "국어",
-    lastMonth: 72,
-    thisMonth: 84
-  },
-  {
-    title: "영어",
-    lastMonth: 72,
-    thisMonth: 84
-  },
-  {
-    title: "한국사",
-    lastMonth: 72,
-    thisMonth: 84
-  },
-];
-
-
-export default function SliderTest() {
+export default function SliderTest({ grade }) {
   const [slideIndex, setSlideIndex] = useState(1);
+  const slice = grade.slice(1, grade.length);
 
   const nextSlide = () => {
-    if(slideIndex !== dataSlider.length){
+    if (slideIndex !== slice.length) {
       setSlideIndex(slideIndex + 1);
-    } else if (slideIndex === dataSlider.length) {
+    } else if (slideIndex === slice.length) {
       setSlideIndex(1);
     }
-  }
+  };
 
   const prevSlide = () => {
-    if(slideIndex !== 1) {
+    if (slideIndex !== 1) {
       setSlideIndex(slideIndex - 1);
-    } else if(slideIndex === 1) {
-      setSlideIndex(dataSlider.length);
+    } else if (slideIndex === 1) {
+      setSlideIndex(slice.length);
     }
-  }
+  };
 
   const moveDot = index => {
     setSlideIndex(index);
-  }
+  };
 
   return (
-    <ContainerSlider >
-      {dataSlider.map((obj,index) => {
+    <ContainerSlider>
+      {slice.map((obj, index) => {
+        const { 전월점수, 당월점수, 과목 } = obj;
+
         return (
           <Slider
-          key={index}
-          activity={slideIndex === index + 1 ? "active-anim" : null}
+            key={과목}
+            activity={slideIndex === index + 1 ? "active-anim" : null}
           >
-            <GrowthGraph scoreData={obj} title={obj.title} lastMonth={obj.lastMonth} thisMonth={obj.thisMonth} />
-            
+            <GrowthGraph
+              scoreData={[
+                과목,
+                Math.round(Number(전월점수)),
+                Math.round(Number(당월점수))
+              ]}
+              title={과목}
+              lastMonth={obj.lastMonth}
+              thisMonth={obj.thisMonth}
+            />
           </Slider>
-        )
+        );
       })}
 
       <BtnSlider moveSlide={nextSlide} direction={"next"} />
-      <BtnSlider moveSlide={prevSlide} direction={"prev"}/>
+      <BtnSlider moveSlide={prevSlide} direction={"prev"} />
 
       <ContainerDots>
-          {Array.from({length: 5}).map((item, index) => (
-              <Dot 
-              onClick={() => moveDot(index + 1)}
-              activity={slideIndex === index + 1 ? "active" : null}
-              ></Dot>
-          ))}
+        {Array.from({ length: slice.length }).map((item, index) => (
+          <Dot
+            key={index}
+            onClick={() => moveDot(index + 1)}
+            activity={slideIndex === index + 1 ? "active" : null}
+          ></Dot>
+        ))}
       </ContainerDots>
     </ContainerSlider>
   );
 }
 const ContainerSlider = styled.div`
-width: 100%;
+  width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
@@ -95,7 +78,7 @@ const Slider = styled.div`
   position: absolute;
   top: 15%;
   left: 12%;
-  opacity: ${(props) => props.activity === "active-anim" ? "1": "0" };
+  opacity: ${props => (props.activity === "active-anim" ? "1" : "0")};
   transition: opacity ease-in-out 0.4s;
 
   @media (max-width: 667px) {
@@ -115,5 +98,5 @@ const Dot = styled.div`
   border-radius: 50%;
   border: 3px solid #f1f1f1;
   margin: 0 5px;
-  background: ${(props) => props.activity === "active" ? "#6A6A6A" : "#D8D8D8"};
+  background: ${props => (props.activity === "active" ? "#6A6A6A" : "#D8D8D8")};
 `;
