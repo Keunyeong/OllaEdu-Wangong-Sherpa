@@ -11,7 +11,7 @@ const ReportMain = () => {
       <Routes>
         <Route path="report/*" element={<MonthlyReport />} />
         <Route path="notice" element={<Notice />}>
-          <Route path=":id"  />
+          <Route path=":id" />
         </Route>
         <Route path="mypage/*" element={<Mypage />} />
       </Routes>
@@ -22,10 +22,13 @@ const ReportMain = () => {
 const Main = styled.main`
   display: flex;
   justify-content: center;
-  align-items: center;
-
+  align-items: flex-start;
   background-color: #f5f5f5;
   height: ${(926 / 982) * 100 + "vh"};
+  overflow: scroll;
+  padding: ${(40 / 982) * 100 + "vh"} 0;
+  @media screen and (max-width: 667px) {
+  }
 `;
 
 export default ReportMain;

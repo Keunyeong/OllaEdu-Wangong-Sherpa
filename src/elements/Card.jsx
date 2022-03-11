@@ -21,7 +21,8 @@ const CardContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: ${props => props.padding};
-
+  overflow-x: scroll;
+  overflow-y: hidden;
   @media (max-width: 667px) {
     width: 100%;
   }
