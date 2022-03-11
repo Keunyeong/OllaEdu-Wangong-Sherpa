@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { ProgressBar } from "../elements";
-const RankList = () => {
+const RankList = ({ grade }) => {
+  const slice = grade.slice(1, grade.length);
+
   return (
     <Container>
       <TitleConatiner>
@@ -9,44 +11,38 @@ const RankList = () => {
           총점
         </TyphoGraphy>
         <Absolute>
-          <ProgressBar bg="rgba(100, 100, 165, 0.8)" cg="#6464A5" />
+          <ProgressBar
+            bg="rgba(100, 100, 165, 0.8)"
+            cg="#6464A5"
+            score={grade[0]["당월점수"] / 300}
+          />
         </Absolute>
         <TyphoGraphy fs="12px" fw={700}>
-          6등
+          {grade[0]["순위"]}등
           <TyphoGraphy fs="10px" fw={300}>
-            /87명
+            /{grade[0]["응시인원"]}명
           </TyphoGraphy>
         </TyphoGraphy>
       </TitleConatiner>
       <Ul>
-        <Li>
-          <TyphoGraphy fs="12px" fw={300}>
-            과목명
-          </TyphoGraphy>
-          <Absolute>
-            <ProgressBar />
-          </Absolute>
-          <TyphoGraphy fs="12px" fw={700}>
-            6등
-            <TyphoGraphy fs="10px" fw={300}>
-              /87명
-            </TyphoGraphy>
-          </TyphoGraphy>
-        </Li>
-        <Li>
-          <TyphoGraphy fs="12px" fw={300}>
-            과목명
-          </TyphoGraphy>
-          <Absolute>
-            <ProgressBar />
-          </Absolute>
-          <TyphoGraphy fs="12px" fw={700}>
-            6등
-            <TyphoGraphy fs="10px" fw={300}>
-              /87명
-            </TyphoGraphy>
-          </TyphoGraphy>
-        </Li>
+        {slice.map(obj => {
+          return (
+            <Li>
+              <TyphoGraphy fs="12px" fw={300}>
+                {obj["과목"]}
+              </TyphoGraphy>
+              <Absolute>
+                <ProgressBar score={obj["당월점수"] / 100} />
+              </Absolute>
+              <TyphoGraphy fs="12px" fw={700}>
+                {obj["순위"]}등
+                <TyphoGraphy fs="10px" fw={300}>
+                  /{obj["응시인원"]}명
+                </TyphoGraphy>
+              </TyphoGraphy>
+            </Li>
+          );
+        })}
       </Ul>
     </Container>
   );

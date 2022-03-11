@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef, useEffect } from "react";
+import React, { useContext, useState, useRef, useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import ReactToPdf from "react-to-pdf";
 import styled from "styled-components";
@@ -20,21 +20,38 @@ const options = {};
 
 const MonthlyReport = () => {
   const pdfRef = useRef();
-  const [current, setCurrent] = useState({});
+  const [grade, setGrade] = useState([]);
   const { data, isLoading } = useContext(Context);
-  const { 응시월, 응시내역, 년월, 년 } = data;
   const location = useLocation().pathname.split("/")[2];
+  const { 응시월, 응시내역, 년월, 년 } = data;
+
+  const title = useMemo(() => {
+    if (location === "monthly") return "모의고사";
+
+    if (location === "middle") return "중간종합";
+
+    if (location === "physical") return "체력증감";
+  }, []);
 
   useEffect(() => {
     if (data.length !== 0) {
-      setCurrent({});
+      let category;
+      if (title === "모의고사") {
+        category = "정규 모의고사";
+      } else if (title === "중간종합") {
+        category = "중간종합 TEST (평균)";
+      } else {
+        category = "체력측정 결과";
+      }
+
+      setGrade(응시내역[응시월[응시월.length - 1]][category]);
     }
   }, [data]);
 
   return (
     <Page>
       <Section ref={pdfRef}>
-        <Title>모의고사 분석</Title>
+        <Title>{title} 분석</Title>
         {data.length !== 0 ? (
           <DropdownContainer>
             <DropdownWrapper>
@@ -63,7 +80,13 @@ const MonthlyReport = () => {
           <Swap1>
             <CardWrapper
               title="정규 모의고사 총점"
-              children={isLoading ? <SkeletonCircle /> : <TotalGraph />}
+              children={
+                isLoading || !grade.length ? (
+                  <SkeletonCircle />
+                ) : (
+                  <TotalGraph grade={grade[0]} />
+                )
+              }
             />
           </Swap1>
           <Swap2>
@@ -75,7 +98,13 @@ const MonthlyReport = () => {
           <Swap3>
             <CardWrapper
               title="순위"
-              children={isLoading ? <SkeletonBar /> : <RankList />}
+              children={
+                isLoading || !grade.length ? (
+                  <SkeletonBar />
+                ) : (
+                  <RankList grade={grade} />
+                )
+              }
             />
           </Swap3>
           <Swap4>
@@ -83,29 +112,41 @@ const MonthlyReport = () => {
               width="38.500em"
               height="13.000em"
               title="총점 월별 추이"
-              children={isLoading ? <SkeletonBar /> : <MonthlyGraph />}
+              children={
+                isLoading || !grade.length ? (
+                  <SkeletonBar />
+                ) : (
+                  <MonthlyGraph grade={grade} />
+                )
+              }
             />
           </Swap4>
           <Swap5>
             <CardWrapper
               title="과목별 균형"
-              children={isLoading ? <SkeletonCircle /> : <IrregularPieGraph />}
+              children={
+                isLoading || !grade.length ? (
+                  <SkeletonCircle />
+                ) : (
+                  <IrregularPieGraph grade={grade} />
+                )
+              }
             />
           </Swap5>
           <Swap6>
             <CardWrapper
               width="100%"
               height="100%"
-              padding="1.938em 0.625em"
+              padding="28px 26px"
               title="상세 점수 조회"
               children={
-                isLoading ? (
+                isLoading || !grade.length ? (
                   <SkeletonBar />
                 ) : (
                   <CombineChart>
-                    <Table />
+                    <Table grade={grade} />
                     <LittleChartContainer>
-                      <IrregularPieGraph />
+                      <IrregularPieGraph grade={grade} />
                     </LittleChartContainer>
                   </CombineChart>
                 )
@@ -153,20 +194,16 @@ const MonthlyReport = () => {
 export default MonthlyReport;
 
 const Page = styled.div`
+  width: auto;
   padding: 1.5em;
   margin: -1.5em;
   height: ${(915 / 982) * 100 + "vh"};
   position: relative;
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   border-radius: 0.223em;
-  &::-webkit-scrollbar {
-    display: none;
-  }
   box-sizing: border-box;
 
   @media (max-width: 667px) {
+    width: 100%;
     padding: 32px;
   }
 `;
@@ -241,15 +278,21 @@ const Wrapper = styled.div`
 `;
 
 const CombineChart = styled.div`
+  position: relative;
+  width: 100%;
   display: flex;
+
   flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  column-gap: 0.476em;
-  row-gap: 2.5em;
+
+  @media (max-width: 991px) {
+    justify-content: center;
+  }
 `;
 
 const LittleChartContainer = styled.div`
+  position: absolute;
+  top: -25px;
+  right: -20px;
   width: 18.5em;
   height: 13em;
 

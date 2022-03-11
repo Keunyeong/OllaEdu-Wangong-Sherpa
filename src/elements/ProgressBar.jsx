@@ -8,10 +8,10 @@ const ProgressBar = ({
 }) => {
   return (
     <Container>
-      <Progress bg={bg}>
+      <Progress bg={bg} score={score}>
         <Circle cg={cg}>
           <Span fs="0.625em" ls="1.063em" fw={400}>
-            80
+            {Math.floor(score * 100)}
           </Span>
           <Span fs="0.375em" ls="1.063em" fw={300}>
             %
@@ -33,7 +33,7 @@ const Container = styled.div`
 
 const Progress = styled.div`
   position: relative;
-  width: 3em;
+  width: ${props => props.score * 100}%;
   height: 100%;
   background-color: ${props => props.bg};
   border-radius: 0.375em;
