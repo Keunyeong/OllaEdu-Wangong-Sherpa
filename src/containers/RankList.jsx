@@ -27,7 +27,7 @@ const RankList = ({ grade }) => {
       <Ul>
         {slice.map(obj => {
           return (
-            <Li>
+            <Li key={obj["과목"]}>
               <TyphoGraphy fs="12px" fw={300}>
                 {obj["과목"]}
               </TyphoGraphy>
