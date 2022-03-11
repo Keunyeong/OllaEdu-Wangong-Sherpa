@@ -10,6 +10,7 @@ import {
   TotalGraph
 } from "../elements";
 import { CardWrapper, Dropdown } from "../components";
+import Sliders from "../components/slider/Slider";
 import { Cloud } from "../assets";
 
 const MonthlyReport = () => {
@@ -36,7 +37,7 @@ const MonthlyReport = () => {
             <CardWrapper title="정규 모의고사 총점" children={<TotalGraph />} />
           </Swap1>
           <Swap2>
-            <CardWrapper title="순위" children={<GrowthGraph />} />
+            <CardWrapper title="순위" children={<Sliders />} />
           </Swap2>
           <Swap3>
             <CardWrapper title="과목별 추이" children={<GrowthGraph />} />
