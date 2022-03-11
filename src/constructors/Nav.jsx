@@ -1,24 +1,20 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { NavLogo } from "../assets";
 import MenuList from "../elements/MenuList";
 
 const Nav = props => {
+  const navigate = useNavigate();
   const [click, setClick] = useState(false);
   const [menuToggle, setMenuToggle] = useState("toggle_menu_list");
   const el = useRef();
-  let jobName = "../src/assets/nav/police.png";
-  let jobNameAlt = "POLICE";
   let jobLogo = "경찰";
   if (props.depart === "fire") {
     jobIcon = "../src/assets/nav/firefighter.png";
-    jobName = "../src/assets/nav/fire.png";
-    jobNameAlt = "FIRE";
     jobLogo = "소방";
   } else if (props.depart === "admin") {
     jobIcon = "../src/assets/nav/administrator.png";
-    jobName = "../src/assets/nav/admin.png";
-    jobNameAlt = "ADMIN";
     jobLogo = "행정";
   }
   const toggleEvent = () => {
@@ -53,9 +49,88 @@ const Nav = props => {
       <div className="toggle" onClick={toggleEvent} ref={el}>
         <img src="../src/assets/nav/toggle.svg" alt="TOGGLE" />
         <div className={menuToggle} depart={props.depart}>
-          <div className="toggle_list">공지사항</div>
-          <div className="toggle_list">마이페이지</div>
-          <div className="toggle_list">성적현황</div>
+          <div className="toggle_list">
+            <div className="title">공지사항</div>
+            <div
+              className="list"
+              depart={props.depart}
+              onClick={() => {
+                navigate("/notice/main");
+              }}
+            >
+              전체공지
+            </div>
+            <div
+              className="list"
+              depart={props.depart}
+              onClick={() => {
+                navigate("/notice/main");
+              }}
+            >
+              전체공지
+            </div>
+            <div
+              className="list"
+              depart={props.depart}
+              onClick={() => {
+                navigate("/notice/main");
+              }}
+            >
+              전체공지
+            </div>
+          </div>
+          <div className="toggle_list">
+            <div className="title">마이페이지</div>
+            <div
+              className="list"
+              depart={props.depart}
+              onClick={() => {
+                navigate("/mypage/main");
+              }}
+            >
+              기본정보
+            </div>
+            <div
+              className="list"
+              depart={props.depart}
+              onClick={() => {
+                navigate("/mypage/schedule");
+              }}
+            >
+              {" "}
+              일정표
+            </div>
+          </div>
+          <div className="toggle_list">
+            <div className="title">성적현황</div>
+            <div
+              className="list"
+              depart={props.depart}
+              onClick={() => {
+                navigate("/report/monthly");
+              }}
+            >
+              모의고사
+            </div>
+            <div
+              className="list"
+              depart={props.depart}
+              onClick={() => {
+                navigate("/report/weekly");
+              }}
+            >
+              중간종합
+            </div>
+            <div
+              className="list"
+              depart={props.depart}
+              onClick={() => {
+                navigate("/report/physical");
+              }}
+            >
+              체력증감
+            </div>
+          </div>
         </div>
       </div>
       <div className="menu">
@@ -175,11 +250,10 @@ const Navbar = styled.div`
     .toggle_menu_list {
       display: flex;
       align-items: center;
-      overflow: hidden;
       flex-direction: column;
       width: 100vw;
       position: absolute;
-      top: 3rem;
+      top: 2.8rem;
       left: 0;
       z-index: 99;
       background-color: ${props => {
@@ -193,15 +267,44 @@ const Navbar = styled.div`
       }};
       color: #ffffffc8;
       height: 0;
+      transition: all 0.4s ease-out;
+      overflow: hidden;
       .toggle_list {
+        width: 100%;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        height: 3.75rem;
+        margin: 0.5rem 0;
         font-size: 1.25rem;
+        .title {
+          font-weight: 700;
+          padding: 0 1rem;
+          width: 100%;
+          padding-bottom: 0.4rem;
+          border-bottom: 1px solid #ffffffc8;
+        }
+        .list {
+          padding: 0.3rem 1rem;
+          width: 100%;
+          text-align: right;
+          font-size: 1rem;
+          cursor: pointer;
+          :hover {
+            color: ${props => {
+              if (props.depart === "police") {
+                return "#58A2EB";
+              } else if (props.depart === "fire") {
+                return "#F48065";
+              } else if (props.depart === "admin") {
+                return "#13C383";
+              }
+            }};
+            background-color: #ffffffc8;
+          }
+        }
       }
       &.view {
-        display: flex;
-        height: auto;
+        height: 330px;
       }
     }
   }

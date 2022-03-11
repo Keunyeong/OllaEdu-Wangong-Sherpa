@@ -22,7 +22,7 @@ const Main = styled.main`
   justify-content: center;
   align-items: flex-start;
   background-color: #f5f5f5;
-  height: ${(926 / 982) * 100 + "vh"};
+  height: 100%;
   overflow: scroll;
   padding: ${(40 / 982) * 100 + "vh"} 0;
   @media screen and (max-width: 667px) {
