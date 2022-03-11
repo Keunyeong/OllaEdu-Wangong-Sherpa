@@ -4,19 +4,19 @@ import styled from "styled-components";
 import { arc } from "d3";
 import * as d3 from "d3";
 
-const 만점 = 500;
-const 학생총점 = 455;
-const 목표점수 = 440;
-const 학생등급 = 학생총점 / 만점;
-const 목표등급 = 목표점수 / 만점;
+const TotalGraph = ({ width = 296, grade }) => {
+  const 만점 = 300;
+  const 학생총점 = grade["당월점수"];
+  const 목표점수 = grade["당월목표"];
+  const 학생등급 = 학생총점 / 만점;
+  const 목표등급 = 목표점수 / 만점;
 
-const scores = {
-  studentScore: 학생총점,
-  studentGrade: 학생등급,
-  targetGrade: 목표등급
-};
+  const scores = {
+    studentScore: 학생총점,
+    studentGrade: 학생등급,
+    targetGrade: 목표등급
+  };
 
-const TotalGraph = ({ width = 296 }) => {
   const arcChart = useRef();
   const [data, setData] = useState(scores);
   useEffect(() => {
