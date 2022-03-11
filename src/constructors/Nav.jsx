@@ -7,17 +7,19 @@ const Nav = props => {
   const [click, setClick] = useState(false);
   const [menuToggle, setMenuToggle] = useState("toggle_menu_list");
   const el = useRef();
-  let jobIcon = "../src/assets/nav/policeman.png";
   let jobName = "../src/assets/nav/police.png";
   let jobNameAlt = "POLICE";
+  let jobLogo = "경찰";
   if (props.depart === "fire") {
     jobIcon = "../src/assets/nav/firefighter.png";
     jobName = "../src/assets/nav/fire.png";
     jobNameAlt = "FIRE";
+    jobLogo = "소방";
   } else if (props.depart === "admin") {
     jobIcon = "../src/assets/nav/administrator.png";
     jobName = "../src/assets/nav/admin.png";
     jobNameAlt = "ADMIN";
+    jobLogo = "행정";
   }
   const toggleEvent = () => {
     setMenuToggle(!menuToggle);
@@ -46,7 +48,7 @@ const Nav = props => {
     <Navbar depart={props.depart}>
       <div className="logobox">
         <img className="logo" src={NavLogo} alt="NAVLOGO" />
-        <img className="job" src={jobName} alt={jobNameAlt} />
+        <div className="job">{jobLogo}</div>
       </div>
       <div className="toggle" onClick={toggleEvent} ref={el}>
         <img src="../src/assets/nav/toggle.svg" alt="TOGGLE" />
@@ -102,10 +104,10 @@ const Navbar = styled.div`
   font-family: Noto Sans KR;
   position: relative;
   width: 100vw;
-  height: ${(56 / 1512) * 100 + "vw"};
+  height: 3.5rem;
   background: ${props => {
     if (props.depart === "police") {
-      return "#1482ef";
+      return "#58A2EB";
     } else if (props.depart === "fire") {
       return "#F48065";
     } else if (props.depart === "admin") {
@@ -121,10 +123,15 @@ const Navbar = styled.div`
     align-items: center;
     margin-left: ${(40 / 1512) * 100 + "vw"};
     .logo {
-      width: ${(86 / 1512) * 100 + "vw"};
+      width: 5.375rem;
     }
     .job {
-      width: ${(26 / 1512) * 100 + "vw"};
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      color: #ffffff;
       padding-top: ${(5 / 1512) * 100 + "vw"};
       margin-right: ${(10 / 1512) * 100 + "vw"};
     }
@@ -132,18 +139,18 @@ const Navbar = styled.div`
   .menu {
     display: flex;
     align-items: center;
-    font-size: ${(14 / 1512) * 100 + "vw"};
+    font-size: 0.874rem;
     font-family: Noto Sans KR;
     font-weight: 600;
     margin-right: ${(40 / 1512) * 100 + "vw"};
 
     .d_day {
-      margin-left: ${(40 / 1512) * 100 + "vw"};
+      margin-left: 2.5rem;
 
       background-color: #ffffffc8;
       color: ${props => {
         if (props.depart === "police") {
-          return "#1482ef";
+          return "#58A2EB";
         } else if (props.depart === "fire") {
           return "#F48065";
         } else if (props.depart === "admin") {
@@ -151,13 +158,13 @@ const Navbar = styled.div`
         }
       }};
       font-weight: 600;
-      font-size: ${(16 / 1512) * 100 + "vw"};
-      line-height: ${(30 / 1512) * 100 + "vw"};
+      font-size: 1rem;
+      line-height: 1.875rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: ${(4 / 1512) * 100 + "vw"} ${(10 / 1512) * 100 + "vw"};
-      border-radius: ${(40 / 1512) * 100 + "vw"};
+      padding: 0.25rem 0.625rem;
+      border-radius: 2.5rem;
     }
     @media screen and (max-width: 667px) {
       display: none;
@@ -165,27 +172,19 @@ const Navbar = styled.div`
   }
   .toggle {
     display: none;
-    @media screen and (max-width: 667px) {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-right: ${(40 / 1512) * 100 + "vw"};
-      img {
-        width: ${(24 / 1512) * 100 + "vw"};
-      }
-    }
     .toggle_menu_list {
       display: flex;
       align-items: center;
+      overflow: hidden;
       flex-direction: column;
       width: 100vw;
       position: absolute;
-      top: ${(56 / 1512) * 100 + "vw"};
+      top: 3rem;
       left: 0;
       z-index: 99;
       background-color: ${props => {
         if (props.depart === "police") {
-          return "#1482ef";
+          return "#58A2EB";
         } else if (props.depart === "fire") {
           return "#F48065";
         } else if (props.depart === "admin") {
@@ -197,12 +196,33 @@ const Navbar = styled.div`
       .toggle_list {
         display: flex;
         align-items: center;
-        height: ${(60 / 1512) * 100 + "vw"};
-        font-size: ${(20 / 1512) * 100 + "vw"};
+        height: 3.75rem;
+        font-size: 1.25rem;
       }
       &.view {
         display: flex;
         height: auto;
+      }
+    }
+  }
+  @media screen and (max-width: 667px) {
+    height: 3rem;
+    .logobox {
+      .logo {
+        width: 5.375rem;
+      }
+      .job {
+        font-size: 0.75rem;
+        line-height: 1.063rem;
+      }
+    }
+    .toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: ${(40 / 1512) * 100 + "vw"};
+      img {
+        width: 1.5rem;
       }
     }
   }

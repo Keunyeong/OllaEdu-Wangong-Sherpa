@@ -263,6 +263,7 @@ const Swap4 = styled.div`
 
   @media (max-width: 991px) {
     order: 5;
+    overflow: scroll;
   }
 
   @media (max-width: 667px) {
