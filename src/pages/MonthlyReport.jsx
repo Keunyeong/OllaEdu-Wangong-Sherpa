@@ -93,7 +93,13 @@ const MonthlyReport = () => {
           <Swap2>
             <CardWrapper
               title="과목별 추이"
-              children={isLoading ? <SkeletonBar /> : <Sliders />}
+              children={
+                isLoading || !grade.length ? (
+                  <SkeletonBar />
+                ) : (
+                  <Sliders grade={grade} />
+                )
+              }
             />
           </Swap2>
           <Swap3>
