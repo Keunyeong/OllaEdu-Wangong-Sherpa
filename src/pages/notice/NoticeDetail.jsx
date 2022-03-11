@@ -12,7 +12,8 @@ const NoticeDetail = () => {
   }, [params.id]);
   return (
     <Notice>
-      <h2>{notice.title}</h2>
+      <h5>{notice.title}</h5>
+      <h6>{notice.author}</h6>
       <span>{notice.date}</span>
       <p>{notice.text}</p>
     </Notice>
@@ -22,17 +23,34 @@ const NoticeDetail = () => {
 export default NoticeDetail;
 
 const Notice = styled.div`
-  padding: 20px;
-  width: 1058px;
-  height: ${(765 / 982) * 100 + "vh"};
-  margin-top: ${(17 / 982) * 100 + "vh"};
-  margin-left: ${(20 / 996) * 100 + "vw"};
+  font-family: Noto Sans KR;
+  padding: 1.25rem;
+  width: auto;
+  height: 100%;
+  margin-right: ${(40 / 1512) * 100 + "vw"};
   box-shadow: 0rem 0.5rem 1.375rem -0.375rem rgba(24, 39, 75, 0.12),
     0rem 0.875rem 4rem -0.25rem rgba(24, 39, 75, 0.12);
   background-color: #ffffff;
-  border-radius: 20px 20px 0 0;
+  border-radius: 10px;
   overflow-y: scroll;
+  color: #1b1b1b;
   &::-webkit-scrollbar {
     display: none;
+  }
+  h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.69rem;
+  }
+  h6 {
+    font-size: 0.625rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: #6a6a6a;
+  }
+  span {
+    font-size: 0.625rem;
+    font-weight: 300;
+    color: #6a6a6a;
   }
 `;
