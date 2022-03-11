@@ -28,7 +28,7 @@ const Dropdown = ({ arr = month }) => {
           setToggle(!toggle);
         }}
       >
-        <ListTitle margin="30px">2021</ListTitle>
+        <ListTitle margin="30px">{arr[arr.length - 1]}</ListTitle>
         {toggle ? (
           <Icon src={Dropdown_up} alt="dropdown-up" />
         ) : (
@@ -37,7 +37,12 @@ const Dropdown = ({ arr = month }) => {
         {toggle && (
           <ListConatiner>
             {arr.map((yr, idx) => (
-              <List key={yr}>
+              <List
+                key={yr}
+                onClick={e => {
+                  console.log(e.target.innerText);
+                }}
+              >
                 <ListTitle margin="22px">{yr}</ListTitle>
               </List>
             ))}
@@ -89,7 +94,7 @@ const ListConatiner = styled.ul`
   border-radius: 4px;
   border: 1px solid #9498ef;
   transform: scaleX(-1); //Reflects the parent horizontally
-
+  z-index: 1;
   &::-webkit-scrollbar {
     width: 8px;
     background-color: transparent;
@@ -105,4 +110,7 @@ const ListConatiner = styled.ul`
 
 const List = styled.li`
   transform: scaleX(-1); //Flips the child back to normal
+  &:hover {
+    background-color: #dddefd;
+  }
 `;
