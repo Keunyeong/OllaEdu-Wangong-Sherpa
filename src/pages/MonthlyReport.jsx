@@ -1,56 +1,97 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useRef } from "react";
+import { useLocation } from "react-router-dom";
+import ReactToPdf from "react-to-pdf";
 import styled from "styled-components";
 import { Context } from "../context/Context";
 import {
-  ProgressBar,
   Table,
   IrregularPieGraph,
   MonthlyGraph,
   GrowthGraph,
-  TotalGraph
+  TotalGraph,
+  SkeletonCircle,
+  SkeletonBar
 } from "../elements";
 import { CardWrapper, Dropdown } from "../components";
+import { RankList } from "../containers";
 import { Cloud } from "../assets";
+import { useEffect } from "react/cjs/react.development";
+
+const options = {};
 
 const MonthlyReport = () => {
-  const { data } = useContext(Context);
+  const pdfRef = useRef();
+  const [current, setCurrent] = useState({});
+  const { data, isLoading } = useContext(Context);
+  const { 응시월, 응시내역, 년월, 년 } = data;
+  const location = useLocation().pathname.split("/")[2];
+
+  useEffect(() => {
+    if (data.length !== 0) {
+      setCurrent({});
+    }
+  }, [data]);
 
   return (
     <Page>
-      <Section>
+      <Section ref={pdfRef}>
         <Title>모의고사 분석</Title>
-        <DropdownContainer>
-          <DropdownWrapper>
-            <Dropdown />
-            <DropdownLabel>년</DropdownLabel>
-          </DropdownWrapper>
-          <DropdownWrapper>
-            <Dropdown />
-            <DropdownLabel>월</DropdownLabel>
-          </DropdownWrapper>
-          <CloudIcon src={Cloud} alt="download pdf" />
-        </DropdownContainer>
+        {data.length !== 0 ? (
+          <DropdownContainer>
+            <DropdownWrapper>
+              <Dropdown arr={년} />
+              <DropdownLabel>년</DropdownLabel>
+            </DropdownWrapper>
+            <DropdownWrapper>
+              <Dropdown />
+              <DropdownLabel>월</DropdownLabel>
+            </DropdownWrapper>
+            <ReactToPdf
+              targetRef={pdfRef}
+              filename="div-blue.pdf"
+              options={options}
+              x={5}
+              scale={0.8}
+            >
+              {({ toPdf }) => (
+                <CloudIcon src={Cloud} alt="download pdf" onClick={toPdf} />
+              )}
+            </ReactToPdf>
+          </DropdownContainer>
+        ) : null}
 
         <Wrapper>
           <Swap1>
-            <CardWrapper title="정규 모의고사 총점" children={<TotalGraph />} />
+            <CardWrapper
+              title="정규 모의고사 총점"
+              children={isLoading ? <SkeletonCircle /> : <TotalGraph />}
+            />
           </Swap1>
           <Swap2>
-            <CardWrapper title="순위" children={<GrowthGraph />} />
+            <CardWrapper
+              title="과목별 추이"
+              children={isLoading ? <SkeletonBar /> : <GrowthGraph />}
+            />
           </Swap2>
           <Swap3>
-            <CardWrapper title="과목별 추이" children={<GrowthGraph />} />
+            <CardWrapper
+              title="순위"
+              children={isLoading ? <SkeletonBar /> : <RankList />}
+            />
           </Swap3>
           <Swap4>
             <CardWrapper
               width="38.500em"
               height="13.000em"
               title="총점 월별 추이"
-              children={<MonthlyGraph />}
+              children={isLoading ? <SkeletonBar /> : <MonthlyGraph />}
             />
           </Swap4>
           <Swap5>
-            <CardWrapper title="과목별 균형" children={<IrregularPieGraph />} />
+            <CardWrapper
+              title="과목별 균형"
+              children={isLoading ? <SkeletonCircle /> : <IrregularPieGraph />}
+            />
           </Swap5>
           <Swap6>
             <CardWrapper
@@ -59,12 +100,16 @@ const MonthlyReport = () => {
               padding="1.938em 0.625em"
               title="상세 점수 조회"
               children={
-                <CombineChart>
-                  <Table />
-                  <LittleChartContainer>
-                    <IrregularPieGraph />
-                  </LittleChartContainer>
-                </CombineChart>
+                isLoading ? (
+                  <SkeletonBar />
+                ) : (
+                  <CombineChart>
+                    <Table />
+                    <LittleChartContainer>
+                      <IrregularPieGraph />
+                    </LittleChartContainer>
+                  </CombineChart>
+                )
               }
             />
           </Swap6>
@@ -74,25 +119,29 @@ const MonthlyReport = () => {
               title="시험 총평/강사 코멘트"
               padding="2.5em 2.5em 4.375em 2.5em"
               children={
-                <Paragraph>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Congue nascetur turpis netus justo. Eleifend eget mattis ipsum
-                  neque, lorem donec dignissim. Quis adipiscing ullamcorper arcu
-                  elit. Platea fames massa eu condimentum nulla. Hac commodo,
-                  duis odio velit accumsan nibh quam suscipit proin. Proin amet
-                  enim metus rhoncus nisl. Non fermentum tellus vel sagittis
-                  elementum tristique porttitor. Vitae, adipiscing a
-                  pellentesque massa, ultricies. Mauris sit felis dui amet,
-                  sociis porttitor pharetra. Lectus quam libero sit facilisi
-                  praesent pharetra. Sed semper ullamcorper tempus dolor. Vel
-                  mauris vulputate quis massa rhoncus, amet, nunc. Amet dolor
-                  morbi ut eu netus sed tortor vulputate eget. In montes, amet
-                  mauris commodo viverra. Est dolor ultrices nulla at donec
-                  faucibus quis sagittis. Etiam vulputate magna enim
-                  pellentesque sodales nisi, pulvinar posuere nunc. Leo,
-                  ultricies arcu vitae volutpat id. Neque in enim tristique
-                  eget. Auctor eu ac, aliquet
-                </Paragraph>
+                isLoading ? (
+                  <SkeletonBar />
+                ) : (
+                  <Paragraph>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Congue nascetur turpis netus justo. Eleifend eget mattis
+                    ipsum neque, lorem donec dignissim. Quis adipiscing
+                    ullamcorper arcu elit. Platea fames massa eu condimentum
+                    nulla. Hac commodo, duis odio velit accumsan nibh quam
+                    suscipit proin. Proin amet enim metus rhoncus nisl. Non
+                    fermentum tellus vel sagittis elementum tristique porttitor.
+                    Vitae, adipiscing a pellentesque massa, ultricies. Mauris
+                    sit felis dui amet, sociis porttitor pharetra. Lectus quam
+                    libero sit facilisi praesent pharetra. Sed semper
+                    ullamcorper tempus dolor. Vel mauris vulputate quis massa
+                    rhoncus, amet, nunc. Amet dolor morbi ut eu netus sed tortor
+                    vulputate eget. In montes, amet mauris commodo viverra. Est
+                    dolor ultrices nulla at donec faucibus quis sagittis. Etiam
+                    vulputate magna enim pellentesque sodales nisi, pulvinar
+                    posuere nunc. Leo, ultricies arcu vitae volutpat id. Neque
+                    in enim tristique eget. Auctor eu ac, aliquet
+                  </Paragraph>
+                )
               }
             />
           </Swap7>
@@ -105,9 +154,10 @@ const MonthlyReport = () => {
 export default MonthlyReport;
 
 const Page = styled.div`
+  padding: 1.5em;
+  margin: -1.5em;
   height: ${(915 / 982) * 100 + "vh"};
   position: relative;
-  background-color: #f5f5f5;
   overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -124,7 +174,6 @@ const Page = styled.div`
 
 const Section = styled.section`
   width: 58.5em;
-  margin: auto;
   position: relative;
   padding: 4.5em 0 0 0;
 
@@ -139,7 +188,7 @@ const Section = styled.section`
 
 const DropdownContainer = styled.div`
   position: absolute;
-  top: 3em;
+  top: 32px;
   right: 0;
   width: 22.188em;
   display: flex;
@@ -161,6 +210,7 @@ const CloudIcon = styled.img`
 
 const DropdownWrapper = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 const Title = styled.h1`

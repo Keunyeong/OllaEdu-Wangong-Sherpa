@@ -21,6 +21,7 @@ export const loadData = () => async (dispatch, state) => {
     .then(res => res.json())
     .then(data => data.result);
 
+  console.log(data);
   const groups = data.reduce((groups, list) => {
     const date = list["응시년월"];
     if (!groups[date]) {
@@ -49,10 +50,21 @@ export const loadData = () => async (dispatch, state) => {
     return group;
   }, {});
 
-  console.log(응시월);
-  console.log(응시내역);
+  const 년월 = 응시월.reduce((group, yymm) => {
+    const [year, month] = yymm.match(/.{1,4}/g);
+
+    if (!group[year]) {
+      group[year] = [];
+    }
+
+    group[year].push(month);
+    return group;
+  }, {});
+
+  const 년 = Object.keys(년월);
+
+  dispatch(setData({ 응시월, 응시내역, 년월, 년 }));
   dispatch(setLoading(false));
-  dispatch(setData({ 응시월, 응시내역 }));
 };
 
 export const tryLogin = userData => async (dispatch, state, navigate) => {

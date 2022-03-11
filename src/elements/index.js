@@ -5,3 +5,5 @@ export { default as TotalGraph } from "./TotalGraph";
 export { default as GrowthGraph } from "./GrowthGraph";
 export { default as ProgressBar } from "./ProgressBar.jsx";
 export { default as Table } from "./Table";
+export { default as SkeletonCircle } from "./skeleton/SkeletonCircle";
+export { default as SkeletonBar } from "./skeleton/SkeletonBar";

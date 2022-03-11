@@ -5,7 +5,6 @@ const Main = () => {
   return (
     <Page>
       <Nav depart="police" />
-
       <ReportMain />
     </Page>
   );

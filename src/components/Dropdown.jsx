@@ -28,7 +28,7 @@ const Dropdown = ({ arr = month }) => {
           setToggle(!toggle);
         }}
       >
-        <ListTitle>2021</ListTitle>
+        <ListTitle margin="30px">{arr[arr.length - 1]}</ListTitle>
         {toggle ? (
           <Icon src={Dropdown_up} alt="dropdown-up" />
         ) : (
@@ -37,7 +37,14 @@ const Dropdown = ({ arr = month }) => {
         {toggle && (
           <ListConatiner>
             {arr.map((yr, idx) => (
-              <List key={yr}>{yr}</List>
+              <List
+                key={yr}
+                onClick={e => {
+                  console.log(e.target.innerText);
+                }}
+              >
+                <ListTitle margin="22px">{yr}</ListTitle>
+              </List>
             ))}
           </ListConatiner>
         )}
@@ -51,47 +58,59 @@ export default Dropdown;
 const Wrapper = styled.div`
   font-weight: 500;
   line-height: 1.646em;
+  font-size: 12px;
 `;
 
 const ListHeader = styled.div`
   position: relative;
-  width: 6.633em;
-  min-height: 1.25em;
-  background-color: #d8d8d8;
-  border-radius: 0.223em;
+  width: 78px;
+  min-height: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #9498ef;
 `;
 
 const ListTitle = styled.span`
   display: inline-block;
-  width: 4.813em;
-  text-align: right;
+  margin-left: ${props => props.margin};
 `;
 
 const Icon = styled.img`
   position: absolute;
-  top: 0.134em;
-  right: 0.048em;
-  width: 1.421em;
-  height: 1.421em;
+  top: 8px;
+  right: 4px;
+  width: 9px;
+  height: 5px;
 `;
 
 const ListConatiner = styled.ul`
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 4.813em;
+  top: 27px;
+  left: -1px;
+  width: 78px;
   max-height: 12.25em;
-  background-color: #d8d8d8;
+  background-color: #fff;
   overflow-y: auto;
-  border-radius: 0.223em;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
+  border-radius: 4px;
+  border: 1px solid #9498ef;
+  transform: scaleX(-1); //Reflects the parent horizontally
+  z-index: 1;
   &::-webkit-scrollbar {
-    display: none;
+    width: 8px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #e8e8e8;
+    border-radius: 2px;
+    border-right: 4px white solid;
+    background-clip: padding-box;
   }
 `;
 
 const List = styled.li`
-  text-align: center;
+  transform: scaleX(-1); //Flips the child back to normal
+  &:hover {
+    background-color: #dddefd;
+  }
 `;

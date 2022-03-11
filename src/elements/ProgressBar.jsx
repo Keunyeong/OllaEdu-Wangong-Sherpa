@@ -1,15 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
-const ProgressBar = ({ bg = "#EBA291", cg = "#F48065", score }) => {
+const ProgressBar = ({
+  bg = "rgba(248, 171, 48, 0.8)",
+  cg = "#F8AB30",
+  score
+}) => {
   return (
     <Container>
       <Progress bg={bg}>
         <Circle cg={cg}>
-          <Span fs="0.750em" ls="1.063em">
+          <Span fs="0.625em" ls="1.063em" fw={400}>
             80
           </Span>
-          <Span fs="0.15em" ls="1.063em">
+          <Span fs="0.375em" ls="1.063em" fw={300}>
             %
           </Span>
         </Circle>
@@ -21,8 +25,8 @@ const ProgressBar = ({ bg = "#EBA291", cg = "#F48065", score }) => {
 export default ProgressBar;
 
 const Container = styled.div`
-  width: 10.375em;
-  height: 0.813em;
+  width: 6.75em;
+  height: 0.5em;
   background-color: #d8d8d8;
   border-radius: 0.375em;
 `;
@@ -42,15 +46,15 @@ const Circle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2.125em;
-  height: 2.125em;
+  width: 1.5em;
+  height: 1.5em;
   background-color: ${props => props.cg};
-  border-radius: 1.063em;
+  border-radius: 7.5em;
   color: white;
 `;
 
 const Span = styled.span`
   font-size: ${props => props.fs};
   line-height: ${props => props.ls};
-  font-weight: 500;
+  font-weight: ${props => props.fw};
 `;
