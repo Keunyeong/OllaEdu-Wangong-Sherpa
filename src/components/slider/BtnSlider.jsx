@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import ArrowRight from "../../assets/arrow_right.png";
+import ArrowRight from "../../assets/nav/arrow_right.png";
+import ArrowLeft from "../../assets/nav/arrow_left.png";
 
 export default function BtnSlider({ direction, moveSlide }) {
   console.log(direction, moveSlide);
@@ -10,7 +11,7 @@ export default function BtnSlider({ direction, moveSlide }) {
       btn={direction}
       btnDirection={direction === "next" ? "next" : "prev"}
     >
-      {direction === "next" ? <img src={ArrowRight} alt="" /> : <img src={ArrowRight} alt="" />}
+      {direction === "next" ? <img src={ArrowRight} alt="" /> : <img src={ArrowLeft} alt="" />}
     </Btn>
   );
 }
