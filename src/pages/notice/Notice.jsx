@@ -81,7 +81,7 @@ export const Notice = () => {
       <NoticeContext.Provider value={noticeList}>
         <NoticeBoard data={noticeList} />
         <Routes>
-          <Route path=":id" element={<NoticeDetail />} />
+          <Route path="main/:id" element={<NoticeDetail />} />
         </Routes>
       </NoticeContext.Provider>
     </Page>
