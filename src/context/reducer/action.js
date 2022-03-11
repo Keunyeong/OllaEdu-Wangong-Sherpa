@@ -21,7 +21,6 @@ export const loadData = () => async (dispatch, state) => {
     .then(res => res.json())
     .then(data => data.result);
 
-  console.log(data);
   const groups = data.reduce((groups, list) => {
     const date = list["응시년월"];
     if (!groups[date]) {

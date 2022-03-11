@@ -2,15 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import * as d3 from "d3";
 import styled from "styled-components";
 
-let subject;
-let lastMonth;
-let thisMonth;
-const scoreArr = [(subject = "헌법"), (lastMonth = 72), (thisMonth = 84)];
-
-const GrowthGraph = () => {
+const GrowthGraph = ({ scoreData, title }) => {
   const score = useRef();
   const scoreText = useRef();
-  const [data, setData] = useState(scoreArr);
+  const [data, setData] = useState(scoreData);
   const width = 130;
   const height = 110;
 
@@ -39,10 +34,10 @@ const GrowthGraph = () => {
         else return d;
       })
       .attr("fill", (d, i) => {
-        if (i < scoreArr.length - 1) {
+        if (i < scoreData.length - 1) {
           return "#D8D8D8";
         } else {
-          return "#F8AB0D";
+          return "#FFCB60";
         }
       });
 
@@ -81,7 +76,7 @@ const GrowthGraph = () => {
       </ChartBox>
 
       <SpanBox>
-        <SubjectSpan>{data[0]}</SubjectSpan>
+        <SubjectSpan>{title}</SubjectSpan>
         <Span>
           <Svg>
             <SmallCircle fill="#D8D8D8" />
@@ -90,7 +85,7 @@ const GrowthGraph = () => {
         </Span>
         <Span>
           <Svg>
-            <SmallCircle fill="#F8AB0D" />
+            <SmallCircle fill="#FFCB60" />
           </Svg>
           당월 점수
         </Span>

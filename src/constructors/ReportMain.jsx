@@ -24,7 +24,7 @@ const Main = styled.main`
   background-color: #f5f5f5;
   height: 100%;
   overflow: scroll;
-  padding: ${(40 / 982) * 100 + "vh"} 0;
+  padding: ${(40 / 982) * 100 + "vh"};
   @media screen and (max-width: 667px) {
   }
 `;

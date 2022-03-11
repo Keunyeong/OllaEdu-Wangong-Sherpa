@@ -178,7 +178,7 @@ const Nav = props => {
 const Navbar = styled.div`
   font-family: Noto Sans KR;
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 3.5rem;
   background: ${props => {
     if (props.depart === "police") {
