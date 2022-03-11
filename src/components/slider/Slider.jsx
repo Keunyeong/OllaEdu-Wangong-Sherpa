@@ -97,6 +97,10 @@ const Slider = styled.div`
   left: 12%;
   opacity: ${(props) => props.activity === "active-anim" ? "1": "0" };
   transition: opacity ease-in-out 0.4s;
+
+  @media (max-width: 667px) {
+    left: 35%;
+  }
 `;
 const ContainerDots = styled.div`
   position: absolute;
