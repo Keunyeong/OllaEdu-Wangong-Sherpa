@@ -5,10 +5,10 @@ import { useContext, useState, useEffect } from "react";
 
 const NoticeDetail = () => {
   const params = useParams();
-  const [notice, setNotice] = useState({});
   const noticeList = useContext(NoticeContext);
+  const [notice, setNotice] = useState(noticeList[0]);
   useEffect(() => {
-    setNotice(noticeList[params.id]);
+    if (params.id) setNotice(noticeList[params.id]);
   }, [params.id]);
   return (
     <Notice>

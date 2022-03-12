@@ -3,8 +3,10 @@ import { NavLink, useParams } from "react-router-dom";
 
 const NoticeBoard = ({ data }) => {
   const params = useParams();
+  const pro = params["*"];
+  console.log(pro);
   return (
-    <Ul params>
+    <Ul pro>
       {data.map((el, i) => {
         return (
           <NavLink to={`main/${i}`} key={i}>
