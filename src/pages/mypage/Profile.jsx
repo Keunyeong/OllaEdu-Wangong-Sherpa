@@ -1,22 +1,6 @@
 import styled from "styled-components";
 import MypageSection from "../../elements/MypageSection";
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
-import Toolbar from "../../elements/Toolbar";
-
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import QnA from "../../elements/QnA";
-
 const Profile = () => {
-  moment.locale("ko-KR");
-  const localizer = momentLocalizer(moment);
-  const events = [
-    {
-      start: moment().toDate(),
-      end: moment().add(1, "days").toDate(),
-      title: "Some title"
-    }
-  ];
   return (
     <>
       <MypageSection
@@ -39,37 +23,13 @@ const Profile = () => {
           <div className="adress">
             <div>주소</div>
             <div className="box">
-              <span>서울특별시 송파구 송파대로 112-12 현대아파트</span>
+              <span>서울특별시 송파구 송파대로 112-12</span>
             </div>
           </div>
           <div className="birthday">
             <div>생년월일</div>
           </div>
         </Info>
-      </MypageSection>
-      <MypageSection
-        title="시간표"
-        subtitle="시험 및 이벤트 일정을 확인하세요."
-      >
-        <Calendar
-          localizer={localizer}
-          defaultDate={new Date()}
-          defaultView="month"
-          events={events}
-          style={{
-            height: `${(476 / 1512) * 100 + "vw"}`,
-            width: `${(919 / 1512) * 100 + "vw"}`
-          }}
-          components={{
-            toolbar: Toolbar
-          }}
-        />
-      </MypageSection>
-      <MypageSection
-        title="Q&A"
-        subtitle="자주 묻는 질문을 확인하고, 직접 질문을 올리세요."
-      >
-        <QnA></QnA>
       </MypageSection>
     </>
   );
@@ -98,6 +58,7 @@ const Info = styled.div`
       border-radius: 5px;
       padding: 0 ${(16 / 1512) * 100 + "vw"};
       text-align: left;
+      padding: 0.3rem 0.7rem;
     }
 
     & > div {

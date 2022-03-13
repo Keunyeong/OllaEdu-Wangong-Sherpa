@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import NavToggleList from "./NavToggleList";
 
-const MenuList = ({ children, list, job, icon, path }) => {
+const MenuList = ({ children, list, job, icon }) => {
   const url = useLocation();
   const el = useRef();
   const [toggleOn, setToggleOn] = useState(false);
@@ -82,6 +82,7 @@ const MenuList = ({ children, list, job, icon, path }) => {
 const List = styled.div`
   position: relative;
   .list {
+    transition: all 0.5s ease-out;
     width: 7.875rem;
     display: flex;
     align-items: center;
@@ -112,6 +113,8 @@ const List = styled.div`
           return "#13C383";
         }
       }};
+      border-radius: 10px 10px 0 0;
+
       background-color: ${props => {
         if (props.children[0].props.depart === "police") {
           return "#bcd6f0";
@@ -148,6 +151,7 @@ const List = styled.div`
           return "#13C383";
         }
       }};
+      border-radius: 10px 10px 0 0;
       background-color: #fff;
       div {
         svg {
