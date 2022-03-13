@@ -12,7 +12,7 @@ const NoticeDetail = () => {
   }, [params.id]);
   return (
     <Notice
-      main={params["*"] === "main" || params["*"] === "main/" ? true : false}
+      params={params["*"] === "main" || params["*"] === "main/" ? true : false}
     >
       <h5>{notice.title}</h5>
       <h6>{notice.author}</h6>
@@ -27,9 +27,9 @@ export default NoticeDetail;
 const Notice = styled.div`
   font-family: Noto Sans KR;
   padding: 1.25rem;
-  width: auto;
+  margin-right: 16px;
+  width: ${(1100 / 1512) * 100 + "vw"};
   height: 100%;
-  margin-right: ${(40 / 1512) * 100 + "vw"};
   box-shadow: 0rem 0.5rem 1.375rem -0.375rem rgba(24, 39, 75, 0.12),
     0rem 0.875rem 4rem -0.25rem rgba(24, 39, 75, 0.12);
   background-color: #ffffff;
@@ -62,6 +62,16 @@ const Notice = styled.div`
   }
 
   @media screen and (max-width: 991px) {
-    display: ${props => (props.main ? "none" : "block")};
+    display: ${props => (props.params ? "none" : "block")};
+    width: 96vw;
+    margin-right: 0;
+  }
+
+  @media screen and (max-width: 667px) {
+    display: ${props => (props.params ? "none" : "block")};
+    width: 100vw;
+    margin-right: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 `;

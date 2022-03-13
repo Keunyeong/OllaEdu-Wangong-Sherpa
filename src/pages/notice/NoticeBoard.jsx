@@ -4,7 +4,9 @@ import { NavLink, useParams } from "react-router-dom";
 const NoticeBoard = ({ data }) => {
   const params = useParams();
   return (
-    <Ul main={params["*"] === "main" || params["*"] === "main/" ? true : false}>
+    <Ul
+      params={params["*"] === "main" || params["*"] === "main/" ? true : false}
+    >
       {data.map((el, i) => {
         return (
           <NavLink to={`main/${i}`} key={i}>
@@ -26,8 +28,8 @@ export default NoticeBoard;
 const Ul = styled.ul`
   width: ${(358 / 1512) * 100 + "vw"};
   height: 100%;
-  margin-left: ${(40 / 1512) * 100 + "vw"};
-  margin-right: ${(16 / 1512) * 100 + "vw"};
+  margin-left: 16px;
+  margin-right: 16px;
   box-shadow: 0rem 0.5rem 1.375rem -0.375rem rgba(24, 39, 75, 0.12),
     0rem 0.875rem 4rem -0.25rem rgba(24, 39, 75, 0.12);
   background-color: #ffffff;
@@ -39,8 +41,15 @@ const Ul = styled.ul`
   flex-shrink: 0;
 
   @media screen and (max-width: 991px) {
-    display: ${props => (props.main ? "block" : "none")};
-    width: 100%;
+    display: ${props => (props.params ? "block" : "none")};
+    width: 96vw;
+  }
+
+  @media screen and (max-width: 667px) {
+    display: ${props => (props.params ? "block" : "none")};
+    width: 100vw;
+    border-radius: 0;
+    box-shadow: none;
   }
 `;
 

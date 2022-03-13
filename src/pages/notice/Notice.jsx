@@ -104,8 +104,8 @@ export const Notice = () => {
 
 const Page = styled.div`
   display: flex;
-  justify-content: flex-start;
-  width: 100%;
+  justify-content: center;
+  width: 100vw;
   height: 100%;
   position: relative;
   overflow-y: auto;
@@ -114,4 +114,5 @@ const Page = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+  overflow: visible;
 `;
