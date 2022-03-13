@@ -11,7 +11,9 @@ const NoticeDetail = () => {
     if (params.id) setNotice(noticeList[params.id]);
   }, [params.id]);
   return (
-    <Notice>
+    <Notice
+      main={params["*"] === "main" || params["*"] === "main/" ? true : false}
+    >
       <h5>{notice.title}</h5>
       <h6>{notice.author}</h6>
       <span>{notice.date}</span>
@@ -38,19 +40,28 @@ const Notice = styled.div`
     display: none;
   }
   h5 {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 0.69rem;
   }
   h6 {
-    font-size: 0.625rem;
+    font-size: 0.875rem;
     font-weight: 500;
     margin-bottom: 0.25rem;
     color: #6a6a6a;
   }
   span {
-    font-size: 0.625rem;
+    font-size: 0.875rem;
     font-weight: 300;
     color: #6a6a6a;
+  }
+
+  p {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  @media screen and (max-width: 991px) {
+    display: ${props => (props.main ? "none" : "block")};
   }
 `;
