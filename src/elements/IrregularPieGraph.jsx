@@ -1,18 +1,17 @@
 import React, { useEffect, useRef } from "react";
 import * as d3 from "d3";
 
-const data = [
-  { subject: "행정학", score: 100 },
-  { subject: "한국사", score: 100 },
-  { subject: "국어", score: 100 },
-  { subject: "영어", score: 40 },
-  { subject: "행정법", score: 100 }
-];
-
 const color = "#F48065";
 
-const IrregularPieChart = ({ width = 296, height = 208 }) => {
+const IrregularPieChart = ({ width = 296, height = 208, grade }) => {
   const chart = useRef();
+
+  const data = grade.slice(1, grade.length).reduce((acc, cur) => {
+    const { 과목, 당월점수 } = cur;
+    acc.push({ subject: 과목, score: Number(당월점수) });
+    return acc;
+  }, []);
+
   useEffect(() => {
     data.sort((a, b) => b.score - a.score);
 
