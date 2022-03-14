@@ -5,7 +5,14 @@ import Light from "../../elements/Light";
 const Profile = () => {
   return (
     <>
-      <Light top={0} left={0} highLightWidth={7.3} highLightTop={7.6} />
+      <Light
+        top={0}
+        left={-0.6}
+        highLightWidth={7.4}
+        highLightWidth2={7.4}
+        highLightTop={7.3}
+        highLightTop2={7.3}
+      />
       <MypageSection
         title="기본정보"
         subtitle="개인정보 변동사항은 이곳에서 수정해 주세요."
