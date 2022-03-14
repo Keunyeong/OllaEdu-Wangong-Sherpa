@@ -36,9 +36,11 @@ const Header = styled.div`
     display: flex;
     align-items: center;
     color: #1b1b1b;
+    width: 125px;
     @media screen and (max-width: 667px) {
       font-size: 1.5rem;
       line-height: 2.172rem;
+      width: 90px;
     }
   }
   .subtitle {
@@ -58,5 +60,7 @@ const Header = styled.div`
   }
 `;
 const Main = styled.div`
+  position: relative;
+
   margin-top: ${(56 / 1512) * 100 + "vw"};
 `;
