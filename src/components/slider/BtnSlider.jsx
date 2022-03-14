@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import ArrowRight from "../../assets/nav/arrow_right.png";
-import ArrowLeft from "../../assets/nav/arrow_left.png";
+import ArrowRight from "../../assets/nav/report_arrow_right.png";
+import ArrowLeft from "../../assets/nav/report_arrow_left.png";
 
 export default function BtnSlider({ direction, moveSlide }) {
   return (

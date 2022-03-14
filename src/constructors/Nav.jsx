@@ -180,15 +180,9 @@ const Navbar = styled.div`
   position: relative;
   width: 100%;
   height: 3.5rem;
-  background: ${props => {
-    if (props.depart === "police") {
-      return "#58A2EB";
-    } else if (props.depart === "fire") {
-      return "#F48065";
-    } else if (props.depart === "admin") {
-      return "#13C383";
-    }
-  }};
+  box-shadow: 0px 12px 42px -3px rgba(155, 155, 155, 0.12),
+    0px 12px 42px -6px rgba(155, 155, 155, 0.12);
+  background: #032164;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -223,15 +217,7 @@ const Navbar = styled.div`
       margin-left: 2.5rem;
 
       background-color: #ffffffc8;
-      color: ${props => {
-        if (props.depart === "police") {
-          return "#58A2EB";
-        } else if (props.depart === "fire") {
-          return "#F48065";
-        } else if (props.depart === "admin") {
-          return "#13C383";
-        }
-      }};
+      color: #032164;
       font-weight: 600;
       font-size: 1rem;
       line-height: 1.875rem;
@@ -256,15 +242,7 @@ const Navbar = styled.div`
       top: 2.8rem;
       left: 0;
       z-index: 99;
-      background-color: ${props => {
-        if (props.depart === "police") {
-          return "#58A2EB";
-        } else if (props.depart === "fire") {
-          return "#F48065";
-        } else if (props.depart === "admin") {
-          return "#13C383";
-        }
-      }};
+      background-color: #032164;
       color: #ffffffc8;
       height: 0;
       transition: all 0.4s ease-out;
@@ -290,15 +268,7 @@ const Navbar = styled.div`
           font-size: 1rem;
           cursor: pointer;
           :hover {
-            color: ${props => {
-              if (props.depart === "police") {
-                return "#58A2EB";
-              } else if (props.depart === "fire") {
-                return "#F48065";
-              } else if (props.depart === "admin") {
-                return "#13C383";
-              }
-            }};
+            color: #032164;
             background-color: #ffffffc8;
           }
         }

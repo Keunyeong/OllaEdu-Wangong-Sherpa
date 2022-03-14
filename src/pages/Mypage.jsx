@@ -4,9 +4,6 @@ import Profile from "./mypage/Profile";
 import Schedule from "./mypage/Schedule";
 
 const Mypage = () => {
-  const menuClick = e => {
-    e.target.style.background = "#DFE0FF";
-  };
   return (
     <Page>
       <Routes>
@@ -20,9 +17,10 @@ const Mypage = () => {
 const Page = styled.div`
   border-radius: ${(50 / 1512) * 100 + "vw"};
   width: ${(1200 / 1512) * 100 + "vw"};
-  padding: 0 ${(40 / 1512) * 100 + "vw"};
+  padding-top: 4.5rem;
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
 export default Mypage;

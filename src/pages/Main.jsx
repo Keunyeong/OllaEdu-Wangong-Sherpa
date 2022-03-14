@@ -1,11 +1,12 @@
 import styled from "styled-components";
-import { ReportMain, Nav, Header } from "../constructors";
+import { ReportMain, Nav, Footer } from "../constructors";
 
 const Main = () => {
   return (
     <Page>
       <Nav depart="police" />
       <ReportMain />
+      <Footer />
     </Page>
   );
 };

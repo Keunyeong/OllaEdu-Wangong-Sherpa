@@ -3,7 +3,7 @@ import MypageSection from "../../elements/MypageSection";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import Toolbar from "../../elements/Toolbar";
-
+import Light from "../../elements/Light";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const Schedule = () => {
@@ -18,6 +18,7 @@ const Schedule = () => {
   ];
   return (
     <>
+      <Light top={0} left={0} highLightWidth={5.55} highLightTop={7.6} />
       <MypageSection
         title="시간표"
         subtitle="시험 및 이벤트 일정을 확인하세요."

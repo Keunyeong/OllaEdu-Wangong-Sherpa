@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import MypageSection from "../../elements/MypageSection";
+import Light from "../../elements/Light";
+
 const Profile = () => {
   return (
     <>
+      <Light top={0} left={0} highLightWidth={7.3} highLightTop={7.6} />
       <MypageSection
         title="기본정보"
         subtitle="개인정보 변동사항은 이곳에서 수정해 주세요."
