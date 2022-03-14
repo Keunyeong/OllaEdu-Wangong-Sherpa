@@ -43,7 +43,7 @@ const StarIcon = styled.img`
 `;
 
 const Title = styled.h3`
-  font-size: 1em;
+  font-size: 18px;
   font-weight: 700;
   line-height: 1.5em;
   margin-left: 0.25em;
