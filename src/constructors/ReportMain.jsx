@@ -4,11 +4,13 @@ import MonthlyReport from "../pages/MonthlyReport";
 import Mypage from "../pages/Mypage";
 import Login from "../pages/Login";
 import { Notice } from "../pages/notice/Notice";
+import Rating from "../pages/Rating";
 
 const ReportMain = () => {
   return (
     <Main>
       <Routes>
+        <Route path="rating" element={<Rating />} />
         <Route path="report/*" element={<MonthlyReport />} />
         <Route path="notice/*" element={<Notice />} />
         <Route path="mypage/*" element={<Mypage />} />
@@ -24,7 +26,6 @@ const Main = styled.main`
   background-color: #f5f5f5;
   height: 100%;
   overflow: scroll;
-  padding: ${(40 / 982) * 100 + "vh"};
   @media screen and (max-width: 667px) {
   }
 `;

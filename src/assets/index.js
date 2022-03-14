@@ -16,3 +16,6 @@ export { default as Dropdown_down } from "./dropdown_down.svg";
 export { default as Logo } from "./logo_white.svg";
 export { default as Au } from "./arrow_Up_MD.svg";
 export { default as Ad } from "./arrow_Down_MD.svg";
+export { default as FilledStar } from "./FilledStar.svg";
+export { default as UnfilledStar } from "./UnfilledStar.svg";
+export { default as PDFIcon } from "./PDFIcon.svg";
