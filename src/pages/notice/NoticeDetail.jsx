@@ -36,6 +36,7 @@ const Notice = styled.div`
   border-radius: 10px;
   overflow-y: scroll;
   color: #1b1b1b;
+  margin-top: -7rem;
   &::-webkit-scrollbar {
     display: none;
   }
