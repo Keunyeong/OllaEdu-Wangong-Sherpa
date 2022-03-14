@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import BtnSlider from "./BtnSlider";
 import { GrowthGraph } from "../../elements";
+import ArrowUp from "../../assets/arrow_Up_MD.svg";
+import ArrowDown from "../../assets/arrow_Down_MD.svg";
 
 export default function SliderTest({ grade }) {
   const [slideIndex, setSlideIndex] = useState(1);
@@ -32,12 +34,17 @@ export default function SliderTest({ grade }) {
       {slice.map((obj, index) => {
         const { 전월점수, 당월점수, 과목 } = obj;
 
+        const growth = Math.round(Number(당월점수 - 전월점수));
+
         return (
           <Slider
             key={과목}
             activity={slideIndex === index + 1 ? "active-anim" : null}
           >
-            <Increase>12점 증가</Increase>
+            <Increase>
+              <span>{growth<0 ? Math.abs(growth) : growth}점 {growth<0 ? "감소" : "증가"}</span>
+              <img src={growth<0 ? ArrowDown : ArrowUp} alt="" />
+            </Increase>
             <GrowthGraph
               scoreData={[
                 과목,
@@ -75,9 +82,9 @@ const ContainerSlider = styled.div`
 `;
 
 const Increase = styled.div`
-  width: 25%;
+  width: 27%;
   height: 11%;
-  font-size: 0.875rem;
+  font-size: 0.775rem;
   text-align: center;
   line-height: 150%;
   border: 1px solid #9498EF;
@@ -86,6 +93,16 @@ const Increase = styled.div`
   position: absolute;
   top: 3%;
   left: 8%;
+  display: flex;
+  justify-content: center;
+
+  span {
+    margin-left: 5px;
+  }
+
+  @media(max-width: 992px) {
+    display: none;
+  }
 `;
 
 const Slider = styled.div`
