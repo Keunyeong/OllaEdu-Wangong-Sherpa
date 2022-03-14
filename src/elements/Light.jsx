@@ -67,7 +67,7 @@ const Lamp = styled.div`
 const HighLigth = styled.div`
   position: absolute;
   width: ${props => props.width + "rem"};
-  border: 2.5px solid rgba(247, 192, 15, 0.4);
+  border: 4px solid rgba(247, 192, 15, 0.4);
   border-radius: 3px;
   top: ${props => props.top - 0.625 + "rem"};
   @media screen and (max-width: 668px) {

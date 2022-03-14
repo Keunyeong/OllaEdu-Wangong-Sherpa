@@ -1,7 +1,10 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const NavToggleList = ({ list, job, state }) => {
+  let location = useLocation();
   let listArr = ["모의고사", "중간종합", "체력증감"];
   let urlArr = ["/report/monthly", "/report/weekly", "/report/physical"];
   if (list === "notice") {
@@ -11,12 +14,22 @@ const NavToggleList = ({ list, job, state }) => {
     listArr = ["기본정보", "시간표"];
     urlArr = ["/mypage/main", "/mypage/schedule"];
   }
+  console.log(location.pathname);
+
   return (
     <ToggleList job={job} className="toggle_list" state={state} arr={listArr}>
       <div className="line"></div>
       {listArr.map((li, i) => {
         return (
-          <NavLink to={urlArr[i]} className="navlist" key={i}>
+          <NavLink
+            to={urlArr[i]}
+            className={isActive => {
+              return urlArr[i] === location.pathname
+                ? "navlist selected"
+                : "navlist";
+            }}
+            key={i}
+          >
             {li}
           </NavLink>
         );
@@ -48,6 +61,9 @@ const ToggleList = styled.div`
     color: #032164;
     :hover {
       color: #032164;
+      background-color: #f1f3ff;
+    }
+    &.selected {
       background-color: #ffcb60;
     }
   }

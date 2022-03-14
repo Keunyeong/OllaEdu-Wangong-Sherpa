@@ -106,7 +106,7 @@ const List = styled.div`
     &:hover {
       color: #032164;
 
-      background-color: #ffcb60;
+      background-color: #f1f3ff;
       div {
         svg {
           path {
