@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { NoticeContext } from "./Notice";
 import { useContext, useState, useEffect } from "react";
 
 const NoticeDetail = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const noticeList = useContext(NoticeContext);
   const [notice, setNotice] = useState(noticeList[0]);
@@ -14,6 +15,13 @@ const NoticeDetail = () => {
     <Notice
       params={params["*"] === "main" || params["*"] === "main/" ? true : false}
     >
+      <button
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        뒤로가기
+      </button>
       <h5>{notice.title}</h5>
       <span>
         <div className="author">{notice.author}</div>
@@ -39,6 +47,9 @@ const Notice = styled.div`
   overflow-y: scroll;
   color: #1b1b1b;
   &::-webkit-scrollbar {
+    display: none;
+  }
+  button {
     display: none;
   }
   h5 {
@@ -71,6 +82,9 @@ const Notice = styled.div`
     width: 96vw;
     height: 100vh;
     margin-right: 0;
+    button {
+      display: inline-block;
+    }
     span {
       div {
         margin-bottom: 0;
