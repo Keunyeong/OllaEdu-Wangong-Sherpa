@@ -106,17 +106,16 @@ export default TotalGraph;
 
 const GraphContainer = styled.div`
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column-reverse;
   align-items: center;
 `;
 
 const Index = styled.div`
   width: 57.55px;
-  font-size: 0.677em;
+  font-size: 0.75rem;
   font-weight: 500;
-  margin-left: 20.72px;
+  margin-top: 1.68rem;
 `;
-
 const Span = styled.span`
   display: flex;
   height: 20px;

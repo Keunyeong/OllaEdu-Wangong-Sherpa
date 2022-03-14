@@ -1,33 +1,69 @@
 import styled from "styled-components";
 import { NavLink, useParams } from "react-router-dom";
+import Light from "../../elements/Light";
 
 const NoticeBoard = ({ data }) => {
   const params = useParams();
   return (
-    <Ul
+    <NoticeList
       params={params["*"] === "main" || params["*"] === "main/" ? true : false}
     >
-      {data.map((el, i) => {
-        return (
-          <NavLink to={`main/${i}`} key={i}>
-            <Li>
-              <h5>{el.title}</h5>
-              <h6>{el.author}</h6>
-              <span>{el.date}</span>
-              <p>{el.text}</p>
-            </Li>
-          </NavLink>
-        );
-      })}
-    </Ul>
+      <H1>
+        <Light
+          top={0}
+          left={0}
+          highLightWidth={7.4}
+          highLightWidth2={7.4}
+          highLightTop={7.3}
+          highLightTop2={7.3}
+        />
+        공지사항
+      </H1>
+      <Ul>
+        {data.map((el, i) => {
+          return (
+            <NavLink to={`main/${i}`} key={i}>
+              <Li>
+                <h5>{el.title}</h5>
+                <h6>{el.author}</h6>
+                <span>{el.date}</span>
+                <p>{el.text}</p>
+              </Li>
+            </NavLink>
+          );
+        })}
+      </Ul>
+    </NoticeList>
   );
 };
 
 export default NoticeBoard;
 
+const NoticeList = styled.div`
+  @media screen and (max-width: 991px) {
+    display: ${props => (props.params ? "block" : "none")};
+  }
+
+  @media screen and (max-width: 667px) {
+    display: ${props => (props.params ? "block" : "none")};
+  }
+`;
+
+const H1 = styled.h1`
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 49px;
+  margin: 71px 0 27px 26px;
+
+  @media screen and (max-width: 667px) {
+    font-size: 24px;
+    margin: 64px 0 32px 35px;
+  }
+`;
+
 const Ul = styled.ul`
   width: ${(358 / 1512) * 100 + "vw"};
-  height: 100%;
+  height: ${(739 / 982) * 100 + "vh"};
   margin-left: 16px;
   margin-right: 16px;
   box-shadow: 0rem 0.5rem 1.375rem -0.375rem rgba(24, 39, 75, 0.12),
@@ -41,12 +77,10 @@ const Ul = styled.ul`
   flex-shrink: 0;
 
   @media screen and (max-width: 991px) {
-    display: ${props => (props.params ? "block" : "none")};
     width: 96vw;
   }
 
   @media screen and (max-width: 667px) {
-    display: ${props => (props.params ? "block" : "none")};
     width: 100vw;
     border-radius: 0;
     box-shadow: none;
