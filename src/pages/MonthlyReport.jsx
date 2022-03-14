@@ -43,10 +43,9 @@ const MonthlyReport = () => {
       } else {
         category = "체력측정 결과";
       }
-
       setGrade(응시내역[응시월[응시월.length - 1]][category]);
     }
-  }, [data]);
+  }, [data, location]);
 
   return (
     <Page>
@@ -57,13 +56,8 @@ const MonthlyReport = () => {
         </Title>
         {data.length !== 0 ? (
           <DropdownContainer>
-            <DropdownWrapper margin="5px">
-              <Dropdown arr={년} />
-              <DropdownLabel>년</DropdownLabel>
-            </DropdownWrapper>
             <DropdownWrapper margin="20px">
-              <Dropdown />
-              <DropdownLabel>월</DropdownLabel>
+              <Dropdown arr={응시월} />
             </DropdownWrapper>
             <ReactToPdf
               targetRef={pdfRef}
@@ -82,6 +76,8 @@ const MonthlyReport = () => {
         <Wrapper>
           <Swap1>
             <CardWrapper
+              width="100%"
+              height="100%"
               title="정규 모의고사 총점"
               children={
                 isLoading || !grade.length ? (
@@ -94,18 +90,22 @@ const MonthlyReport = () => {
           </Swap1>
           <Swap2>
             <CardWrapper
+              width="100%"
               title="과목별 추이"
               children={
                 isLoading || !grade.length ? (
                   <SkeletonBar />
                 ) : (
-                  <Sliders grade={grade} />
+                  <>
+                    <Sliders grade={grade} />
+                  </>
                 )
               }
             />
           </Swap2>
           <Swap3>
             <CardWrapper
+              width="100%"
               title="순위"
               children={
                 isLoading || !grade.length ? (
@@ -118,20 +118,7 @@ const MonthlyReport = () => {
           </Swap3>
           <Swap4>
             <CardWrapper
-              width="38.500em"
-              height="13.000em"
-              title="총점 월별 추이"
-              children={
-                isLoading || !grade.length ? (
-                  <SkeletonBar />
-                ) : (
-                  <MonthlyGraph grade={grade} />
-                )
-              }
-            />
-          </Swap4>
-          <Swap5>
-            <CardWrapper
+              width="100%"
               title="과목별 균형"
               children={
                 isLoading || !grade.length ? (
@@ -140,12 +127,11 @@ const MonthlyReport = () => {
                   <IrregularPieGraph grade={grade} />
                 )
               }
-            />
-          </Swap5>
-          <Swap6>
+            ></CardWrapper>
+          </Swap4>
+          <Swap5>
             <CardWrapper
               width="100%"
-              height="100%"
               padding="28px 26px"
               title="상세 점수 조회"
               children={
@@ -156,8 +142,8 @@ const MonthlyReport = () => {
                 )
               }
             />
-          </Swap6>
-          <Swap7>
+          </Swap5>
+          <Swap6>
             <CardWrapper
               width="100%"
               title="시험 총평/강사 코멘트"
@@ -188,7 +174,7 @@ const MonthlyReport = () => {
                 )
               }
             />
-          </Swap7>
+          </Swap6>
         </Wrapper>
       </Section>
     </Page>
@@ -199,23 +185,25 @@ export default MonthlyReport;
 
 const Page = styled.div`
   width: auto;
-  padding: 0 1.5em;
-  margin: 0 -1.5em;
   height: ${(915 / 982) * 100 + "vh"};
   position: relative;
   box-sizing: border-box;
 
+  @media (max-width: 991px) {
+    padding: 0 16px;
+  }
+
   @media (max-width: 667px) {
     width: 100%;
-    padding: 32px;
   }
 `;
 
 const Section = styled.section`
+  position: relative;
   width: 58.5em;
 
   @media (max-width: 991px) {
-    width: 38.5em;
+    width: auto;
   }
 
   @media (max-width: 667px) {
@@ -225,17 +213,10 @@ const Section = styled.section`
 
 const DropdownContainer = styled.div`
   position: absolute;
-  top: 72px;
-  right: 50px;
+  top: -10px;
+  right: 0;
   display: flex;
   align-items: center;
-`;
-
-const DropdownLabel = styled.span`
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 17px;
-  margin-left: 3px;
 `;
 
 const CloudIcon = styled.img`
@@ -269,14 +250,20 @@ const Wrapper = styled.div`
   column-gap: 1.5em;
   row-gap: 1.375em;
   grid-template-areas:
-    "swap1 swap2 swap3"
-    "swap4 swap4 swap5"
-    "swap6 swap6 swap6"
-    "swap7 swap7 swap7";
+    "swap1 swap1 swap1"
+    "swap2 swap3 swap4"
+    "swap5 swap5 swap5"
+    "swap6 swap6 swap6";
 
   @media (max-width: 991px) {
-    display: flex;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 1.063em;
+    grid-template-areas:
+      "swap1 swap1 swap1 swap1"
+      "swap4 swap4 swap3 swap3"
+      "swap2 swap2 swap2 swap2"
+      "swap5 swap5 swap5 swap5"
+      "swap6 swap6 swap6 swap6";
   }
 
   @media (max-width: 667px) {
@@ -314,7 +301,7 @@ const Swap2 = styled.div`
   grid-area: swap2;
 
   @media (max-width: 991px) {
-    order: 2;
+    order: 4;
   }
 
   @media (max-width: 667px) {
@@ -325,7 +312,7 @@ const Swap3 = styled.div`
   grid-area: swap3;
 
   @media (max-width: 991px) {
-    order: 3;
+    order: 2;
   }
 
   @media (max-width: 667px) {
@@ -334,12 +321,10 @@ const Swap3 = styled.div`
 `;
 
 const Swap4 = styled.div`
-  grid-column: 1/3;
   grid-area: swap4;
 
   @media (max-width: 991px) {
-    order: 5;
-    overflow: scroll;
+    order: 3;
   }
 
   @media (max-width: 667px) {
@@ -348,11 +333,10 @@ const Swap4 = styled.div`
 `;
 
 const Swap5 = styled.div`
-  grid-column: 3/4;
   grid-area: swap5;
 
   @media (max-width: 991px) {
-    order: 4;
+    order: 5;
   }
 
   @media (max-width: 667px) {
@@ -361,25 +345,11 @@ const Swap5 = styled.div`
 `;
 
 const Swap6 = styled.div`
-  grid-column: 1/4;
   grid-area: swap6;
 
   @media (max-width: 991px) {
     order: 6;
     flex: 1;
-  }
-
-  @media (max-width: 667px) {
-    width: 100%;
-  }
-`;
-
-const Swap7 = styled.div`
-  grid-column: 1/4;
-  grid-area: swap7;
-
-  @media (max-width: 991px) {
-    order: 7;
   }
 
   @media (max-width: 667px) {
