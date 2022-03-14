@@ -45,48 +45,15 @@ const ToggleList = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: ${props => {
-      if (props.job === "police") {
-        return "#58A2EB";
-      } else if (props.job === "fire") {
-        return "#F48065";
-      } else if (props.job === "admin") {
-        return "#13C383";
-      }
-    }};
+    color: #032164;
     :hover {
-      color: ${props => {
-        if (props.job === "police") {
-          return "#58A2EB";
-        } else if (props.job === "fire") {
-          return "#F48065";
-        } else if (props.job === "admin") {
-          return "#13C383";
-        }
-      }};
-      background-color: ${props => {
-        if (props.job === "police") {
-          return "#bcd6f0";
-        } else if (props.job === "fire") {
-          return "#f7d5cd";
-        } else if (props.job === "admin") {
-          return "#c7f7e6";
-        }
-      }};
+      color: #032164;
+      background-color: #ffcb60;
     }
   }
   .line {
     position: absolute;
-    border: 1px solid
-      ${props => {
-        if (props.job === "police") {
-          return "#bcd6f0";
-        } else if (props.job === "fire") {
-          return "#f7d5cd";
-        } else if (props.job === "admin") {
-          return "#c7f7e6";
-        }
-      }};
+    border: 1px solid #f7c00f;
     top: ${(1 / 12) * 100 + "%"};
     left: ${(14 / 126) * 100 + "%"};
     width: ${(1 / 1512) * 100 + "vw"};
