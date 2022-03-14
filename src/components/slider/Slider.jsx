@@ -37,6 +37,7 @@ export default function SliderTest({ grade }) {
             key={과목}
             activity={slideIndex === index + 1 ? "active-anim" : null}
           >
+            <Increase>12점 증가</Increase>
             <GrowthGraph
               scoreData={[
                 과목,
@@ -72,6 +73,21 @@ const ContainerSlider = styled.div`
   position: relative;
   overflow: hidden;
 `;
+
+const Increase = styled.div`
+  width: 25%;
+  height: 11%;
+  font-size: 0.875rem;
+  text-align: center;
+  line-height: 150%;
+  border: 1px solid #9498EF;
+  box-sizing: border-box;
+  border-radius: 93px;
+  position: absolute;
+  top: 3%;
+  left: 8%;
+`;
+
 const Slider = styled.div`
   width: 100%;
   height: 100%;
