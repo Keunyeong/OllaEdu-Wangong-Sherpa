@@ -7,7 +7,6 @@ import {
   Table,
   IrregularPieGraph,
   MonthlyGraph,
-  GrowthGraph,
   TotalGraph,
   SkeletonCircle,
   SkeletonBar
@@ -15,7 +14,7 @@ import {
 import { CardWrapper, Dropdown } from "../components";
 import { RankList } from "../containers";
 import Sliders from "../components/slider/Slider";
-import { Cloud } from "../assets";
+import { PDFIcon } from "../assets";
 
 const options = {};
 
@@ -52,14 +51,17 @@ const MonthlyReport = () => {
   return (
     <Page>
       <Section ref={pdfRef}>
-        <Title>{title} 분석</Title>
+        <Title>
+          {title}&nbsp;
+          <Span>분석</Span>
+        </Title>
         {data.length !== 0 ? (
           <DropdownContainer>
-            <DropdownWrapper>
+            <DropdownWrapper margin="5px">
               <Dropdown arr={년} />
               <DropdownLabel>년</DropdownLabel>
             </DropdownWrapper>
-            <DropdownWrapper>
+            <DropdownWrapper margin="20px">
               <Dropdown />
               <DropdownLabel>월</DropdownLabel>
             </DropdownWrapper>
@@ -71,7 +73,7 @@ const MonthlyReport = () => {
               scale={0.8}
             >
               {({ toPdf }) => (
-                <CloudIcon src={Cloud} alt="download pdf" onClick={toPdf} />
+                <CloudIcon src={PDFIcon} alt="download pdf" onClick={toPdf} />
               )}
             </ReactToPdf>
           </DropdownContainer>
@@ -150,12 +152,7 @@ const MonthlyReport = () => {
                 isLoading || !grade.length ? (
                   <SkeletonBar />
                 ) : (
-                  <CombineChart>
-                    <Table grade={grade} />
-                    <LittleChartContainer>
-                      <IrregularPieGraph grade={grade} />
-                    </LittleChartContainer>
-                  </CombineChart>
+                  <Table grade={grade} />
                 )
               }
             />
@@ -202,11 +199,10 @@ export default MonthlyReport;
 
 const Page = styled.div`
   width: auto;
-  padding: 1.5em;
-  margin: -1.5em;
+  padding: 0 1.5em;
+  margin: 0 -1.5em;
   height: ${(915 / 982) * 100 + "vh"};
   position: relative;
-  border-radius: 0.223em;
   box-sizing: border-box;
 
   @media (max-width: 667px) {
@@ -217,8 +213,6 @@ const Page = styled.div`
 
 const Section = styled.section`
   width: 58.5em;
-  position: relative;
-  padding: 4.5em 0 0 0;
 
   @media (max-width: 991px) {
     width: 38.5em;
@@ -231,19 +225,17 @@ const Section = styled.section`
 
 const DropdownContainer = styled.div`
   position: absolute;
-  top: 32px;
-  right: 0;
-  width: 22.188em;
+  top: 72px;
+  right: 50px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 `;
 
 const DropdownLabel = styled.span`
-  font-size: 1.125em;
+  font-size: 12px;
   font-weight: 500;
-  line-height: 1.625em;
-  margin-left: 0.213em;
+  line-height: 17px;
+  margin-left: 3px;
 `;
 
 const CloudIcon = styled.img`
@@ -252,14 +244,23 @@ const CloudIcon = styled.img`
 `;
 
 const DropdownWrapper = styled.div`
+  width: 72px;
   display: flex;
   align-items: center;
+  margin-right: ${props => props.margin};
 `;
 
 const Title = styled.h1`
-  font-size: 2.5em;
+  width: 234px;
+  font-size: 40px;
   font-weight: 700;
-  margin: 0 0 1em 0;
+  line-height: 50px;
+  margin: 77px 0 1em 11px;
+  border-bottom: 5px solid rgba(247, 192, 15, 0.4);
+`;
+
+const Span = styled.span`
+  font-weight: 400;
 `;
 
 const Wrapper = styled.div`
@@ -281,30 +282,6 @@ const Wrapper = styled.div`
   @media (max-width: 667px) {
     display: flex;
     flex-direction: column;
-  }
-`;
-
-const CombineChart = styled.div`
-  position: relative;
-  width: 100%;
-  display: flex;
-
-  flex-wrap: nowrap;
-
-  @media (max-width: 991px) {
-    justify-content: center;
-  }
-`;
-
-const LittleChartContainer = styled.div`
-  position: absolute;
-  top: -25px;
-  right: -20px;
-  width: 18.5em;
-  height: 13em;
-
-  @media (max-width: 991px) {
-    display: none;
   }
 `;
 

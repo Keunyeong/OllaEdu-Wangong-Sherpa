@@ -104,67 +104,27 @@ const List = styled.div`
       }
     }
     &:hover {
-      color: ${props => {
-        if (props.children[0].props.depart === "police") {
-          return "#58A2EB";
-        } else if (props.children[0].props.depart === "fire") {
-          return "#F48065";
-        } else if (props.children[0].props.depart === "admin") {
-          return "#13C383";
-        }
-      }};
-      border-radius: 10px 10px 0 0;
+      color: #032164;
 
-      background-color: ${props => {
-        if (props.children[0].props.depart === "police") {
-          return "#bcd6f0";
-        } else if (props.children[0].props.depart === "fire") {
-          return "#f7d5cd";
-        } else if (props.children[0].props.depart === "admin") {
-          return "#c7f7e6";
-        }
-      }};
+      background-color: #ffcb60;
       div {
         svg {
           path {
-            fill: ${props => {
-              if (props.children[0].props.depart === "police") {
-                return "#58A2EB";
-              } else if (props.children[0].props.depart === "fire") {
-                return "#F48065";
-              } else if (props.children[0].props.depart === "admin") {
-                return "#13C383";
-              }
-            }};
+            fill: #032164;
           }
         }
       }
     }
 
     &.selected {
-      color: ${props => {
-        if (props.children[0].props.depart === "police") {
-          return "#58A2EB";
-        } else if (props.children[0].props.depart === "fire") {
-          return "#F48065";
-        } else if (props.children[0].props.depart === "admin") {
-          return "#13C383";
-        }
-      }};
-      border-radius: 10px 10px 0 0;
-      background-color: #fff;
+      color: #032164;
+      box-sizing: border-box;
+      border-top: 4px solid #f7c00f;
+      background-color: #f5f5f5;
       div {
         svg {
           path {
-            fill: ${props => {
-              if (props.children[0].props.depart === "police") {
-                return "#58A2EB";
-              } else if (props.children[0].props.depart === "fire") {
-                return "#F48065";
-              } else if (props.children[0].props.depart === "admin") {
-                return "#13C383";
-              }
-            }};
+            fill: #032164;
           }
         }
       }

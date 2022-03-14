@@ -83,5 +83,5 @@ export const tryLogin = userData => async (dispatch, state, navigate) => {
     });
 
   dispatch(setLoading(false));
-  navigate("/report/monthly");
+  navigate("/rating");
 };
