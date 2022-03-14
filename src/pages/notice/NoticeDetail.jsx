@@ -28,6 +28,7 @@ const Notice = styled.div`
   font-family: Noto Sans KR;
   padding: 1.25rem;
   margin-right: 16px;
+  margin-top: 2.5rem;
   width: ${(1100 / 1512) * 100 + "vw"};
   height: 100%;
   box-shadow: 0rem 0.5rem 1.375rem -0.375rem rgba(24, 39, 75, 0.12),
@@ -71,6 +72,7 @@ const Notice = styled.div`
     display: ${props => (props.params ? "none" : "block")};
     width: 100vw;
     margin-right: 0;
+    margin-top: 0;
     border-radius: 0;
     box-shadow: none;
   }
