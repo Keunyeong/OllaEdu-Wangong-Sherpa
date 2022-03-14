@@ -52,18 +52,20 @@ export default RankList;
 
 const Container = styled.section`
   width: 15.813em;
-  height: 12em;
-  margin: 8px 0 0 0;
+  height: 100%;
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 `;
 
 const TitleConatiner = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  padding-bottom: 8px;
   border-bottom: 0.5px solid #d8d8d8;
-  padding-bottom: 10px;
   justify-content: space-between;
-  margin: 0 0 10px 0;
 `;
 
 const Absolute = styled.div`
@@ -79,7 +81,13 @@ const TyphoGraphy = styled.span`
   margin: ${props => props.margin};
 `;
 
-const Ul = styled.ul``;
+const Ul = styled.ul`
+  margin-top: 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+`;
 
 const Li = styled.li`
   position: relative;
@@ -87,8 +95,9 @@ const Li = styled.li`
   justify-content: space-between;
   align-items: center;
   white-space: nowrap;
+  padding: 2.5px 0;
 
   & + & {
-    margin-top: 20px;
+    margin-top: 15px;
   }
 `;
