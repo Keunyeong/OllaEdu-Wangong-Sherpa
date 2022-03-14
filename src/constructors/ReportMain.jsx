@@ -4,9 +4,6 @@ import MonthlyReport from "../pages/MonthlyReport";
 import Mypage from "../pages/Mypage";
 import { Notice } from "../pages/notice/Notice";
 import Rating from "../pages/Rating";
-import Light from "../elements/Light";
-import MainFooter from "../elements/MainFooter";
-
 
 const ReportMain = () => {
   return (
@@ -17,7 +14,6 @@ const ReportMain = () => {
         <Route path="notice/*" element={<Notice />} />
         <Route path="mypage/*" element={<Mypage />} />
       </Routes>
-      <MainFooter />
     </Main>
   );
 };

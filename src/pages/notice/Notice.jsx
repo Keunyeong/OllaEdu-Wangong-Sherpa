@@ -40,6 +40,8 @@ const Page = styled.div`
   height: 100%;
   position: relative;
   overflow-y: auto;
+  margin-top: 9.563rem;
+  margin-bottom: 2.5rem;
   -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar {
