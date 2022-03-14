@@ -63,7 +63,7 @@ const Wrapper = styled.div`
 
 const ListHeader = styled.div`
   position: relative;
-  width: 55px;
+  width: 82px;
   min-height: 20px;
   background-color: #fff;
   border-radius: 4px;
@@ -89,7 +89,7 @@ const ListConatiner = styled.ul`
   position: absolute;
   top: 27px;
   left: -1px;
-  width: 55px;
+  width: 82px;
   max-height: 12.25em;
   background-color: #fff;
   overflow-y: auto;
