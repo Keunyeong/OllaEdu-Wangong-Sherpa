@@ -15,6 +15,7 @@ import { CardWrapper, Dropdown } from "../components";
 import { RankList } from "../containers";
 import Sliders from "../components/slider/Slider";
 import { PDFIcon } from "../assets";
+import Light from "../elements/Light";
 
 const options = {};
 
@@ -51,6 +52,14 @@ const MonthlyReport = () => {
   return (
     <Page>
       <Section ref={pdfRef}>
+        <Light
+          top={0}
+          left={3}
+          highLightWidth={15.8}
+          highLightWidth2={16.8}
+          highLightTop={8}
+          highLightTop2={10.7}
+        />
         <Title>
           {title}&nbsp;
           <Span>분석</Span>
@@ -256,7 +265,6 @@ const Title = styled.h1`
   font-weight: 700;
   line-height: 50px;
   margin: 77px 0 1em 11px;
-  border-bottom: 5px solid rgba(247, 192, 15, 0.4);
 `;
 
 const Span = styled.span`
