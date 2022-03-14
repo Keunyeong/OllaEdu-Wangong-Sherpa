@@ -63,7 +63,7 @@ const H1 = styled.h1`
 
 const Ul = styled.ul`
   width: ${(358 / 1512) * 100 + "vw"};
-  height: 100%;
+  height: ${(739 / 982) * 100 + "vh"};
   margin-left: 16px;
   margin-right: 16px;
   box-shadow: 0rem 0.5rem 1.375rem -0.375rem rgba(24, 39, 75, 0.12),

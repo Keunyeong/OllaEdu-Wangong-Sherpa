@@ -39,7 +39,6 @@ const Page = styled.div`
   display: flex;
   justify-content: center;
   width: 100vw;
-  height: 100%;
   position: relative;
   overflow-y: auto;
   margin-bottom: 2.5rem;
