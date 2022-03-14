@@ -1,8 +1,15 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-export default function Light({ top, left, highLightWidth, highLightTop }) {
-  const [light, setLight] = useState(false);
+export default function Light({
+  top,
+  left,
+  highLightWidth,
+  highLightWidth2,
+  highLightTop,
+  highLightTop2
+}) {
+  const [light, setLight] = useState(true);
   return (
     <>
       <Lamp
@@ -29,7 +36,12 @@ export default function Light({ top, left, highLightWidth, highLightTop }) {
           />
         )}
       </Lamp>
-      <HighLigth top={highLightTop} width={highLightWidth} />
+      <HighLigth
+        top={highLightTop}
+        top2={highLightTop2}
+        width={highLightWidth}
+        width2={highLightWidth2}
+      />
     </>
   );
 }
@@ -41,13 +53,13 @@ const Lamp = styled.div`
   cursor: pointer;
   z-index: 5;
   img {
-    height: 4.5rem;
+    height: 7rem;
   }
   @media screen and (max-width: 668px) {
     top: ${props => props.top - 0.1 + "rem"};
     left: ${props => props.left + "rem"};
     img {
-      height: 4rem;
+      height: 6rem;
     }
   }
 `;
@@ -59,7 +71,7 @@ const HighLigth = styled.div`
   border-radius: 3px;
   top: ${props => props.top - 0.625 + "rem"};
   @media screen and (max-width: 668px) {
-    width: ${props => props.width - 1.3 + "rem"};
-    top: ${props => props.top - 1.3 + "rem"};
+    width: ${props => props.width2 - 1.3 + "rem"};
+    top: ${props => props.top2 - 1.3 + "rem"};
   }
 `;
