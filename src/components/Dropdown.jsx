@@ -28,7 +28,7 @@ const Dropdown = ({ arr = month }) => {
           setToggle(!toggle);
         }}
       >
-        <ListTitle margin="30px">{arr[arr.length - 1]}</ListTitle>
+        <ListTitle margin="3px">{arr[arr.length - 1]}</ListTitle>
         {toggle ? (
           <Icon src={Dropdown_up} alt="dropdown-up" />
         ) : (
@@ -43,7 +43,7 @@ const Dropdown = ({ arr = month }) => {
                   console.log(e.target.innerText);
                 }}
               >
-                <ListTitle margin="22px">{yr}</ListTitle>
+                <ListTitle>{yr}</ListTitle>
               </List>
             ))}
           </ListConatiner>
@@ -63,22 +63,24 @@ const Wrapper = styled.div`
 
 const ListHeader = styled.div`
   position: relative;
-  width: 78px;
+  width: 55px;
   min-height: 20px;
   background-color: #fff;
   border-radius: 4px;
   border: 1px solid #9498ef;
+  text-align: center;
 `;
 
 const ListTitle = styled.span`
+  text-align: center;
   display: inline-block;
-  margin-left: ${props => props.margin};
+  margin-right: ${props => props.margin};
 `;
 
 const Icon = styled.img`
   position: absolute;
   top: 8px;
-  right: 4px;
+  right: 3px;
   width: 9px;
   height: 5px;
 `;
@@ -87,7 +89,7 @@ const ListConatiner = styled.ul`
   position: absolute;
   top: 27px;
   left: -1px;
-  width: 78px;
+  width: 55px;
   max-height: 12.25em;
   background-color: #fff;
   overflow-y: auto;
@@ -110,6 +112,7 @@ const ListConatiner = styled.ul`
 
 const List = styled.li`
   transform: scaleX(-1); //Flips the child back to normal
+
   &:hover {
     background-color: #dddefd;
   }

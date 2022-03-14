@@ -3,13 +3,16 @@ import styled from "styled-components";
 import MonthlyReport from "../pages/MonthlyReport";
 import Mypage from "../pages/Mypage";
 import { Notice } from "../pages/notice/Notice";
+import Rating from "../pages/Rating";
 import Light from "../elements/Light";
 import MainFooter from "../elements/MainFooter";
+
 
 const ReportMain = () => {
   return (
     <Main>
       <Routes>
+        <Route path="rating" element={<Rating />} />
         <Route path="report/*" element={<MonthlyReport />} />
         <Route path="notice/*" element={<Notice />} />
         <Route path="mypage/*" element={<Mypage />} />
