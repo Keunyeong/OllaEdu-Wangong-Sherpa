@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import ReactStars from "react-rating-stars-component";
-
+import { FilledStar, UnfilledStar } from "../assets";
+import { useNavigate } from "react-router-dom";
 const title = [
   { title: "경찰학", teacher: "김만일" },
   { title: "형법", teacher: "김만이" },
@@ -9,21 +10,30 @@ const title = [
 ];
 
 const Rating = () => {
+  const [star, setStar] = useState([]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (star.length === 3) {
+      navigate("/report/monthly");
+    }
+  }, [star]);
   return (
     <Page>
+      <Question>모의고사 난이도는 어땠나요?</Question>
+      <SubText>성적 열람을 위해 난이도 평가를 먼저 진행해주세요.</SubText>
       <CardContainer>
         {title.map(list => (
           <Card key={list.title}>
             <Title>{list.title}</Title>
             <SubTitle>{list.teacher}</SubTitle>
+
             <ReactStars
               size={50}
               onChange={newRating => {
-                console.log(newRating);
+                setStar([...star, newRating]);
               }}
-              emptyIcon={<i className="far fa-star" />}
-              halfIcon={<i className="fa fa-star-half-alt" />}
-              filledIcon={<i className="fa fa-star" />}
+              emptyIcon={<Icon src={UnfilledStar} />}
+              filledIcon={<Icon src={FilledStar} />}
             />
           </Card>
         ))}
@@ -35,9 +45,7 @@ const Rating = () => {
 export default Rating;
 
 const Page = styled.section`
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
   height: 100vh;
   background-color: rgba(77, 77, 77, 0.62);
@@ -45,14 +53,25 @@ const Page = styled.section`
   justify-content: center;
 `;
 
+const Icon = styled.img`
+  width: 48p;
+  height: 48px;
+`;
+
 const Card = styled.div`
-  width: 384px;
+  width: ${(384 / 1512) * 100}vw;
+  min-width: 260px;
   height: 194px;
   border-radius: 20px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-shrink: 0;
+
+  @media (max-width: 991px) {
+    width: 384px;
+  }
 `;
 
 const Title = styled.h3`
@@ -71,10 +90,41 @@ const SubTitle = styled.div`
 
 const CardContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
   gap: 24px;
   margin: 356px auto 0 auto;
   justify-content: center;
+
+  @media (max-width: 991px) {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 `;
 
-const Question = styled.h2``;
+const Question = styled.h2`
+  position: absolute;
+  top: 174px;
+  left: ${(189 / 1512) * 100}vw;
+  font-weight: 700;
+  font-size: 48px;
+  font-style: normal;
+  line-height: 24px;
+  color: #fff;
+  white-space: nowrap;
+
+  @media (max-width: 667px) {
+    font-size: 32px;
+  }
+`;
+
+const SubText = styled.p`
+  position: absolute;
+  top: 243px;
+  left: ${(189 / 1512) * 100}vw;
+  font-family: Noto Sans KR;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  color: #fff;
+  white-space: nowrap;
+`;
