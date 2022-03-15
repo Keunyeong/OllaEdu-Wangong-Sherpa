@@ -34,8 +34,8 @@ const TotalGraph = ({ width = 296, grade }) => {
       .startAngle(0)
       .cornerRadius(50);
 
-    console.log(d3.select(arcChart.current).selectAll("svg"));
     d3.select(arcChart.current).selectAll("svg").remove();
+
     const svg = d3
       .select(arcChart.current)
       .append("svg")
