@@ -10,7 +10,9 @@ export const Notice = () => {
   const [noticeList, setNoticeList] = useState([{}]);
 
   const getNotice = async () => {
-    const response = await fetch(`../../../src/assets/notice/noticeList.json`)
+    const response = await fetch(
+      "https://gist.githubusercontent.com/himchan94/671b7807f4386fa8a8cc6d2b4209011d/raw/9ca8f59489f40ca6f1d31b2204421fa30d94b23d/notice"
+    )
       .then(res => res.json())
       .then(res => res.items)
       .then(res => setNoticeList(res));
