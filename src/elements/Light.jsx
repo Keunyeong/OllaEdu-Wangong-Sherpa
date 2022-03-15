@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-
+import { light_off, light_on } from "../assets/index";
 export default function Light({
   top,
   left,
@@ -21,19 +21,9 @@ export default function Light({
         left={left}
       >
         {light ? (
-          <img
-            src="../src/assets/light_on.svg"
-            alt="LAPM_ON"
-            top={top}
-            left={left}
-          />
+          <img src={light_on} alt="LAPM_ON" top={top} left={left} />
         ) : (
-          <img
-            src="../src/assets/light_off.svg"
-            alt="LAPM_OFF"
-            top={top}
-            left={left}
-          />
+          <img src={light_off} alt="LAPM_OFF" top={top} left={left} />
         )}
       </Lamp>
       <HighLigth

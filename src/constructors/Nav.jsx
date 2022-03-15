@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import { NavLogo } from "../assets";
+import { NavLogo, toggle } from "../assets";
 import MenuList from "../elements/MenuList";
 import NavToggle from "../elements/NavToggle";
 
@@ -46,7 +46,7 @@ const Nav = props => {
         <div className="job">{jobLogo}</div>
       </div>
       <div className="toggle" onClick={toggleEvent} ref={el}>
-        <img src="../../src/assets/nav/toggle.svg" alt="TOGGLE" />
+        <img src={toggle} alt="TOGGLE" />
         <NavToggle cn={menuToggle} />
       </div>
       <div className="menu">
