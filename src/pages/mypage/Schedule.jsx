@@ -22,6 +22,7 @@ export default function Schedule() {
 const Main = styled.div`
   border: 1px solid red;
   width: 50vw;
+  margin-bottom: 80px;
   img {
     width: 100%;
     object-fit: cover;

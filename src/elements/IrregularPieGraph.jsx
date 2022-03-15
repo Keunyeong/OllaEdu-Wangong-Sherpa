@@ -6,11 +6,13 @@ const color = "#F48065";
 const IrregularPieChart = ({ width = 296, height = 208, grade }) => {
   const chart = useRef();
 
-  const data = grade.slice(1, grade.length).reduce((acc, cur) => {
-    const { 과목, 당월점수 } = cur;
-    acc.push({ subject: 과목, score: Number(당월점수) });
-    return acc;
-  }, []);
+  const data = grade
+    .filter(gr => gr.과목 !== "TOTAL")
+    .reduce((acc, cur) => {
+      const { 과목, 당월점수 } = cur;
+      acc.push({ subject: 과목, score: Number(당월점수) });
+      return acc;
+    }, []);
 
   useEffect(() => {
     data.sort((a, b) => b.score - a.score);
@@ -18,6 +20,8 @@ const IrregularPieChart = ({ width = 296, height = 208, grade }) => {
     const pieData = d3.pie().value(1);
     const scale = d3.scaleLinear().domain([0, 100]).range([0, 92]);
     const arc = d3.arc().innerRadius(0);
+
+    d3.select(chart.current).selectAll("*").remove();
 
     const svg = d3
       .select(chart.current)
@@ -72,7 +76,7 @@ const IrregularPieChart = ({ width = 296, height = 208, grade }) => {
         }
         return d.data.subject;
       });
-  }, []);
+  }, [data]);
 
   return (
     <svg

@@ -63,8 +63,6 @@ export const loadData = () => async (dispatch, state) => {
   }, {});
 
   const 년 = Object.keys(년월);
-  console.log(응시내역);
-  console.log(응시월);
   dispatch(setData({ 응시월, 응시내역, 년월, 년 }));
   dispatch(setLoading(false));
 };
