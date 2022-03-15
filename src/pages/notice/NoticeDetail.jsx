@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useParams, useNavigate } from "react-router-dom";
 import { NoticeContext } from "./Notice";
 import { useContext, useState, useEffect } from "react";
+import { notice_arrow } from "../../assets";
 
 const NoticeDetail = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const NoticeDetail = () => {
           navigate(-1);
         }}
       >
-        뒤로가기
+        <img src={notice_arrow} alt="arrow_left" />
       </button>
       <h5>{notice.title}</h5>
       <span>
@@ -51,6 +52,10 @@ const Notice = styled.div`
   }
   button {
     display: none;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    margin-bottom: 0.625rem;
   }
   h5 {
     font-size: 1.5rem;
