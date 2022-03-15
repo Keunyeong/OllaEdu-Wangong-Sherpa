@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { notice_icon, report_icon, mypage_icon } from "../assets";
 
 export default function NavToggle({ cn }) {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ export default function NavToggle({ cn }) {
     <Toggle className={cn}>
       <div className="toggle_list">
         <div className="title">
-          <img src="../../src/assets/notice_icon.svg" alt="NOTICE_ICON" />
+          <img src={notice_icon} alt="NOTICE_ICON" />
           공지사항
         </div>
         <div
@@ -36,7 +36,7 @@ export default function NavToggle({ cn }) {
       </div>
       <div className="toggle_list">
         <div className="title">
-          <img src="../../src/assets/mypage_icon.svg" alt="MYPAGE_ICON" />
+          <img src={mypage_icon} alt="MYPAGE_ICON" />
           마이페이지
         </div>
         <div
@@ -63,7 +63,7 @@ export default function NavToggle({ cn }) {
       </div>
       <div className="toggle_list">
         <div className="title">
-          <img src="../../src/assets/report_icon.svg" alt="REPORT_ICON" />
+          <img src={report_icon} alt="REPORT_ICON" />
           성적현황
         </div>
         <div

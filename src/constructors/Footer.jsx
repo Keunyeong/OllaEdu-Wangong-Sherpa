@@ -1,10 +1,17 @@
 import styled from "styled-components";
+import {
+  footer_logo,
+  adress_icon,
+  mail_icon,
+  phone_icon,
+  fax_icon
+} from "../assets";
 
 export default function Footer() {
   return (
     <Foot>
       <div className="footer_header">
-        <img src="../src/assets/footer_logo.svg" alt="LOGO" />
+        <img src={footer_logo} alt="LOGO" />
         <span>make your dream come true!</span>
       </div>
       <div className="footer_main">
@@ -20,19 +27,19 @@ export default function Footer() {
         </div>
         <div className="right">
           <div className="adress">
-            <img src="../src/assets/adress_icon.svg" alt="ADRESS" />
+            <img src={adress_icon} alt="ADRESS" />
             경상북도 안동시 임하면 건동길 34{" "}
           </div>
           <div className="mail">
-            <img src="../src/assets/mail_icon.svg" alt="MAIL" />
+            <img src={mail_icon} alt="MAIL" />
             support@eduhashglobal.com{" "}
           </div>
           <div className="phone">
-            <img src="../src/assets/phone_icon.svg" alt="PHONE" />
+            <img src={phone_icon} alt="PHONE" />
             054-823-9112
           </div>
           <div className="fax">
-            <img src="../src/assets/fax_icon.svg" alt="FAX" />
+            <img src={fax_icon} alt="FAX" />
             054-823-7781
           </div>
         </div>

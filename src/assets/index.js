@@ -1,6 +1,4 @@
 export { default as NavLogo } from "./nav/NavLogo.png";
-export { default as policeman } from "./nav/policeman.png";
-export { default as police } from "./nav/police.png";
 export { default as arrow_down } from "./nav/arrow_down.png";
 export { default as arrow_down_police } from "./nav/arrow_down_police.png";
 export { default as monthly_reportIcon } from "./nav/monthly_reportIcon.png";
@@ -22,4 +20,14 @@ export { default as PDFIcon } from "./PDFIcon.svg";
 export { default as notice_arrow } from "./notice_arrow.svg";
 export { default as Runner } from "./runner.svg";
 export { default as Popper } from "./popper.svg";
-
+export { default as light_off } from "./light_off.svg";
+export { default as light_on } from "./light_on.svg";
+export { default as fax_icon } from "./fax_icon.svg";
+export { default as adress_icon } from "./adress_icon.svg";
+export { default as mail_icon } from "./mail_icon.svg";
+export { default as phone_icon } from "./phone_icon.svg";
+export { default as report_icon } from "./report_icon.svg";
+export { default as notice_icon } from "./notice_icon.svg";
+export { default as mypage_icon } from "./mypage_icon.svg";
+export { default as footer_logo } from "./footer_logo.svg";
+export { default as toggle } from "./toggle.svg";
