@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import BtnSlider from "./BtnSlider";
 import { GrowthGraph } from "../../elements";
@@ -8,6 +8,7 @@ import ArrowDown from "../../assets/arrow_Down_MD.svg";
 export default function SliderTest({ grade }) {
   const [slideIndex, setSlideIndex] = useState(1);
   const slice = grade.slice(1, grade.length);
+  const [screenSize, setScreenSize] = useState();
 
   const nextSlide = () => {
     if (slideIndex !== slice.length) {
@@ -29,50 +30,95 @@ export default function SliderTest({ grade }) {
     setSlideIndex(index);
   };
 
-  return (
-    <ContainerSlider>
-      {slice.map((obj, index) => {
-        const { 전월점수, 당월점수, 과목 } = obj;
+  const windowSize = () => {
+    setScreenSize(window.innerWidth)
+  }
 
-        const growth = Math.round(Number(당월점수 - 전월점수));
+  
+  useEffect(() => {
+    window.addEventListener("resize",windowSize)
+    console.log(screenSize)
+  },[screenSize])
 
-        return (
-          <Slider
-            key={과목}
-            activity={slideIndex === index + 1 ? "active-anim" : null}
-          >
-            <Increase>
-              <span>{growth<0 ? Math.abs(growth) : growth}점 {growth<0 ? "감소" : "증가"}</span>
-              <img src={growth<0 ? ArrowDown : ArrowUp} alt="" />
-            </Increase>
-            <GrowthGraph
-              scoreData={[
-                과목,
-                Math.round(Number(전월점수)),
-                Math.round(Number(당월점수))
-              ]}
-              title={과목}
-              lastMonth={obj.lastMonth}
-              thisMonth={obj.thisMonth}
-            />
-          </Slider>
-        );
-      })}
+  if(screenSize>990){
+    return (
+      <ContainerSlider>
+        {slice.map((obj, index) => {
+          const { 전월점수, 당월점수, 과목 } = obj;
 
-      <BtnSlider moveSlide={nextSlide} direction={"next"} />
-      <BtnSlider moveSlide={prevSlide} direction={"prev"} />
+          const growth = Math.round(Number(당월점수 - 전월점수));
 
-      <ContainerDots>
-        {Array.from({ length: slice.length }).map((item, index) => (
-          <Dot
-            key={index}
-            onClick={() => moveDot(index + 1)}
-            activity={slideIndex === index + 1 ? "active" : null}
-          ></Dot>
-        ))}
-      </ContainerDots>
-    </ContainerSlider>
-  );
+          return (
+            <Slider
+              key={과목}
+              activity={slideIndex === index + 1 ? "active-anim" : null}
+            >
+              <Increase>
+                <span>{growth<0 ? Math.abs(growth) : growth}점 {growth<0 ? "감소" : "증가"}</span>
+                <img src={growth<0 ? ArrowDown : ArrowUp} alt="" />
+              </Increase>
+              <GrowthGraph
+                scoreData={[
+                  과목,
+                  Math.round(Number(전월점수)),
+                  Math.round(Number(당월점수))
+                ]}
+                title={과목}
+                lastMonth={obj.lastMonth}
+                thisMonth={obj.thisMonth}
+              />
+            </Slider>
+          );
+        })}
+
+        <BtnSlider moveSlide={nextSlide} direction={"next"} />
+        <BtnSlider moveSlide={prevSlide} direction={"prev"} />
+
+        <ContainerDots>
+          {Array.from({ length: slice.length }).map((item, index) => (
+            <Dot
+              key={index}
+              onClick={() => moveDot(index + 1)}
+              activity={slideIndex === index + 1 ? "active" : null}
+            ></Dot>
+          ))}
+        </ContainerDots>
+      </ContainerSlider>
+    );
+  } else {
+    return (
+      <ContainerSlider>
+        <TouchSlideBox>
+          {slice.map((obj, index) => {
+            const { 전월점수, 당월점수, 과목 } = obj;
+
+            return (
+              <TouchSlide
+                key={과목}
+              >
+                <GrowthGraph
+                  scoreData={[
+                    과목,
+                    Math.round(Number(전월점수)),
+                    Math.round(Number(당월점수))
+                  ]}
+                  title={과목}
+                  lastMonth={obj.lastMonth}
+                  thisMonth={obj.thisMonth}
+                />
+              </TouchSlide>
+            );
+          })}
+        </TouchSlideBox>
+
+        <BtnSlider direction={"next"} />
+
+        
+      </ContainerSlider>
+    );
+  }
+
+  
 }
 const ContainerSlider = styled.div`
   width: 100%;
@@ -118,6 +164,14 @@ const Slider = styled.div`
     left: 29%;
   }
 `;
+const TouchSlideBox = styled.div`
+  display: flex;
+`;
+const TouchSlide = styled.div`
+  width: 30%;
+  height: 100%;
+`;
+
 const ContainerDots = styled.div`
   position: absolute;
   bottom: 10px;
