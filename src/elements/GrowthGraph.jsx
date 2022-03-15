@@ -9,14 +9,14 @@ const GrowthGraph = ({ scoreData, title, screen }) => {
   const width = 130;
   const height = 110;
 
-  if(screen) {
+  if (screen) {
     useEffect(() => {
       const svg = d3
         .select(score.current)
         .append("svg")
         .attr("width", width)
         .attr("height", height);
-  
+
       svg
         .selectAll("rect")
         .data(data)
@@ -50,7 +50,7 @@ const GrowthGraph = ({ scoreData, title, screen }) => {
         .attr("x", function (d, i) {
           return i * 40 - 4;
         })
-        .attr("y", (d,i) => {
+        .attr("y", (d, i) => {
           if (i === 0) {
             return null;
           } else {
@@ -65,20 +65,20 @@ const GrowthGraph = ({ scoreData, title, screen }) => {
             return d;
           }
         });
-  
+
       const scoreTexts = d3
-      .select(scoreText.current)
-      .append("svg")
-      .attr("width", width)
-      .attr("height", 40);
-  
+        .select(scoreText.current)
+        .append("svg")
+        .attr("width", width)
+        .attr("height", 40);
+
       scoreTexts
         .selectAll("text")
         .data(data)
         .enter()
         .append("text")
         .attr("x", function (d, i) {
-          return 45 ;
+          return 45;
         })
         .attr("y", d => {
           return 25;
@@ -93,7 +93,7 @@ const GrowthGraph = ({ scoreData, title, screen }) => {
           }
         });
     }, [data]);
-  
+
     return (
       <RankCard>
         <TouchSlideChartBox>
@@ -109,7 +109,7 @@ const GrowthGraph = ({ scoreData, title, screen }) => {
         .append("svg")
         .attr("width", width)
         .attr("height", height);
-  
+
       svg
         .selectAll("rect")
         .data(data)
@@ -134,13 +134,13 @@ const GrowthGraph = ({ scoreData, title, screen }) => {
             return "#FFCB60";
           }
         });
-  
+
       const scoreTexts = d3
         .select(scoreText.current)
         .append("svg")
         .attr("width", width)
         .attr("height", 20);
-  
+
       scoreTexts
         .selectAll("text")
         .data(data)
@@ -161,14 +161,14 @@ const GrowthGraph = ({ scoreData, title, screen }) => {
           }
         });
     }, [data]);
-  
+
     return (
       <RankCard>
         <ChartBox>
           <Chart ref={score}></Chart>
           <Text ref={scoreText}></Text>
         </ChartBox>
-  
+
         <SpanBox>
           <SubjectSpan>{title}</SubjectSpan>
           <Span>
@@ -187,8 +187,6 @@ const GrowthGraph = ({ scoreData, title, screen }) => {
       </RankCard>
     );
   }
-
-  
 };
 
 const RankCard = styled.div`
@@ -202,7 +200,7 @@ const RankCard = styled.div`
   }
 `;
 const TouchSlideChartBox = styled.div`
-margin: 0;
+  margin: 0;
 `;
 
 const ChartBox = styled.div`
