@@ -55,6 +55,10 @@ const Page = styled.section`
   display: flex;
   justify-content: center;
   padding-bottom: 508px;
+
+  @media (max-width: 667px) {
+    padding-bottom: 136px;
+  }
 `;
 
 const Icon = styled.img`
@@ -118,10 +122,6 @@ const Question = styled.h2`
   @media (max-width: 667px) {
     font-size: 32px;
   }
-
-  @media (max-width: 667px) {
-    font-size: 24px;
-  }
 `;
 
 const SubText = styled.p`
@@ -139,9 +139,6 @@ const SubText = styled.p`
   @media (max-width: 667px) {
     display: flex;
     white-space: normal;
-  }
-
-  @media (max-width: 667px) {
     font-size: 16px;
   }
 `;
