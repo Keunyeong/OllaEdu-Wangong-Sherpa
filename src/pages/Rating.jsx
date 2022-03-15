@@ -51,6 +51,7 @@ const Page = styled.section`
   background-color: rgba(77, 77, 77, 0.62);
   display: flex;
   justify-content: center;
+  padding-bottom: 508px;
 `;
 
 const Icon = styled.img`
@@ -114,6 +115,10 @@ const Question = styled.h2`
   @media (max-width: 667px) {
     font-size: 32px;
   }
+
+  @media (max-width: 667px) {
+    font-size: 24px;
+  }
 `;
 
 const SubText = styled.p`
@@ -127,4 +132,13 @@ const SubText = styled.p`
   line-height: 24px;
   color: #fff;
   white-space: nowrap;
+
+  @media (max-width: 667px) {
+    display: flex;
+    white-space: normal;
+  }
+
+  @media (max-width: 667px) {
+    font-size: 16px;
+  }
 `;
