@@ -54,6 +54,7 @@ const Info = styled.div`
   font-size: 1rem;
   line-height: 1.448rem;
   color: #6a6a6a;
+  margin-bottom: 80px;
 
   & > div {
     display: flex;

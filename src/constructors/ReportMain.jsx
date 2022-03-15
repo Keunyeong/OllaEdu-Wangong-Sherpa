@@ -4,6 +4,7 @@ import MonthlyReport from "../pages/MonthlyReport";
 import Mypage from "../pages/Mypage";
 import { Notice } from "../pages/notice/Notice";
 import Rating from "../pages/Rating";
+import Footer from "./Footer";
 
 const ReportMain = () => {
   return (
@@ -14,6 +15,7 @@ const ReportMain = () => {
         <Route path="notice/*" element={<Notice />} />
         <Route path="mypage/*" element={<Mypage />} />
       </Routes>
+      <Footer />
     </Main>
   );
 };
@@ -26,8 +28,6 @@ const Main = styled.main`
   background-color: #f5f5f5;
   overflow: scroll;
   position: relative;
-  height: 100%;
-  padding-bottom: 300px;
 `;
 
 export default ReportMain;
