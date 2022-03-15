@@ -19,7 +19,10 @@ export default function Schedule() {
         subtitle="시험 및 이벤트 일정을 확인하세요."
       >
         <Main>
-          <img src="../src/assets/schedule.png" alt="" />
+          <img
+            src="https://user-images.githubusercontent.com/71649055/158407166-f46da682-5e2c-4168-b7ad-cd43f7ae3675.png"
+            alt="schedule"
+          />
         </Main>
       </MypageSection>
     </>
