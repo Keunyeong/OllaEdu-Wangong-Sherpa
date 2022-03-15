@@ -15,7 +15,8 @@ import {
   IrregularPieGraph,
   TotalGraph,
   SkeletonCircle,
-  SkeletonBar
+  SkeletonBar,
+  ScoreTitle
 } from "../elements";
 import { CardWrapper, Dropdown } from "../components";
 import { RankList, ScoreList } from "../containers";
@@ -119,15 +120,19 @@ const MonthlyReport = () => {
                   key={idx}
                   width="100%"
                   height="100%"
-                  title={`강병석 님의 ${year}년 ${day}월 모의고사 결과`}
+                  title={`강병석 님의 ${year}년 ${day}월 ${title} 결과`}
                   children={
                     isLoading || !grade.length ? (
                       <SkeletonCircle />
                     ) : (
                       <>
                         <ResultWrapper>
-                          <TotalGraph grade={grade[0]} />
-                          <ScoreList />
+                          <LeftWrapper>
+                            <ScoreTitle grade={grade} />
+
+                            <TotalGraph grade={grade} />
+                          </LeftWrapper>
+                          <ScoreList grade={grade} />
                           <RunnerIcon src={Runner} />
                         </ResultWrapper>
                       </>
@@ -236,10 +241,9 @@ export default MonthlyReport;
 const Page = styled.div`
   position: relative;
   width: auto;
-  height: ${(915 / 982) * 100 + "vh"};
   position: relative;
   box-sizing: border-box;
-  background-color: #f5f5f5;
+  margin-bottom: 85px;
 
   @media (max-width: 991px) {
     padding: 0 16px;
@@ -283,10 +287,20 @@ const CloudIcon = styled.img`
 const ResultWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 332px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   overflow: hidden;
+  padding: 33px 0 30px 0;
+
+  @media (max-width: 667px) {
+    flex-direction: column;
+  }
+`;
+
+const LeftWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const RunnerIcon = styled.img`
