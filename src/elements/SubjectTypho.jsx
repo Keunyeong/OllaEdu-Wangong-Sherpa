@@ -1,11 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 
-const SubjectTypho = () => {
+const SubjectTypho = ({ border, grade, oneside }) => {
+  if (border) {
+    return (
+      <>
+        <Border />
+        <Container>
+          <Title>{grade["과목"]}</Title>
+          <Score>{grade["당월점수"]}</Score>점
+        </Container>
+        {oneside ? null : <Border />}
+      </>
+    );
+  }
+
   return (
     <Container>
-      <Title>소방관계법규</Title>
-      <Score>87</Score>점
+      <Title>{grade["과목"]}</Title>
+      <Score>{grade["당월점수"]}</Score>점
     </Container>
   );
 };
@@ -33,4 +46,14 @@ const Score = styled.span`
   display: inline-block;
   font-size: 36px;
   font-weight: 700;
+`;
+
+const Border = styled.div`
+  height: 76px;
+  border-right: 1px solid #c8c8c8;
+  margin: 0 24px;
+
+  @media (max-width: 667px) {
+    display: none;
+  }
 `;

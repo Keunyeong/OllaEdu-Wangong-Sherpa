@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { Popper } from "../assets";
 
-const Tag = () => {
+const Tag = ({ percent }) => {
+  const slice = percent.split(".")[0];
   return (
     <Container>
-      목표달성률 120%&nbsp;<b>마라톤의 승리자</b>
+      목표달성률 {slice}%&nbsp;<b>마라톤의 승리자</b>
       <Image src={Popper} alt="popper icon" />
     </Container>
   );
