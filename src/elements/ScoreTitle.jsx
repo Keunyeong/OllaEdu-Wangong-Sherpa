@@ -20,7 +20,7 @@ const ScoreContainer = styled.div`
   display: flex;
   width: 125px;
   height: 33px;
-  margin-bottom: 17px;
+  margin-bottom: 27px;
   font-size: 20px;
   font-weight: 300;
   align-items: center;

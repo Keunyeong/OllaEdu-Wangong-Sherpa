@@ -82,7 +82,7 @@ const Report = () => {
         highLightWidth={15.8}
         highLightWidth2={16.8}
         highLightTop={8}
-        highLightTop2={10.7}
+        highLightTop2={9}
       />
       <Section ref={pdfRef}>
         <Title>
