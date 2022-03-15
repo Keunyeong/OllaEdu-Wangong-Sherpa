@@ -8,7 +8,7 @@ import ArrowDown from "../../assets/arrow_Down_MD.svg";
 export default function SliderTest({ grade }) {
   const [slideIndex, setSlideIndex] = useState(1);
   const slice = grade.slice(1, grade.length);
-  const [screenSize, setScreenSize] = useState();
+  const [screenSize, setScreenSize] = useState(window.innerWidth);
 
   const nextSlide = () => {
     if (slideIndex !== slice.length) {
