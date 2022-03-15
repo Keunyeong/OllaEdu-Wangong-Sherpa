@@ -9,3 +9,4 @@ export { default as SkeletonCircle } from "./skeleton/SkeletonCircle";
 export { default as SkeletonBar } from "./skeleton/SkeletonBar";
 export { default as Tag } from "./Tag";
 export { default as SubjectTypho } from "./SubjectTypho";
+export { default as ScoreTitle } from "./ScoreTitle";
