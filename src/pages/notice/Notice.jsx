@@ -28,7 +28,7 @@ export const Notice = () => {
         </div>
         <Routes>
           <Route path="main" element={<NoticeDetail />} />
-          <Route path="main/:id" element={<NoticeDetail />} />
+          <Route path="main/:id" index element={<NoticeDetail />} />
         </Routes>
       </NoticeContext.Provider>
     </Page>
@@ -38,6 +38,7 @@ export const Notice = () => {
 const Page = styled.div`
   display: flex;
   justify-content: center;
+  align-items: end;
   width: 100vw;
   position: relative;
   overflow-y: auto;
