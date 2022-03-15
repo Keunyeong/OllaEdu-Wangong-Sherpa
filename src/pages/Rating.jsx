@@ -10,10 +10,10 @@ const title = [
 ];
 
 const Rating = () => {
-  const [star, setStar] = useState([]);
+  const [star, setStar] = useState({});
   const navigate = useNavigate();
   useEffect(() => {
-    if (star.length === 3) {
+    if (Object.keys(star).length === 3) {
       navigate("/report/monthly");
     }
   }, [star]);
@@ -22,7 +22,7 @@ const Rating = () => {
       <Question>모의고사 난이도는 어땠나요?</Question>
       <SubText>성적 열람을 위해 난이도 평가를 먼저 진행해주세요.</SubText>
       <CardContainer>
-        {title.map(list => (
+        {title.map((list, idx) => (
           <Card key={list.title}>
             <Title>{list.title}</Title>
             <SubTitle>{list.teacher}</SubTitle>
@@ -30,7 +30,10 @@ const Rating = () => {
             <ReactStars
               size={50}
               onChange={newRating => {
-                setStar([...star, newRating]);
+                const title = list.title;
+                const obj = {};
+                obj[title] = newRating;
+                setStar({ ...star, ...obj });
               }}
               emptyIcon={<Icon src={UnfilledStar} />}
               filledIcon={<Icon src={FilledStar} />}

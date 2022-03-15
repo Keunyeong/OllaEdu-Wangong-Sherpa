@@ -24,7 +24,9 @@ import Sliders from "../components/slider/Slider";
 import { PDFIcon, Runner } from "../assets";
 import Light from "../elements/Light";
 
-const options = {};
+const options = {
+  orientation: "p"
+};
 
 const MonthlyReport = () => {
   const pdfRef = useRef();
@@ -331,6 +333,7 @@ const Span = styled.span`
 `;
 
 const Wrapper = styled.div`
+  background-color: #f5f5f5;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 1.5em;
