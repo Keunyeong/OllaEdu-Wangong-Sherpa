@@ -200,9 +200,9 @@ const TouchSlideBox = styled.div`
   
 `;
 const TouchSlide = styled.div`
-  width: 30%;
   height: 100%;
   margin: 0 5px 7px;
+  padding: 0 0.8rem;
 `;
 
 const ContainerDots = styled.div`
