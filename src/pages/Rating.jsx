@@ -47,7 +47,7 @@ export default Rating;
 const Page = styled.section`
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: auto;
   background-color: rgba(77, 77, 77, 0.62);
   display: flex;
   justify-content: center;
