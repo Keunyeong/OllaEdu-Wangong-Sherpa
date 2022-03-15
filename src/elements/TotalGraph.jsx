@@ -19,7 +19,7 @@ const TotalGraph = ({ width = 296, grade }) => {
     targetGrade: 목표등급
   };
 
-  const arcChart = useRef();
+  const chart = useRef();
 
   useEffect(() => {
     const outerArc = arc()
@@ -34,13 +34,10 @@ const TotalGraph = ({ width = 296, grade }) => {
       .startAngle(0)
       .cornerRadius(50);
 
-    d3.select(arcChart.current).selectAll("svg").remove();
+    d3.select(chart.current).selectAll("*").remove();
 
     const svg = d3
-      .select(arcChart.current)
-      .append("svg")
-      .attr("width", 0.504 * width)
-      .attr("height", 0.504 * width)
+      .select(chart.current)
       .append("g")
       .attr("transform", `translate(${0.252 * width}, ${0.252 * width})`);
 
@@ -87,7 +84,7 @@ const TotalGraph = ({ width = 296, grade }) => {
   }, [total]);
 
   return (
-    <GraphContainer ref={arcChart} width="100%" height="100%">
+    <GraphContainer width="100%" height="100%">
       <Index>
         <Span>
           <Svg>
@@ -102,6 +99,13 @@ const TotalGraph = ({ width = 296, grade }) => {
           당월 점수
         </Span>
       </Index>
+      <svg
+        ref={chart}
+        width={150}
+        height={150}
+        viewBox={`0 0 ${150} ${150}`}
+        preserveAspectRatio="xMinYMin meet"
+      ></svg>
     </GraphContainer>
   );
 };
