@@ -5,20 +5,22 @@ import { arc } from "d3";
 import * as d3 from "d3";
 
 const TotalGraph = ({ width = 296, grade }) => {
+  const total = grade.filter(x => x["과목"] === "TOTAL");
+
   const 만점 = 300;
-  const 학생총점 = grade["당월점수"];
-  const 목표점수 = grade["당월목표"];
+  const 학생총점 = total[0]["당월점수"];
+  const 목표점수 = total[0]["당월목표"];
   const 학생등급 = 학생총점 / 만점;
   const 목표등급 = 목표점수 / 만점;
 
-  const scores = {
+  const data = {
     studentScore: 학생총점,
     studentGrade: 학생등급,
     targetGrade: 목표등급
   };
 
   const arcChart = useRef();
-  const [data, setData] = useState(scores);
+
   useEffect(() => {
     const outerArc = arc()
       .innerRadius(0.225 * width)
@@ -32,6 +34,8 @@ const TotalGraph = ({ width = 296, grade }) => {
       .startAngle(0)
       .cornerRadius(50);
 
+    console.log(d3.select(arcChart.current).selectAll("svg"));
+    d3.select(arcChart.current).selectAll("svg").remove();
     const svg = d3
       .select(arcChart.current)
       .append("svg")
@@ -80,7 +84,7 @@ const TotalGraph = ({ width = 296, grade }) => {
           return innerArc(iChart(t));
         };
       });
-  }, []);
+  }, [total]);
 
   return (
     <GraphContainer ref={arcChart} width="100%" height="100%">
