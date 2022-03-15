@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import styled from "styled-components";
-import { Logo } from "../assets";
+import { Login_image, Logo_black } from "../assets";
 import { Context } from "../context/Context";
 import { tryLogin } from "../context/reducer/action";
 
@@ -27,12 +27,11 @@ const Login = () => {
   return (
     <LoginPage>
       <div className="logo">
-        <img src={Logo} alt="Logo" />
-        <h1>합격을 향한 토탈 맞춤형 솔루션</h1>
+        <img src={Login_image} alt="Login_image" />
       </div>
       <div className="login">
         <form onSubmit={handleSubmit}>
-          <strong>당신의 꿈을 응원합니다!</strong>
+          <img src={Logo_black} alt="logo" />
           <input
             type="text"
             placeholder="아이디"
@@ -46,10 +45,7 @@ const Login = () => {
             onChange={handleInputPw}
           />
           <button type="submit">로그인</button>
-          <span>
-            아직 회원이 아니신가요?{` `}
-            <a href="/">회원가입</a>
-          </span>
+          <span>아이디, 비밀번호 찾기는 홈페이지에서 이용 부탁드립니다.</span>
         </form>
       </div>
     </LoginPage>
@@ -60,12 +56,10 @@ const LoginPage = styled.div`
   font-family: "Roboto", sans-serif;
   display: flex;
   justify-content: center;
-  width: 100%;
   height: 100vh;
+  width: 100%;
 
   .logo {
-    width: 100%;
-    background-color: #5358cb;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,12 +68,11 @@ const LoginPage = styled.div`
     font-weight: 500;
     color: #ffffff;
     img {
-      margin-bottom: 44.72px;
+      height: 100%;
     }
   }
 
   .login {
-    width: 100%;
     margin: auto;
     form {
       padding: 5.5px 0;
@@ -90,9 +83,9 @@ const LoginPage = styled.div`
       flex-direction: column;
       justify-content: space-between;
       text-align: center;
-      strong {
-        font-size: 26px;
-        font-weight: 700;
+      img {
+        width: 258px;
+        margin: 0 auto;
       }
       input {
         height: 39px;
@@ -108,7 +101,7 @@ const LoginPage = styled.div`
         border: none;
         height: 55px;
         border-radius: ${55 / 2}px;
-        background-color: #9498ef;
+        background-color: #032164;
         color: #ffffff;
         font-size: 24px;
         font-weight: 700;
@@ -117,12 +110,43 @@ const LoginPage = styled.div`
         }
       }
       span {
-        font-size: 16px;
+        font-size: 12px;
         font-weight: 400;
-        a {
-          text-decoration: underline;
+        color: #6a6a6a;
+      }
+      @media screen and (max-width: 667px) {
+        padding: 0;
+        width: 291px;
+        height: 224px;
+        img {
+          width: 188px;
+        }
+        input {
+          height: 29px;
+          border-radius: ${29 / 2}px;
+          font-size: 12px;
+          padding: 7px 14px;
+        }
+        button {
+          height: 40px;
+          border-radius: ${40 / 2}px;
+          font-size: 18px;
+        }
+        span {
+          font-size: 8px;
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    background: linear-gradient(
+      149.35deg,
+      rgba(3, 33, 100, 0.4) 0%,
+      rgba(255, 203, 96, 0.4) 100%
+    );
+    .logo {
+      display: none;
     }
   }
 `;
