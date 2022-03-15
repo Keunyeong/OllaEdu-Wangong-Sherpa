@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { NavLogo } from "../assets";
 import MenuList from "../elements/MenuList";
+import NavToggle from "../elements/NavToggle";
 
 const Nav = props => {
-  const navigate = useNavigate();
   const [click, setClick] = useState(false);
   const [menuToggle, setMenuToggle] = useState("toggle_menu_list");
   const el = useRef();
@@ -27,10 +26,10 @@ const Nav = props => {
   };
   const handleCloseToggle = e => {
     if (
-      menuToggle === "toggle_menu_list view" &&
+      menuToggle === "view" &&
       (!el.current || !el.current.contains(e.target))
     ) {
-      setMenuToggle("toggle_menu_list");
+      setMenuToggle("");
     }
   };
   useEffect(() => {
@@ -47,91 +46,8 @@ const Nav = props => {
         <div className="job">{jobLogo}</div>
       </div>
       <div className="toggle" onClick={toggleEvent} ref={el}>
-        <img src="../src/assets/nav/toggle.svg" alt="TOGGLE" />
-        <div className={menuToggle} depart={props.depart}>
-          <div className="toggle_list">
-            <div className="title">공지사항</div>
-            <div
-              className="list"
-              depart={props.depart}
-              onClick={() => {
-                navigate("/notice/main");
-              }}
-            >
-              전체공지
-            </div>
-            <div
-              className="list"
-              depart={props.depart}
-              onClick={() => {
-                navigate("/notice/main");
-              }}
-            >
-              전체공지
-            </div>
-            <div
-              className="list"
-              depart={props.depart}
-              onClick={() => {
-                navigate("/notice/main");
-              }}
-            >
-              전체공지
-            </div>
-          </div>
-          <div className="toggle_list">
-            <div className="title">마이페이지</div>
-            <div
-              className="list"
-              depart={props.depart}
-              onClick={() => {
-                navigate("/mypage/main");
-              }}
-            >
-              기본정보
-            </div>
-            <div
-              className="list"
-              depart={props.depart}
-              onClick={() => {
-                navigate("/mypage/schedule");
-              }}
-            >
-              {" "}
-              일정표
-            </div>
-          </div>
-          <div className="toggle_list">
-            <div className="title">성적현황</div>
-            <div
-              className="list"
-              depart={props.depart}
-              onClick={() => {
-                navigate("/report/monthly");
-              }}
-            >
-              모의고사
-            </div>
-            <div
-              className="list"
-              depart={props.depart}
-              onClick={() => {
-                navigate("/report/weekly");
-              }}
-            >
-              중간종합
-            </div>
-            <div
-              className="list"
-              depart={props.depart}
-              onClick={() => {
-                navigate("/report/physical");
-              }}
-            >
-              체력증감
-            </div>
-          </div>
-        </div>
+        <img src="../../src/assets/nav/toggle.svg" alt="TOGGLE" />
+        <NavToggle cn={menuToggle} />
       </div>
       <div className="menu">
         <MenuList
@@ -233,50 +149,7 @@ const Navbar = styled.div`
   }
   .toggle {
     display: none;
-    .toggle_menu_list {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      width: 100vw;
-      position: absolute;
-      top: 2.8rem;
-      left: 0;
-      z-index: 99;
-      background-color: #032164;
-      color: #ffffffc8;
-      height: 0;
-      transition: all 0.4s ease-out;
-      overflow: hidden;
-      .toggle_list {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0.5rem 0;
-        font-size: 1.25rem;
-        .title {
-          font-weight: 700;
-          padding: 0 1rem;
-          width: 100%;
-          padding-bottom: 0.4rem;
-          border-bottom: 1px solid #ffffffc8;
-        }
-        .list {
-          padding: 0.3rem 1rem;
-          width: 100%;
-          text-align: right;
-          font-size: 1rem;
-          cursor: pointer;
-          :hover {
-            color: #032164;
-            background-color: #ffffffc8;
-          }
-        }
-      }
-      &.view {
-        height: 330px;
-      }
-    }
+    cursor: pointer;
   }
   @media screen and (max-width: 667px) {
     height: 3rem;
