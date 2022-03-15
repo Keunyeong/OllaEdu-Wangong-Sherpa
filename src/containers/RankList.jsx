@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { ProgressBar } from "../elements";
 const RankList = ({ grade }) => {
-  const slice = grade.slice(1, grade.length);
+  const total = grade.filter(x => x["과목"] === "TOTAL");
+
+  const slice = grade.filter(x => x["과목"] !== "TOTAL");
 
   return (
     <Container>
@@ -14,13 +16,13 @@ const RankList = ({ grade }) => {
           <ProgressBar
             bg="rgba(100, 100, 165, 0.8)"
             cg="#6464A5"
-            score={grade[0]["당월점수"] / 300}
+            score={total[0]["당월점수"] / 300}
           />
         </Absolute>
         <TyphoGraphy fs="12px" fw={700}>
-          {grade[0]["순위"]}등
+          {total[0]["순위"]}등
           <TyphoGraphy fs="10px" fw={300}>
-            /{grade[0]["응시인원"]}명
+            /{total[0]["응시인원"]}명
           </TyphoGraphy>
         </TyphoGraphy>
       </TitleConatiner>

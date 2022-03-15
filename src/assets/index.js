@@ -20,3 +20,6 @@ export { default as FilledStar } from "./FilledStar.svg";
 export { default as UnfilledStar } from "./UnfilledStar.svg";
 export { default as PDFIcon } from "./PDFIcon.svg";
 export { default as notice_arrow } from "./notice_arrow.svg";
+export { default as Runner } from "./runner.svg";
+export { default as Popper } from "./popper.svg";
+
