@@ -16,6 +16,7 @@ export default MypageSection;
 
 const Section = styled.div`
   width: 100%;
+  height: 78vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,6 +62,6 @@ const Header = styled.div`
 `;
 const Main = styled.div`
   position: relative;
-
+  width: 100%;
   margin-top: ${(56 / 1512) * 100 + "vw"};
 `;

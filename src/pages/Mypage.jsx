@@ -21,6 +21,7 @@ const Page = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-bottom: 40px;
 `;
 
 export default Mypage;

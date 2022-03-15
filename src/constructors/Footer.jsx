@@ -38,7 +38,9 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer">
-        © 2022. 에듀해시글로벌파트너스㈜ 안동지사. All rights reserved.
+        <div>
+          © 2022. 에듀해시글로벌파트너스㈜ 안동지사. All rights reserved.
+        </div>
       </div>
     </Foot>
   );
@@ -59,6 +61,11 @@ const Foot = styled.footer`
   align-items: center;
   text-align: center;
   letter-spacing: 0.015em;
+  padding: ${(50 / 1512) * 100 + "vw"} ${(57 / 1512) * 100 + "vw"} 0
+    ${(57 / 1512) * 100 + "vw"};
+  @media screen and (max-width: 667px) {
+    padding: 0;
+  }
   .footer_header {
     display: flex;
     flex-direction: column;
@@ -71,8 +78,10 @@ const Foot = styled.footer`
     img {
       width: 10rem;
     }
-    @media screen and (max-width: 668px) {
-      width: 18.75rem;
+    @media screen and (max-width: 991px) {
+      width: 38rem;
+    }
+    @media screen and (max-width: 667px) {
       display: none;
     }
   }
@@ -111,9 +120,10 @@ const Foot = styled.footer`
         align-items: center;
       }
     }
-    @media screen and (max-width: 668px) {
-      flex-direction: column;
-      width: 18.75rem;
+    @media screen and (max-width: 991px) {
+      width: 38rem;
+    }
+    @media screen and (max-width: 667px) {
       display: none;
     }
   }
@@ -125,6 +135,11 @@ const Foot = styled.footer`
     color: #ffcb60;
     @media screen and (max-width: 668px) {
       margin-top: 0;
+      display: flex;
+      justify-content: center;
+      div {
+        width: 13rem;
+      }
     }
   }
 `;
