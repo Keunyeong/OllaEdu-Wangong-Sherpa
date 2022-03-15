@@ -38,7 +38,7 @@ export default function SliderTest({ grade }) {
     window.addEventListener("resize", windowSize);
   }, [screenSize]);
 
-  if (screenSize > 990) {
+  if (screenSize > 990 || screenSize < 668) {
     return (
       <ContainerSlider>
         {slice.map((obj, index) => {
@@ -93,13 +93,13 @@ export default function SliderTest({ grade }) {
             <Svg>
               <SmallCircle fill="#D8D8D8" />
             </Svg>
-            전월 점수
+            <span>전월 점수</span>
           </Span>
           <Span>
             <Svg>
               <SmallCircle fill="#FFCB60" />
             </Svg>
-            당월 점수
+            <span>당월 점수</span>
           </Span>
         </SpanBox>
         <TouchSlideBox>
@@ -120,6 +120,25 @@ export default function SliderTest({ grade }) {
               </TouchSlide>
             );
           })}
+          {slice.map((obj, index) => {
+            const { 전월점수, 당월점수, 과목 } = obj;
+            if(index>=1){
+              return (
+              <TouchSlide key={과목}>
+                <GrowthGraph
+                  scoreData={[
+                    과목,
+                    Math.round(Number(전월점수)),
+                    Math.round(Number(당월점수))
+                  ]}
+                  title={과목}
+                  screen={true}
+                />
+              </TouchSlide>
+            );
+            }
+            
+          })}
         </TouchSlideBox>
 
         <BtnSlider direction={"next"} />
@@ -127,12 +146,12 @@ export default function SliderTest({ grade }) {
     );
   }
 }
+
 const TouchSlideBigBox = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
 `;
-
 const ContainerSlider = styled.div`
   width: 100%;
   height: 100%;
@@ -162,6 +181,11 @@ const Increase = styled.div`
   @media (max-width: 992px) {
     display: none;
   }
+  @media (max-width: 668px) {
+    display: block;
+    width: 5.5rem;
+    left: 1.2rem;
+  }
 `;
 
 const Slider = styled.div`
@@ -174,7 +198,13 @@ const Slider = styled.div`
   transition: opacity ease-in-out 0.4s;
 
   @media (max-width: 667px) {
-    left: 29%;
+    left: 28%;
+  }
+  @media (max-width: 440px) {
+    left: 22%;
+  }
+  @media (max-width: 400px) {
+    left: 20%;
   }
 `;
 const TouchSlideBox = styled.div`
@@ -184,6 +214,8 @@ const TouchSlideBox = styled.div`
   justify-content: center;
   align-items: center;
   overflow-x: scroll;
+  
+  padding-left: 7%;
 
   &::-webkit-scrollbar {
     height: 7px;
@@ -193,11 +225,15 @@ const TouchSlideBox = styled.div`
     background-color: #d8d8d8;
     border-radius: 5px;
   }
+
+  @media (max-width: 845px){
+    padding-left: 200px;
+  }
 `;
 const TouchSlide = styled.div`
   height: 100%;
-  margin: 0 5px 7px;
-  padding: 0 0.8rem;
+  margin-bottom: 7px;
+  padding-right: 30px;
 `;
 
 const ContainerDots = styled.div`
@@ -216,7 +252,9 @@ const Dot = styled.div`
   background: ${props => (props.activity === "active" ? "#6A6A6A" : "#D8D8D8")};
 `;
 const SpanBox = styled.div`
-  width: 24%;
+  font-size: 0.75rem;
+  font-weight: 500;
+  width: 150px;
   box-sizing: border-box;
   padding-top: 10px;
   padding-left: 20px;
@@ -225,22 +263,20 @@ const SpanBox = styled.div`
 `;
 
 const Span = styled.span`
-  font-size: 0.875rem;
-  font-weight: 500;
+  width: 45%;
   display: flex;
-  height: 1.5625rem;
+  height: 20px;
   justify-content: space-between;
   align-items: center;
 `;
 
 const Svg = styled.svg`
-  width: 0.625rem;
-  height: 0.625rem;
-  margin-right: 0.7rem;
+width: 7.74px;
+height: 7.74px;
 `;
 
 const SmallCircle = styled.circle`
-  cx: 0.3125rem;
-  cy: 0.3125rem;
-  r: 0.3125rem;
+cx: 3.87px;
+cy: 3.87px;
+r: 3.87px;
 `;
