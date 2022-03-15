@@ -1,82 +1,39 @@
 {
   "items": [
     {
-      "title": "제목0 공지사항입니다.",
-      "author": "올라에듀",
-      "date": "2022.02.20",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae aut itaque cupiditate error nemo, voluptas obcaecati sed soluta officia quam a aspernatur quisquam laboriosam facere mollitia optio laudantium! Debitis, non! loremLorem ipsum dolor sit amet consectetur adipisicing elit. Beatae aut itaque cupiditate error nemo, voluptas obcaecati sed soluta officia quam a aspernatur quisquam laboriosam facere mollitia optio laudantium! Debitis, non! lorem"
+      "title": "경찰/9급 종일반 모집안내",
+      "author": "학원관리자",
+      "date": "21-12-24",
+      "text": "시작에 강하고 결과에 당당한 김재규공무원학원강의 정보와 수강 정보 등 수험생들에게 필요한 소식전달",
+      "image": "http://www.kpa.co.kr/academy/kpap/data/editor/2112/thumb-b0d644383f29997e934f8de45cf7f435_1640309887_9814_890x1206.jpg"
     },
     {
-      "title": "제목1 공지사항입니다.",
-      "author": "올라에듀",
-      "date": "2022.02.19",
-      "text": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil, debitis nesciunt culpa deserunt reprehenderit tempora itaque! Sunt quo assumenda veritatis neque consequuntur nesciunt, non consectetur possimus, dignissimos, numquam saepe velit."
+      "title": "2022년 소방공무원 신규채용 일정 공고",
+      "author": "학원관리자",
+      "date": " 21-12-21",
+      "text": "2022년 전국 소방공무원 신규채용 시험 일정을 아래와 같이 공지합니다. 시험일정은 시험관리 사정등에 따라 변경 될 수 있습니다.",
+      "image": "http://www.kpa.co.kr/academy/kpap/data/editor/2112/14ac280728cb72cabcd8227e0542f877_1640076909_3491.jpg"
     },
     {
-      "title": "제목2 공지사항입니다.",
-      "author": "올라에듀",
-      "date": "2022.02.18",
-      "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur tempore exercitationem sapiente ducimus iure eius asperiores debitis sint reiciendis corporis veniam dolores a at, sunt, architecto quis nostrum porro placeat!"
+      "title": "2022년 경찰공무원 채용시험 일정 공고",
+      "author": "학원관리자",
+      "date": "21-12-21",
+      "text": "상기 채용 일정은 시험관리 사정 등에 따라 변경될 수 있으며, 변경될 경우 공고를 통해 안내드립니다. 채용인원 및 경쟁채용 상세는 1월 초 공고예정입니다.",
+      "image": "http://www.kpa.co.kr/academy/kpap/data/editor/2112/14ac280728cb72cabcd8227e0542f877_1640076780_3851.jpg"
     },
     {
-      "title": "제목3 공지사항입니다.",
-      "author": "올라에듀",
-      "date": "2022.02.17",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. A voluptatem natus voluptates nulla, aperiam aspernatur eligendi ut distinctio laudantium hic vel est harum illo nam. Ex, magnam. Neque, vero debitis!"
+      "title": "모의고사 문제풀이반(실강) 모집안내",
+      "author": "학원관리자",
+      "date": "21-11-18",
+      "text": "2022년 채용 시험은 상하반기 2차레 실시할 예정이므로, 이를 대비한 모의고사 풀이반 실강생을 모집하고 있습니다. 아래 링크를 통해 신청해주세요.",
+      "image": "http://www.kpa.co.kr/academy/kpap/data/editor/2111/thumb-163c1ddbe9d8233ae474bad6fb91dffd_1637201167_8868_890x1494.jpg"
     },
     {
-      "title": "제목4 공지사항입니다.",
-      "author": "올라에듀",
-      "date": "2022.02.16",
-      "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim odio autem doloremque, ex minus vel illo sed! Fuga corporis nobis, non, iste sapiente suscipit ab perferendis laborum quam similique odio."
-    },
-    {
-      "title": "제목5 공지사항입니다.",
-      "author": "올라에듀",
-      "date": "2022.02.15",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nulla molestias odit laudantium, optio quis accusamus rerum est nesciunt hic unde exercitationem autem non, quidem ea neque inventore, eligendi similique."
-    },
-    {
-      "title": "제목6 공지사항입니다.",
-      "author": "올라에듀",
-      "date": "2022.02.14",
-      "text": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam quod nulla inventore. Architecto sed rem recusandae vel inventore possimus porro placeat, dicta voluptas autem corporis tempore doloremque. Provident, porro eaque."
-    },
-    {
-      "title": "제목7 공지사항입니다.",
-      "author": "올라에듀",
-      "date": "2022.02.13",
-      "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis nesciunt provident id, natus aliquid sint possimus ipsum corporis ex officia sapiente eius nobis nostrum porro molestiae aperiam explicabo voluptates excepturi."
-    },
-    {
-      "title": "제목8 공지사항입니다.",
-      "author": "올라에듀",
-      "date": "2022.02.12",
-      "text": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed consequuntur quaerat repellendus, facere vitae aliquam sequi, dolor id velit vero odio ipsa modi corporis alias, quia maxime qui cupiditate eveniet?"
-    },
-    {
-      "title": "제목9 공지사항입니다.",
-      "author": "올라에듀",
-      "date": "2022.02.11",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus eius distinctio possimus repudiandae rem autem vero eum quibusdam asperiores beatae obcaecati, aperiam magni debitis sapiente laborum incidunt repellat? Nemo, nesciunt!"
-    },
-    {
-      "title": "제목10 공지사항입니다.",
-      "author": "올라에듀",
-      "date": "2022.02.10",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa quia ipsum, similique magnam in perferendis, nam dolorem quos provident, necessitatibus voluptatum. Sed, neque quae. Perspiciatis nihil provident excepturi assumenda molestiae?"
-    },
-    {
-      "title": "제목11 공지사항입니다.",
-      "author": "올라에듀",
-      "date": "2022.02.09",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta debitis quo error velit nemo deleniti exercitationem rem sint! Rem repellendus repellat deleniti vero dignissimos, dicta modi fugiat ex porro eum!"
-    },
-    {
-      "title": "제목12 공지사항입니다.",
-      "author": "올라에듀",
-      "date": "2022.02.08",
-      "text": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste architecto cum accusantium nesciunt tempore nisi rerum aspernatur quam numquam voluptates atque quas quisquam corrupti, necessitatibus ducimus! Deleniti, eligendi harum! Ipsa."
+      "title": "김재규공무원학원의 새로운 이름을 소개합니다!",
+      "author": "학원관리자",
+      "date": "20-12-29",
+      "text": "23년 전통의 공무원 합격 명가로 매년 배출해 온 수 많은 합격생 빅 데이터를 통한 차별화된 가치와 눈에 보이는 에듀테크 서비스로 수강생의 합격의 꿈을 현실로 만들어드립니다.",
+      "image": "http://www.kpa.co.kr/academy/kpap/data/editor/2012/0b2a5fff0d163a6f48782fe1eba5fc30_1609395302_2591.jpg"
     }
   ]
 }

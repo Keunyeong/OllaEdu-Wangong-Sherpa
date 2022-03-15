@@ -28,6 +28,7 @@ const NoticeDetail = () => {
         <div className="date">{notice.date}</div>
       </span>
       <p>{notice.text}</p>
+      <img src={notice.image} alt={notice.title} />
     </Notice>
   );
 };
@@ -40,6 +41,7 @@ const Notice = styled.div`
   margin-right: 16px;
   margin-top: 2.5rem;
   width: ${(1100 / 1512) * 100 + "vw"};
+  max-height: ${(846 / 982) * 100 + "vh"};
   box-shadow: 0rem 0.5rem 1.375rem -0.375rem rgba(24, 39, 75, 0.12),
     0rem 0.875rem 4rem -0.25rem rgba(24, 39, 75, 0.12);
   background-color: #ffffff;
@@ -75,6 +77,13 @@ const Notice = styled.div`
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.125rem;
+  }
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
   }
 
   @media screen and (max-width: 991px) {
