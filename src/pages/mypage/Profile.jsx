@@ -18,26 +18,35 @@ const Profile = () => {
         subtitle="개인정보 변동사항은 이곳에서 수정해 주세요."
       >
         <Info>
-          <div className="name">
-            <div>이름</div>
-            <div className="box">
-              <span>강병석</span>
+          <div className="info-box">
+            <div className="name">
+              <div className="title">이름</div>
+              <div className="box">
+                <span>강병석</span>
+              </div>
+            </div>
+            <div className="phone">
+              <div className="title">휴대폰</div>
+              <div className="box">
+                <span>01054356692</span>
+              </div>
+            </div>
+            <div className="adress">
+              <div className="title">주소</div>
+              <div className="box">
+                <span>서울특별시 송파구 송파대로 112-12</span>
+              </div>
+            </div>
+            <div className="birthday">
+              <div className="title">생년월일</div>
+              <div className="box">
+                <span>2000</span>년 <span>08</span>월 <span>14</span>일
+              </div>
             </div>
           </div>
-          <div className="phone">
-            <div>휴대폰</div>
-            <div className="box">
-              <span>01054356692</span>
-            </div>
-          </div>
-          <div className="adress">
-            <div>주소</div>
-            <div className="box">
-              <span>서울특별시 송파구 송파대로 112-12</span>
-            </div>
-          </div>
-          <div className="birthday">
-            <div>생년월일</div>
+          <div className="btn-box">
+            <button>변경하러 가기</button>
+            <p>클릭시 올라에듀 홈페이지로 이동합니다.</p>
           </div>
         </Info>
       </MypageSection>
@@ -46,48 +55,97 @@ const Profile = () => {
 };
 
 const Info = styled.div`
-  width: 100%;
-  height: 100%;
-  font-family: "Noto Sans KR";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 1rem;
-  line-height: 1.448rem;
-  color: #6a6a6a;
-  margin-bottom: 80px;
-
-  & > div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    margin-bottom: ${(32 / 1512) * 100 + "vw"};
-    .box {
-      width: 20.5rem;
-      height: auto;
-      background: #d8d8d8;
-      border-radius: 5px;
-      padding: 0 ${(16 / 1512) * 100 + "vw"};
-      text-align: left;
-      padding: 0.3rem 0.7rem;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 8px 22px -6px rgba(24, 39, 75, 0.12),
+    0px 14px 64px -4px rgba(24, 39, 75, 0.12);
+  margin-bottom: ${(92 / 982) * 100 + "vh"};
+  & > .info-box {
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.448rem;
+    color: #6a6a6a;
+    margin: ${(56 / 1512) * 100 + "vw"} ${(16 / 1512) * 100 + "vw"};
 
     & > div {
-      width: 6.25rem;
-      text-align: right;
-      padding-right: ${(20 / 1512) * 100 + "vw"};
-    }
-    @media screen and (max-width: 667px) {
-      flex-direction: column;
-      align-items: flex-start;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+      margin-bottom: ${(32 / 1512) * 100 + "vw"};
       .box {
-        width: 100%;
+        width: 332px;
         height: auto;
+        background: #d8d8d8;
+        border-radius: 5px;
+        padding: 0 ${(16 / 1512) * 100 + "vw"};
+        text-align: left;
+        padding: 0.3rem 0.7rem;
       }
       & > div {
-        text-align: left;
-        margin-top: 0.5rem;
+        width: 6.25rem;
+        text-align: right;
+        padding-right: ${(20 / 1512) * 100 + "vw"};
       }
+      @media screen and (max-width: 667px) {
+        flex-direction: column;
+        align-items: flex-start;
+        .box {
+          width: 70vw;
+        }
+        .title {
+          text-align: left;
+          margin-bottom: 8px;
+        }
+      }
+    }
+  }
+  & > .btn-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 88px;
+    button {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 21px;
+      border: none;
+      width: 138px;
+      height: 42px;
+      background: #f7c00f;
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14.015px;
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #1b1b1b;
+      border-radius: 4px;
+    }
+    p {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 17px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #6a6a6a;
+    }
+    @media screen and (max-width: 667px) {
+      margin-bottom: ${(88 / 1512) * 100 + "vw"};
     }
   }
 `;
