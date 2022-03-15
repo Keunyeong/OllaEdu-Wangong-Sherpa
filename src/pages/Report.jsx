@@ -28,7 +28,7 @@ const options = {
   orientation: "p"
 };
 
-const MonthlyReport = () => {
+const Report = () => {
   const pdfRef = useRef();
   const [date, setDate] = useState(null);
   const [grade, setGrade] = useState([]);
@@ -238,7 +238,7 @@ const MonthlyReport = () => {
   );
 };
 
-export default MonthlyReport;
+export default Report;
 
 const Page = styled.div`
   position: relative;
