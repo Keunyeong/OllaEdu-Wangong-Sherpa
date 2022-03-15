@@ -32,13 +32,14 @@ const Score = styled.div`
   font-size: 38px;
   font-weight: 500;
   margin-left: 44px;
+  display: flex;
+  justify-content: center;
 `;
 
 const Background = styled.div`
   position: absolute;
-  left: -29px;
   bottom: 0;
-  width: 79px;
+  width: 120%;
   height: 19px;
   background-color: rgba(248, 171, 48, 0.4);
 `;

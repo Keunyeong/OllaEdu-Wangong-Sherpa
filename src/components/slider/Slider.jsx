@@ -31,16 +31,14 @@ export default function SliderTest({ grade }) {
   };
 
   const windowSize = () => {
-    setScreenSize(window.innerWidth)
-  }
+    setScreenSize(window.innerWidth);
+  };
 
-  
   useEffect(() => {
-    window.addEventListener("resize",windowSize)
-    console.log(screenSize)
-  },[screenSize])
+    window.addEventListener("resize", windowSize);
+  }, [screenSize]);
 
-  if(screenSize>990){
+  if (screenSize > 990) {
     return (
       <ContainerSlider>
         {slice.map((obj, index) => {
@@ -54,8 +52,11 @@ export default function SliderTest({ grade }) {
               activity={slideIndex === index + 1 ? "active-anim" : null}
             >
               <Increase>
-                <span>{growth<0 ? Math.abs(growth) : growth}점 {growth<0 ? "감소" : "증가"}</span>
-                <img src={growth<0 ? ArrowDown : ArrowUp} alt="" />
+                <span>
+                  {growth < 0 ? Math.abs(growth) : growth}점{" "}
+                  {growth < 0 ? "감소" : "증가"}
+                </span>
+                <img src={growth < 0 ? ArrowDown : ArrowUp} alt="" />
               </Increase>
               <GrowthGraph
                 scoreData={[
@@ -106,9 +107,7 @@ export default function SliderTest({ grade }) {
             const { 전월점수, 당월점수, 과목 } = obj;
 
             return (
-              <TouchSlide
-                key={과목}
-              >
+              <TouchSlide key={과목}>
                 <GrowthGraph
                   scoreData={[
                     과목,
@@ -124,12 +123,9 @@ export default function SliderTest({ grade }) {
         </TouchSlideBox>
 
         <BtnSlider direction={"next"} />
-
       </TouchSlideBigBox>
     );
   }
-
-  
 }
 const TouchSlideBigBox = styled.div`
   width: 100%;
@@ -150,7 +146,7 @@ const Increase = styled.div`
   font-size: 0.775rem;
   text-align: center;
   line-height: 150%;
-  border: 1px solid #9498EF;
+  border: 1px solid #9498ef;
   box-sizing: border-box;
   border-radius: 93px;
   position: absolute;
@@ -163,7 +159,7 @@ const Increase = styled.div`
     margin-left: 5px;
   }
 
-  @media(max-width: 992px) {
+  @media (max-width: 992px) {
     display: none;
   }
 `;
@@ -194,10 +190,9 @@ const TouchSlideBox = styled.div`
     border-radius: 5px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: #D8D8D8;
+    background-color: #d8d8d8;
     border-radius: 5px;
   }
-  
 `;
 const TouchSlide = styled.div`
   height: 100%;
