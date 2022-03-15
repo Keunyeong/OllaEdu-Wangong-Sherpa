@@ -24,7 +24,6 @@ export const Notice = () => {
     <Page>
       <NoticeContext.Provider value={noticeList}>
         <div>
-          <H1>공지사항</H1>
           <NoticeBoard data={noticeList} />
         </div>
         <Routes>
@@ -40,10 +39,8 @@ const Page = styled.div`
   display: flex;
   justify-content: center;
   width: 100vw;
-  height: 100%;
   position: relative;
   overflow-y: auto;
-  margin-top: 2.5rem;
   margin-bottom: 2.5rem;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -51,11 +48,4 @@ const Page = styled.div`
     display: none;
   }
   overflow: visible;
-`;
-
-const H1 = styled.h1`
-  font-size: 34px;
-  font-weight: 700;
-  margin-left: 26px;
-  margin-bottom: 27px;
 `;
