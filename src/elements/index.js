@@ -7,3 +7,5 @@ export { default as ProgressBar } from "./ProgressBar.jsx";
 export { default as Table } from "./Table";
 export { default as SkeletonCircle } from "./skeleton/SkeletonCircle";
 export { default as SkeletonBar } from "./skeleton/SkeletonBar";
+export { default as Tag } from "./Tag";
+export { default as SubjectTypho } from "./SubjectTypho";

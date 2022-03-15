@@ -1,4 +1,11 @@
-import React, { useContext, useState, useRef, useEffect, useMemo } from "react";
+import React, {
+  useContext,
+  useState,
+  useRef,
+  useEffect,
+  useMemo,
+  useCallback
+} from "react";
 import { useLocation } from "react-router-dom";
 import ReactToPdf from "react-to-pdf";
 import styled from "styled-components";
@@ -6,36 +13,48 @@ import { Context } from "../context/Context";
 import {
   Table,
   IrregularPieGraph,
-  MonthlyGraph,
   TotalGraph,
   SkeletonCircle,
   SkeletonBar
 } from "../elements";
 import { CardWrapper, Dropdown } from "../components";
-import { RankList } from "../containers";
+import { RankList, ScoreList } from "../containers";
 import Sliders from "../components/slider/Slider";
-import { PDFIcon } from "../assets";
+import { PDFIcon, Runner } from "../assets";
 import Light from "../elements/Light";
 
 const options = {};
 
 const MonthlyReport = () => {
   const pdfRef = useRef();
+  const [date, setDate] = useState(null);
   const [grade, setGrade] = useState([]);
   const { data, isLoading } = useContext(Context);
+  const { 응시월, 응시내역 } = data;
   const location = useLocation().pathname.split("/")[2];
-  const { 응시월, 응시내역, 년월, 년 } = data;
 
   const title = useMemo(() => {
     if (location === "monthly") return "모의고사";
 
-    if (location === "middle") return "중간종합";
+    if (location === "weekly") return "중간종합";
 
     if (location === "physical") return "체력증감";
+  }, [location]);
+
+  const selectData = useCallback(selection => {
+    setDate(selection);
   }, []);
 
   useEffect(() => {
     if (data.length !== 0) {
+      let selection;
+      if (!date) {
+        selection = 응시월[응시월.length - 1];
+        setDate(selection);
+      } else {
+        selection = date;
+      }
+
       let category;
       if (title === "모의고사") {
         category = "정규 모의고사";
@@ -44,21 +63,25 @@ const MonthlyReport = () => {
       } else {
         category = "체력측정 결과";
       }
-      setGrade(응시내역[응시월[응시월.length - 1]][category]);
+      setGrade(응시내역[selection][category]);
     }
-  }, [data, location]);
+  }, [data, title, date]);
+
+  if (!date) {
+    return null;
+  }
 
   return (
     <Page>
+      <Light
+        top={0}
+        left={0.5}
+        highLightWidth={15.8}
+        highLightWidth2={16.8}
+        highLightTop={8}
+        highLightTop2={10.7}
+      />
       <Section ref={pdfRef}>
-        <Light
-          top={0}
-          left={3}
-          highLightWidth={15.8}
-          highLightWidth2={16.8}
-          highLightTop={8}
-          highLightTop2={10.7}
-        />
         <Title>
           {title}&nbsp;
           <Span>분석</Span>
@@ -66,11 +89,11 @@ const MonthlyReport = () => {
         {data.length !== 0 ? (
           <DropdownContainer>
             <DropdownWrapper margin="20px">
-              <Dropdown arr={응시월} />
+              <Dropdown arr={응시월} _click={selectData} selected={date} />
             </DropdownWrapper>
             <ReactToPdf
               targetRef={pdfRef}
-              filename="div-blue.pdf"
+              filename={`${title}_${date}.pdf`}
               options={options}
               x={5}
               scale={0.8}
@@ -84,18 +107,35 @@ const MonthlyReport = () => {
 
         <Wrapper>
           <Swap1>
-            <CardWrapper
-              width="100%"
-              height="100%"
-              title="정규 모의고사 총점"
-              children={
-                isLoading || !grade.length ? (
-                  <SkeletonCircle />
-                ) : (
-                  <TotalGraph grade={grade[0]} />
-                )
+            {[date].map((date, idx) => {
+              const year = date.substring(0, 4);
+              let day = date.substring(4, 6);
+              if (day[0] === "0") {
+                day = day.split("")[1];
               }
-            />
+
+              return (
+                <CardWrapper
+                  key={idx}
+                  width="100%"
+                  height="100%"
+                  title={`강병석 님의 ${year}년 ${day}월 모의고사 결과`}
+                  children={
+                    isLoading || !grade.length ? (
+                      <SkeletonCircle />
+                    ) : (
+                      <>
+                        <ResultWrapper>
+                          <TotalGraph grade={grade[0]} />
+                          <ScoreList />
+                          <RunnerIcon src={Runner} />
+                        </ResultWrapper>
+                      </>
+                    )
+                  }
+                />
+              );
+            })}
           </Swap1>
           <Swap2>
             <CardWrapper
@@ -141,6 +181,7 @@ const MonthlyReport = () => {
           <Swap5>
             <CardWrapper
               width="100%"
+              height="100%"
               padding="28px 26px"
               title="상세 점수 조회"
               children={
@@ -193,10 +234,12 @@ const MonthlyReport = () => {
 export default MonthlyReport;
 
 const Page = styled.div`
+  position: relative;
   width: auto;
   height: ${(915 / 982) * 100 + "vh"};
   position: relative;
   box-sizing: border-box;
+  background-color: #f5f5f5;
 
   @media (max-width: 991px) {
     padding: 0 16px;
@@ -226,11 +269,32 @@ const DropdownContainer = styled.div`
   right: 0;
   display: flex;
   align-items: center;
+
+  @media (max-width: 667px) {
+    top: -50px;
+  }
 `;
 
 const CloudIcon = styled.img`
   width: 2.875em;
   height: 1.625em;
+`;
+
+const ResultWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 332px;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+`;
+
+const RunnerIcon = styled.img`
+  position: absolute;
+  right: -10px;
+  bottom: 0;
+  width: 175px;
+  height: 175px;
 `;
 
 const DropdownWrapper = styled.div`

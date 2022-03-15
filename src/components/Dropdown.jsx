@@ -4,7 +4,7 @@ import { Dropdown_up, Dropdown_down } from "../assets";
 
 const month = Array.from({ length: 12 }, (value, index) => 1 + index);
 
-const Dropdown = ({ arr = month }) => {
+const Dropdown = ({ arr = month, _click, selected }) => {
   const ref = useRef();
   const [toggle, setToggle] = useState(false);
 
@@ -28,7 +28,9 @@ const Dropdown = ({ arr = month }) => {
           setToggle(!toggle);
         }}
       >
-        <ListTitle margin="3px">{arr[arr.length - 1]}</ListTitle>
+        <ListTitle margin="3px">
+          {selected ? selected : arr[arr.length - 1]}
+        </ListTitle>
         {toggle ? (
           <Icon src={Dropdown_up} alt="dropdown-up" />
         ) : (
@@ -40,8 +42,9 @@ const Dropdown = ({ arr = month }) => {
               <List
                 key={yr}
                 onClick={e => {
-                  console.log(e.target.innerText);
+                  _click(e.target.innerText);
                 }}
+                bg={selected === yr ? "#dddefd" : "#fff"}
               >
                 <ListTitle>{yr}</ListTitle>
               </List>
@@ -112,8 +115,5 @@ const ListConatiner = styled.ul`
 
 const List = styled.li`
   transform: scaleX(-1); //Flips the child back to normal
-
-  &:hover {
-    background-color: #dddefd;
-  }
+  background-color: ${props => props.bg};
 `;
