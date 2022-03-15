@@ -45,8 +45,6 @@ export default function Footer() {
 }
 
 const Foot = styled.footer`
-  position: absolute;
-  bottom: 0;
   width: 100vw;
   background-color: #032164;
   color: #fff;
