@@ -14,7 +14,6 @@ const NavToggleList = ({ list, job, state }) => {
     listArr = ["기본정보", "시간표"];
     urlArr = ["/mypage/main", "/mypage/schedule"];
   }
-  console.log(location.pathname);
 
   return (
     <ToggleList job={job} className="toggle_list" state={state} arr={listArr}>

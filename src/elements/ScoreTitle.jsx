@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const ScoreTitle = ({ grade }) => {
   const total = grade.filter(x => x["과목"] === "TOTAL");
-  console.log(total);
   return (
     <ScoreContainer>
       총점
