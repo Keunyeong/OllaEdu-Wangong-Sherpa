@@ -72,7 +72,9 @@ const Info = styled.div`
     line-height: 1.448rem;
     color: #6a6a6a;
     margin: ${(56 / 1512) * 100 + "vw"} ${(16 / 1512) * 100 + "vw"};
-
+    .birthday {
+      margin-bottom: 0;
+    }
     & > div {
       display: flex;
       align-items: center;
@@ -111,7 +113,7 @@ const Info = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 88px;
+    margin-bottom: ${(48 / 1512) * 100 + "vw"};
     button {
       display: flex;
       flex-direction: row;
