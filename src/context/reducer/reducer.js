@@ -6,6 +6,8 @@ const reducer = (state, action) => {
       return { ...state, isLoading: action.payload };
     case "SET_LOGIN":
       return { ...state, isLogin: action.payload };
+    case "SET_ERROR":
+      return { ...state, error: action.payload };
     default:
       return state;
   }
