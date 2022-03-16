@@ -1,12 +1,23 @@
+import { useContext } from "react";
+import { setError } from "../context/reducer/action";
+import { Context } from "../context/Context";
 import styled from "styled-components";
 
-const LoginErrorModal = ({ onClick }) => {
+const LoginErrorModal = ({ onRemoveInputValue }) => {
+  const { dispatch } = useContext(Context);
   return (
     <ModalContainer>
       <Modal>
         <h3>인증실패</h3>
         <p>아이디 또는 비밀번호가 일치하지 않습니다.</p>
-        <button onClick={() => onClick(false)}>OK</button>
+        <button
+          onClick={() => {
+            onRemoveInputValue();
+            dispatch(setError(null));
+          }}
+        >
+          OK
+        </button>
       </Modal>
     </ModalContainer>
   );

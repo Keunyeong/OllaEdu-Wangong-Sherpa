@@ -6,9 +6,8 @@ import { tryLogin } from "../context/reducer/action";
 import LoginErrorModal from "../components/LoginErrorModal";
 
 const Login = () => {
-  const { dispatch } = useContext(Context);
+  const { error, dispatch } = useContext(Context);
   const [user, setUser] = useState({ id: "", pw: "" });
-  const [modalOpen, setModalOpen] = useState(false);
 
   const handleInputId = e => {
     setUser({ ...user, id: e.target.value });
@@ -16,6 +15,10 @@ const Login = () => {
 
   const handleInputPw = e => {
     setUser({ ...user, pw: e.target.value });
+  };
+
+  const removeInputValue = () => {
+    setUser({ id: "", pw: "" });
   };
 
   const handleSubmit = e => {
@@ -26,6 +29,7 @@ const Login = () => {
       dispatch(tryLogin(user));
     }
   };
+
   return (
     <LoginPage>
       <div className="logo">
@@ -50,7 +54,7 @@ const Login = () => {
           <span>아이디, 비밀번호 찾기는 홈페이지에서 이용 부탁드립니다.</span>
         </form>
       </div>
-      {modalOpen && <LoginErrorModal onClick={setModalOpen} />}
+      {error && <LoginErrorModal onRemoveInputValue={removeInputValue} />}
     </LoginPage>
   );
 };
