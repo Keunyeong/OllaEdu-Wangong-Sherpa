@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
+import { DateLabel } from "../elements";
 import { Dropdown_up, Dropdown_down } from "../assets";
 
 const month = Array.from({ length: 12 }, (value, index) => 1 + index);
@@ -29,7 +30,7 @@ const Dropdown = ({ arr = month, _click, selected }) => {
         }}
       >
         <ListTitle margin="3px">
-          {selected ? selected : arr[arr.length - 1]}
+          {<DateLabel date={selected ? selected : arr[arr.length - 1]} />}
         </ListTitle>
         {toggle ? (
           <Icon src={Dropdown_up} alt="dropdown-up" />
@@ -46,7 +47,9 @@ const Dropdown = ({ arr = month, _click, selected }) => {
                 }}
                 bg={selected === yr ? "#dddefd" : "#fff"}
               >
-                <ListTitle>{yr}</ListTitle>
+                <ListTitle>
+                  <DateLabel date={yr} />
+                </ListTitle>
               </List>
             ))}
           </ListConatiner>

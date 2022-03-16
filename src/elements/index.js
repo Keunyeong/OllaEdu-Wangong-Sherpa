@@ -11,3 +11,4 @@ export { default as Tag } from "./Tag";
 export { default as SubjectTypho } from "./SubjectTypho";
 export { default as ScoreTitle } from "./ScoreTitle";
 export { default as Light } from "./Light";
+export { default as DateLabel } from "./DateLabel";
