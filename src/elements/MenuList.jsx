@@ -18,7 +18,7 @@ const MenuList = ({ children, list, job, icon }) => {
   useEffect(() => {
     window.addEventListener("click", handleCloseToggle);
     return () => {
-      window.addEventListener("click", handleCloseToggle);
+      window.removeEventListener("click", handleCloseToggle);
     };
   }, [toggleOn]);
   let cn = "list";
