@@ -35,7 +35,7 @@ export const loadData = () => async (dispatch, state) => {
   dispatch(setLoading(true));
 
   const data = await fetch(
-    "https://kimcodi.kr/external_api/report/resultSearch.php?%20mem_id=0909okdor"
+    "https://gist.githubusercontent.com/himchan94/74258d92c0af3f9d0cce70202f17f406/raw/0dd3abeca38b805cf0525a14a6da98fc89892b52/fastcampus1%2525data"
   )
     .then(res => res.json())
     .then(data => data.result)
