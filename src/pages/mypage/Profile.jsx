@@ -25,10 +25,7 @@ const Profile = () => {
         highLightTop={7.3}
         highLightTop2={7.3}
       />
-      <MypageSection
-        title="기본정보"
-        subtitle="개인정보 변동사항은 이곳에서 수정해 주세요."
-      >
+      <MypageSection title="기본정보" subtitle="개인정보를 확인하세요.">
         <Info>
           <div className="info-box">
             <div className="name">
@@ -135,7 +132,6 @@ const Info = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: ${(48 / 1512) * 100 + "vw"};
     button {
       display: flex;
       flex-direction: row;
@@ -169,9 +165,6 @@ const Info = styled.div`
       color: #6a6a6a;
       margin-top: 16px;
     }
-    @media screen and (max-width: 667px) {
-      margin-bottom: ${(88 / 1512) * 100 + "vw"};
-    }
   }
 `;
 
@@ -182,7 +175,7 @@ const LogOutLink = styled.a`
   text-decoration: underline;
   cursor: pointer;
   color: #5358cb;
-  margin-bottom: ${(56 / 1512) * 100 + "vw"};
+  margin: ${(30 / 1512) * 100 + "vw"} 0;
 `;
 
 export default Profile;

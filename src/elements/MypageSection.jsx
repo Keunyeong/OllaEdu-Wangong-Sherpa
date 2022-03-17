@@ -16,7 +16,7 @@ export default MypageSection;
 
 const Section = styled.div`
   width: 100%;
-  height: 78vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
