@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { ProgressBar } from "../elements";
 const RankList = ({ grade }) => {
   const total = grade.filter(x => x["과목"] === "TOTAL");
   const slice = grade.filter(x => x["과목"] !== "TOTAL");
   const gradeCount = slice.length === 3;
+  const { 시험명 } = total[0];
+
+  let 만점 = 250;
+
+  if (!gradeCount) {
+    만점 = 500;
+  }
+
+  useEffect(() => {}, [gradeCount]);
 
   return (
     <Container padding={gradeCount ? "24px 22px" : "8px 22px"}>
@@ -16,7 +25,11 @@ const RankList = ({ grade }) => {
           <ProgressBar
             bg="rgba(100, 100, 165, 0.8)"
             cg="#6464A5"
-            score={total[0]["당월점수"] / 300}
+            score={
+              시험명 === "체력측정 결과"
+                ? (total[0]["당월점수"] * 10) / 만점
+                : total[0]["당월점수"] / 만점
+            }
           />
         </Absolute>
         <TyphoGraphy fs="12px" fw={700}>
@@ -28,14 +41,20 @@ const RankList = ({ grade }) => {
       </TitleConatiner>
       <Border top={gradeCount ? "58px" : "41px"} />
       <Ul margin={gradeCount ? "17px" : "9px"}>
-        {slice.map((obj, idx) => {
+        {slice.map(obj => {
           return (
-            <Li key={idx} margin={gradeCount ? "15px" : "1px"}>
+            <Li key={obj["과목"]} margin={gradeCount ? "15px" : "1px"}>
               <TyphoGraphy fs="12px" fw={400}>
                 {obj["과목"]}
               </TyphoGraphy>
               <Absolute>
-                <ProgressBar score={obj["당월점수"] / 100} />
+                <ProgressBar
+                  score={
+                    시험명 === "체력측정 결과"
+                      ? (obj["당월점수"] * 10) / 100
+                      : obj["당월점수"] / 100
+                  }
+                />
               </Absolute>
               <TyphoGraphy fs="12px" fw={700}>
                 {obj["순위"]}등
@@ -74,7 +93,7 @@ const TitleConatiner = styled.div`
 
 const Absolute = styled.div`
   position: absolute;
-  right: 58px;
+  right: 62px;
   display: flex;
   align-items: center;
 `;
