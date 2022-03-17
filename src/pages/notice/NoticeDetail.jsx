@@ -8,7 +8,10 @@ const NoticeDetail = () => {
   const navigate = useNavigate();
   const params = useParams();
   const noticeList = useContext(NoticeContext);
-  const [notice, setNotice] = useState(noticeList[0]);
+  const [notice, setNotice] = useState({});
+  useEffect(() => {
+    setNotice(noticeList[0]);
+  }, [noticeList[0]]);
   useEffect(() => {
     if (params.id) setNotice(noticeList[params.id]);
   }, [params.id]);
@@ -58,6 +61,9 @@ const Notice = styled.div`
     padding: 0;
     background-color: transparent;
     margin-bottom: 0.625rem;
+    &:hover {
+      cursor: pointer;
+    }
   }
   h5 {
     font-size: 1.5rem;

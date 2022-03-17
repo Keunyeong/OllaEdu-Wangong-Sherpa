@@ -11,7 +11,7 @@ const NoticeBoard = ({ data }) => {
       <H1>
         <Light
           top={0}
-          left={0}
+          left={1}
           highLightWidth={7.4}
           highLightWidth2={7.4}
           highLightTop={7.3}
