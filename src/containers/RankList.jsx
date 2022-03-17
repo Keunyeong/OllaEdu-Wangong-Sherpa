@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { ProgressBar } from "../elements";
 const RankList = ({ grade }) => {
   const total = grade.filter(x => x["과목"] === "TOTAL");
-
   const slice = grade.filter(x => x["과목"] !== "TOTAL");
+  const gradeCount = slice.length === 3;
 
   return (
-    <Container>
+    <Container padding={gradeCount ? "24px 22px" : "8px 22px"}>
       <TitleConatiner>
         <TyphoGraphy fs="12px" fw={700}>
           총점
@@ -26,11 +26,12 @@ const RankList = ({ grade }) => {
           </TyphoGraphy>
         </TyphoGraphy>
       </TitleConatiner>
-      <Ul>
-        {slice.map(obj => {
+      <Border top={gradeCount ? "58px" : "41px"} />
+      <Ul margin={gradeCount ? "17px" : "9px"}>
+        {slice.map((obj, idx) => {
           return (
-            <Li key={obj["과목"]}>
-              <TyphoGraphy fs="12px" fw={300}>
+            <Li key={idx} margin={gradeCount ? "15px" : "1px"}>
+              <TyphoGraphy fs="12px" fw={400}>
                 {obj["과목"]}
               </TyphoGraphy>
               <Absolute>
@@ -53,21 +54,22 @@ const RankList = ({ grade }) => {
 export default RankList;
 
 const Container = styled.section`
-  width: 15.813em;
+  position: relative;
+  width: 296px;
   height: 100%;
-  padding: 24px 22px;
+  padding: ${props => props.padding};
   display: flex;
   flex-direction: column;
-  gap: 15px;
 `;
 
 const TitleConatiner = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  padding-bottom: 8px;
-  border-bottom: 0.5px solid #d8d8d8;
   justify-content: space-between;
+  width: 249px;
+  height: 29px;
+  flex-shrink: 0;
 `;
 
 const Absolute = styled.div`
@@ -83,12 +85,21 @@ const TyphoGraphy = styled.span`
   margin: ${props => props.margin};
 `;
 
+const Border = styled.div`
+  position: absolute;
+  top: ${props => props.top};
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 249px;
+  border-bottom: 0.5px solid #d8d8d8;
+`;
+
 const Ul = styled.ul`
-  margin-top: 10px;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  height: 100%;
+  margin-top: ${props => props.margin};
 `;
 
 const Li = styled.li`
@@ -96,10 +107,11 @@ const Li = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 29px;
   white-space: nowrap;
   padding: 2.5px 0;
 
   & + & {
-    margin-top: 15px;
+    margin-top: ${props => props.margin};
   }
 `;

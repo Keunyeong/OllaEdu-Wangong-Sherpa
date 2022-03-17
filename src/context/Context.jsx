@@ -9,8 +9,12 @@ export const Context = createContext(INITIAL_STATE);
 export const ContextProvider = ({ children }) => {
   const [state, dispatch] = useMwReducer(reducer, INITIAL_STATE);
   useEffect(() => {
-    dispatch(loadData());
-  }, []);
+    localStorage.setItem("isLogin", JSON.stringify(state.isLogin));
+    localStorage.setItem("userInfo", JSON.stringify(state.userInfo));
+    if (state.isLogin) {
+      dispatch(loadData());
+    }
+  }, [state.isLogin, state.userInfo]);
 
   return (
     <Context.Provider
@@ -19,6 +23,7 @@ export const ContextProvider = ({ children }) => {
         isLoading: state.isLoading,
         isLogin: state.isLogin,
         error: state.error,
+        userInfo: state.userInfo,
         dispatch: dispatch
       }}
     >

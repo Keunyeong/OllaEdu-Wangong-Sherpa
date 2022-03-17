@@ -13,6 +13,20 @@ export const setLogin = isLogin => ({
   payload: isLogin
 });
 
+export const setError = error => ({
+  type: "SET_ERROR",
+  payload: error
+});
+
+export const setUserInfo = userInfo => ({
+  type: "SET_USERINFO",
+  payload: userInfo
+});
+
+export const LogOut = () => ({
+  type: "LOGOUT"
+});
+
 export const loadData = () => async (dispatch, state) => {
   dispatch(setLoading(true));
 
@@ -70,19 +84,41 @@ export const loadData = () => async (dispatch, state) => {
 export const tryLogin = userData => async (dispatch, state, navigate) => {
   dispatch(setLoading(true));
 
-  await fetch("https://kimcodi.kr/external_api/report/login.php", {
-    method: "POST",
-    body: JSON.stringify({
-      api_key: "EZVrTC4VVKNeeGQ7wbxdP4NzMNpgEmC2",
-      user_id: userData.id,
-      user_pw: userData.pw
-    })
-  })
-    .then(res => res.json())
-    .then(res => {
-      dispatch(setLogin(true));
-    });
+  const { id, pw } = userData;
+  try {
+    if (id === "fastcampus1" && Number(pw) === 1234) {
+      await fetch(
+        "https://gist.githubusercontent.com/himchan94/8abfadc76052ee4cf393ce7abf0662b9/raw/021ce418e4876da198cad3faf48291d5e237a44d/login%2525id=fastcampus1%2525pw=1234"
+      )
+        .then(res => res.json())
+        .then(res => {
+          dispatch(setLogin(true));
+          dispatch(setUserInfo(res));
+        });
 
-  dispatch(setLoading(false));
-  navigate("/rating");
+      dispatch(setLoading(false));
+      navigate("/rating");
+      return;
+    }
+
+    if (id === "fastcampus2" && Number(pw) === 1234) {
+      await fetch(
+        "https://gist.githubusercontent.com/himchan94/6469896107892d5e54f6233f64b7f987/raw/887c258017ba1a1f2ca4ba15bfbb9367121e1900/login%2525id=fastcampus2%2525pw=1234"
+      )
+        .then(res => res.json())
+        .then(res => {
+          dispatch(setLogin(true));
+          dispatch(setUserInfo(res));
+        });
+
+      dispatch(setLoading(false));
+      navigate("/rating");
+      return;
+    }
+    dispatch(setError("invalid id or password"));
+    dispatch(setLoading(false));
+  } catch (error) {
+    dispatch(setError(error));
+    dispatch(setLoading(false));
+  }
 };
