@@ -1,0 +1,26 @@
+{
+  "name": "final-project",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "d3": "^7.3.0",
+    "moment": "^2.29.1",
+    "react": "^17.0.2",
+    "react-big-calendar": "^0.39.2",
+    "react-dom": "^17.0.2",
+    "react-is": "^17.0.2",
+    "react-rating-stars-component": "^2.2.0",
+    "react-router-dom": "^6.2.1",
+    "react-to-pdf": "^0.0.14",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^1.0.7",
+    "vite": "^2.8.0"
+  }
+}
