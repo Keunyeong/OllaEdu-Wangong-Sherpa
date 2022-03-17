@@ -1,15 +1,14 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 
 const NavToggleList = ({ list, job, state }) => {
   let location = useLocation();
   let listArr = ["모의고사", "중간종합", "체력증감"];
   let urlArr = ["/report/monthly", "/report/weekly", "/report/physical"];
   if (list === "notice") {
-    listArr = ["전체공지", "일정공지", "학원소개"];
-    urlArr = ["/notice/main", "/notice/schedule", "/notice/academy"];
+    listArr = ["전체공지"];
+    urlArr = ["/notice/main"];
   } else if (list === "mypage") {
     listArr = ["기본정보", "시간표"];
     urlArr = ["/mypage/main", "/mypage/schedule"];
