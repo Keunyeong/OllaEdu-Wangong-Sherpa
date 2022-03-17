@@ -8,6 +8,11 @@ const reducer = (state, action) => {
       return { ...state, isLogin: action.payload };
     case "SET_ERROR":
       return { ...state, error: action.payload };
+    case "SET_USERINFO":
+      return { ...state, userInfo: action.payload };
+    case "LOGOUT":
+      console.log("runned");
+      return { ...state, isLogin: false, userInfo: null };
     default:
       return state;
   }

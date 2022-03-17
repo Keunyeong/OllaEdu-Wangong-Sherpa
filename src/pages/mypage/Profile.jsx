@@ -1,8 +1,19 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import MypageSection from "../../elements/MypageSection";
 import Light from "../../elements/Light";
+import { Context } from "../../context/Context";
 
 const Profile = () => {
+  const { userInfo, dispatch } = useContext(Context);
+  const navigate = useNavigate();
+
+  if (!userInfo) return null;
+
+  const { name, birth, address, phone } = userInfo;
+  const [year, month, day] = birth.split("-");
+
   return (
     <>
       <Light
@@ -22,25 +33,26 @@ const Profile = () => {
             <div className="name">
               <div className="title">이름</div>
               <div className="box">
-                <span>강병석</span>
+                <span>{name}</span>
               </div>
             </div>
             <div className="phone">
               <div className="title">휴대폰</div>
               <div className="box">
-                <span>01054356692</span>
+                <span>{phone}</span>
               </div>
             </div>
             <div className="adress">
               <div className="title">주소</div>
               <div className="box">
-                <span>서울특별시 송파구 송파대로 112-12</span>
+                <span>{address}</span>
               </div>
             </div>
             <div className="birthday">
               <div className="title">생년월일</div>
               <div className="box">
-                <span>2000</span>년 <span>08</span>월 <span>14</span>일
+                <span>{year}</span>년 <span>{month}</span>월 <span>{day}</span>
+                일
               </div>
             </div>
           </div>
@@ -48,6 +60,7 @@ const Profile = () => {
             <button>변경하러 가기</button>
             <p>클릭시 올라에듀 홈페이지로 이동합니다.</p>
           </div>
+          <LogOut onClick={e => {}}>로그아웃</LogOut>
         </Info>
       </MypageSection>
     </>
@@ -145,11 +158,22 @@ const Info = styled.div`
       align-items: center;
       text-align: center;
       color: #6a6a6a;
+      margin-top: 16px;
     }
     @media screen and (max-width: 667px) {
       margin-bottom: ${(88 / 1512) * 100 + "vw"};
     }
   }
+`;
+
+const LogOut = styled.span`
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #5358cb;
+  margin-bottom: ${(56 / 1512) * 100 + "vw"};
 `;
 
 export default Profile;

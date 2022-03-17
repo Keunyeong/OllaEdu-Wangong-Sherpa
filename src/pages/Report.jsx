@@ -49,7 +49,7 @@ const Report = () => {
   }, []);
 
   useEffect(() => {
-    if (data.length !== 0) {
+    if (Object.keys(data).length !== 0) {
       let selection;
       if (!date) {
         selection = 응시월[응시월.length - 1];
@@ -89,7 +89,7 @@ const Report = () => {
           {title}&nbsp;
           <Span>분석</Span>
         </Title>
-        {data.length !== 0 ? (
+        {Object.keys(data).length && (
           <DropdownContainer>
             <DropdownWrapper margin="20px">
               <Dropdown arr={응시월} _click={selectData} selected={date} />
@@ -106,7 +106,7 @@ const Report = () => {
               )}
             </ReactToPdf>
           </DropdownContainer>
-        ) : null}
+        )}
 
         <Wrapper>
           <Swap1>

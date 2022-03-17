@@ -18,6 +18,15 @@ export const setError = error => ({
   payload: error
 });
 
+export const setUserInfo = userInfo => ({
+  type: "SET_USERINFO",
+  payload: userInfo
+});
+
+export const LogOut = () => ({
+  type: "LOGOUT"
+});
+
 export const loadData = () => async (dispatch, state) => {
   dispatch(setLoading(true));
 
@@ -79,12 +88,14 @@ export const tryLogin = userData => async (dispatch, state, navigate) => {
   try {
     if (id === "fastcampus1" && Number(pw) === 1234) {
       await fetch(
-        "https://gist.githubusercontent.com/himchan94/8abfadc76052ee4cf393ce7abf0662b9/raw/9926b430cedd6f6bd8caf08dcc23638d468ca127/login%2525id=fastcampus1%2525pw=1234"
+        "https://gist.githubusercontent.com/himchan94/8abfadc76052ee4cf393ce7abf0662b9/raw/021ce418e4876da198cad3faf48291d5e237a44d/login%2525id=fastcampus1%2525pw=1234"
       )
         .then(res => res.json())
         .then(res => {
           dispatch(setLogin(true));
+          dispatch(setUserInfo(res));
         });
+
       dispatch(setLoading(false));
       navigate("/rating");
       return;
@@ -92,12 +103,14 @@ export const tryLogin = userData => async (dispatch, state, navigate) => {
 
     if (id === "fastcampus2" && Number(pw) === 1234) {
       await fetch(
-        "https://gist.githubusercontent.com/himchan94/6469896107892d5e54f6233f64b7f987/raw/88aae174945439753886007885340fa6a193c63b/login%2525id=fastcampus2%2525pw=1234"
+        "https://gist.githubusercontent.com/himchan94/6469896107892d5e54f6233f64b7f987/raw/887c258017ba1a1f2ca4ba15bfbb9367121e1900/login%2525id=fastcampus2%2525pw=1234"
       )
         .then(res => res.json())
         .then(res => {
           dispatch(setLogin(true));
+          dispatch(setUserInfo(res));
         });
+
       dispatch(setLoading(false));
       navigate("/rating");
       return;
