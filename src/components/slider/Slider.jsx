@@ -167,11 +167,9 @@ const Increase = styled.div`
   left: 8%;
   display: flex;
   justify-content: center;
-
   span {
     margin-left: 5px;
   }
-
   @media (max-width: 992px) {
     display: none;
   }
@@ -190,7 +188,6 @@ const Slider = styled.div`
   left: 12%;
   opacity: ${props => (props.activity === "active-anim" ? "1" : "0")};
   transition: opacity ease-in-out 0.4s;
-
   @media (max-width: 667px) {
     left: 28%;
   }
@@ -209,12 +206,6 @@ const TouchSlideBox = styled.div`
   align-items: center;
   overflow-x: scroll;
 
-<<<<<<< HEAD
-  padding-left: 7%;
-=======
-  
->>>>>>> b298d639d8e55c7a7212ac49f14d30a051ef2e5f
-
   &::-webkit-scrollbar {
     height: 7px;
     border-radius: 5px;
@@ -223,14 +214,7 @@ const TouchSlideBox = styled.div`
     background-color: #d8d8d8;
     border-radius: 5px;
   }
-
-<<<<<<< HEAD
   @media (max-width: 845px) {
-    padding-left: 200px;
-=======
-  @media (max-width: 845px){
-    
->>>>>>> b298d639d8e55c7a7212ac49f14d30a051ef2e5f
   }
 `;
 const LittleBox = styled.div`
