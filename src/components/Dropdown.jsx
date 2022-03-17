@@ -43,7 +43,13 @@ const Dropdown = ({ arr = month, _click, selected }) => {
               <List
                 key={yr}
                 onClick={e => {
-                  _click(e.target.innerText);
+                  const [yy, mm] = e.target.innerText.split(" / ");
+                  const year = yy;
+                  let month = mm;
+                  if (month.length === 1) {
+                    month = "0" + month;
+                  }
+                  _click(year + month);
                 }}
                 bg={selected === yr ? "#dddefd" : "#fff"}
               >
