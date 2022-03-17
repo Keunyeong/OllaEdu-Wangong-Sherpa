@@ -21,7 +21,7 @@ const Page = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: ${(60 / 982) * 100 + "vh"}; ;
 `;
 
 export default Mypage;
