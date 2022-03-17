@@ -105,39 +105,25 @@ export default function SliderTest({ grade }) {
         <TouchSlideBox>
           {slice.map((obj, index) => {
             const { 전월점수, 당월점수, 과목 } = obj;
-
-            return (
-              <TouchSlide key={과목}>
-                <GrowthGraph
-                  scoreData={[
-                    과목,
-                    Math.round(Number(전월점수)),
-                    Math.round(Number(당월점수))
-                  ]}
-                  title={과목}
-                  screen={true}
-                />
-              </TouchSlide>
-            );
-          })}
-          {slice.map((obj, index) => {
-            const { 전월점수, 당월점수, 과목 } = obj;
-            if(index>=1){
-              return (
-              <TouchSlide key={과목}>
-                <GrowthGraph
-                  scoreData={[
-                    과목,
-                    Math.round(Number(전월점수)),
-                    Math.round(Number(당월점수))
-                  ]}
-                  title={과목}
-                  screen={true}
-                />
-              </TouchSlide>
-            );
+            let sliceLength = false;
+            if(index>=5){
+              sliceLength = true;
             }
-            
+            return (
+              <LittleBox sliceLength={sliceLength}>
+              <TouchSlide key={과목}>
+                <GrowthGraph
+                  scoreData={[
+                    과목,
+                    Math.round(Number(전월점수)),
+                    Math.round(Number(당월점수))
+                  ]}
+                  title={과목}
+                  screen={true}
+                />
+              </TouchSlide>
+              </LittleBox>
+            );
           })}
         </TouchSlideBox>
 
@@ -214,8 +200,8 @@ const TouchSlideBox = styled.div`
   justify-content: center;
   align-items: center;
   overflow-x: scroll;
+
   
-  padding-left: 7%;
 
   &::-webkit-scrollbar {
     height: 7px;
@@ -227,8 +213,12 @@ const TouchSlideBox = styled.div`
   }
 
   @media (max-width: 845px){
-    padding-left: 200px;
+    
   }
+`;
+const LittleBox = styled.div`
+display: flex;
+margin-left: ${props =>  props.sliceLength ? "250px" :  "0"};
 `;
 const TouchSlide = styled.div`
   height: 100%;
