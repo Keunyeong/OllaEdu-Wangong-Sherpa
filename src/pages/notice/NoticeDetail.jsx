@@ -61,6 +61,9 @@ const Notice = styled.div`
     padding: 0;
     background-color: transparent;
     margin-bottom: 0.625rem;
+    &:hover {
+      cursor: pointer;
+    }
   }
   h5 {
     font-size: 1.5rem;
