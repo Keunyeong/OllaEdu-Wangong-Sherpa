@@ -12,11 +12,13 @@ const TotalGraph = ({ width = 296, grade }) => {
   const 목표점수 = total[0]["당월목표"];
   const 학생등급 = 학생총점 / 만점;
   const 목표등급 = 목표점수 / 만점;
+  const 달성도 = total[0]["달성도"].replace("%", "");
 
   const data = {
     studentScore: 학생총점,
     studentGrade: 학생등급,
-    targetGrade: 목표등급
+    targetGrade: 목표등급,
+    achievement: 달성도
   };
 
   const chart = useRef();
@@ -75,9 +77,9 @@ const TotalGraph = ({ width = 296, grade }) => {
       .duration(750)
       .attrTween("d", function (d) {
         const iChart = d3.interpolate({ endAngle: 0 }, d);
-        const iText = d3.interpolate(0, data.studentScore);
+        const iText = d3.interpolate(0, data.achievement);
         return function (t) {
-          numberDOM.text(d3.format(",d")(iText(t)));
+          numberDOM.text(d3.format(",d")(iText(t)) + "%");
           return innerArc(iChart(t));
         };
       });

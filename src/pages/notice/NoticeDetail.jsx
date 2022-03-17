@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useParams, useNavigate } from "react-router-dom";
 import { NoticeContext } from "./Notice";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef, useCallback } from "react";
 import { notice_arrow } from "../../assets";
 
 const NoticeDetail = () => {
@@ -9,12 +9,20 @@ const NoticeDetail = () => {
   const params = useParams();
   const noticeList = useContext(NoticeContext);
   const [notice, setNotice] = useState({});
+  const scrollRef = useRef();
+
   useEffect(() => {
     setNotice(noticeList[0]);
   }, [noticeList[0]]);
+
   useEffect(() => {
     if (params.id) setNotice(noticeList[params.id]);
+    scrollRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "end"
+    });
   }, [params.id]);
+
   return (
     <Notice
       params={params["*"] === "main" || params["*"] === "main/" ? true : false}
@@ -26,7 +34,7 @@ const NoticeDetail = () => {
       >
         <img src={notice_arrow} alt="arrow_left" />
       </button>
-      <h5>{notice.title}</h5>
+      <h5 ref={scrollRef}>{notice.title}</h5>
       <span>
         <div className="author">{notice.author}</div>
         <div className="date">{notice.date}</div>

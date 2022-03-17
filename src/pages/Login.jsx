@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import styled from "styled-components";
-import { Login_image, Logo_black } from "../assets";
+import { Login_image, Logo_new } from "../assets";
 import { Context } from "../context/Context";
 import { tryLogin } from "../context/reducer/action";
 import LoginErrorModal from "../components/LoginErrorModal";
@@ -37,7 +37,7 @@ const Login = () => {
       </div>
       <div className="login">
         <form onSubmit={handleSubmit}>
-          <img src={Logo_black} alt="logo" />
+          <img src={Logo_new} alt="logo" />
           <input
             type="text"
             placeholder="아이디"
@@ -91,7 +91,7 @@ const LoginPage = styled.div`
       justify-content: space-between;
       text-align: center;
       img {
-        width: 258px;
+        width: 142px;
         margin: 0 auto;
       }
       input {
@@ -125,9 +125,6 @@ const LoginPage = styled.div`
         padding: 0;
         width: 291px;
         height: 224px;
-        img {
-          width: 188px;
-        }
         input {
           height: 29px;
           border-radius: ${29 / 2}px;

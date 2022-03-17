@@ -31,4 +31,4 @@ export { default as mypage_icon } from "./mypage_icon.svg";
 export { default as footer_logo } from "./footer_logo.svg";
 export { default as toggle } from "./toggle.svg";
 export { default as Login_image } from "./Login_image.svg";
-export { default as Logo_black } from "./logo_black.svg";
+export { default as Logo_new } from "./logo_new.svg";
