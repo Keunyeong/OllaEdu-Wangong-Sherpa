@@ -10,7 +10,16 @@ const IrregularPieChart = ({ width = 296, height = 208, grade }) => {
     .filter(gr => gr.과목 !== "TOTAL")
     .reduce((acc, cur) => {
       const { 과목, 당월점수 } = cur;
-      acc.push({ subject: 과목, score: Number(당월점수) });
+      if (cur["시험명"] === "체력측정 결과") {
+        acc.push({ subject: 과목, score: Number(당월점수) * 10 });
+      } else {
+        if (과목 === "헌법") {
+          acc.push({ subject: 과목, score: Number(당월점수) * 2 });
+        } else {
+          acc.push({ subject: 과목, score: Number(당월점수) });
+        }
+      }
+
       return acc;
     }, []);
 

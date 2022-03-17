@@ -6,13 +6,25 @@ import * as d3 from "d3";
 
 const TotalGraph = ({ width = 296, grade }) => {
   const total = grade.filter(x => x["과목"] === "TOTAL");
+  const { 시험명 } = total[0];
 
-  const 만점 = 300;
+  let 만점 = 500;
+
+  if (grade.length === 4) {
+    만점 = 250;
+  }
+
   const 학생총점 = total[0]["당월점수"];
   const 목표점수 = total[0]["당월목표"];
-  const 학생등급 = 학생총점 / 만점;
-  const 목표등급 = 목표점수 / 만점;
-  const 달성도 = total[0]["달성도"].replace("%", "");
+  let 학생등급 = 학생총점 / 만점;
+  let 목표등급 = 목표점수 / 만점;
+
+  if (시험명 === "체력측정 결과") {
+    학생등급 = (학생총점 * 10) / 만점;
+    목표등급 = (목표점수 * 10) / 만점;
+  }
+
+  const 달성도 = total[0]["달성도"].split(".")[0];
 
   const data = {
     studentScore: 학생총점,
