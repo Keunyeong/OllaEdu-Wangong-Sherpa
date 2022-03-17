@@ -209,25 +209,7 @@ const Report = () => {
                 isLoading ? (
                   <SkeletonBar />
                 ) : (
-                  <Paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Congue nascetur turpis netus justo. Eleifend eget mattis
-                    ipsum neque, lorem donec dignissim. Quis adipiscing
-                    ullamcorper arcu elit. Platea fames massa eu condimentum
-                    nulla. Hac commodo, duis odio velit accumsan nibh quam
-                    suscipit proin. Proin amet enim metus rhoncus nisl. Non
-                    fermentum tellus vel sagittis elementum tristique porttitor.
-                    Vitae, adipiscing a pellentesque massa, ultricies. Mauris
-                    sit felis dui amet, sociis porttitor pharetra. Lectus quam
-                    libero sit facilisi praesent pharetra. Sed semper
-                    ullamcorper tempus dolor. Vel mauris vulputate quis massa
-                    rhoncus, amet, nunc. Amet dolor morbi ut eu netus sed tortor
-                    vulputate eget. In montes, amet mauris commodo viverra. Est
-                    dolor ultrices nulla at donec faucibus quis sagittis. Etiam
-                    vulputate magna enim pellentesque sodales nisi, pulvinar
-                    posuere nunc. Leo, ultricies arcu vitae volutpat id. Neque
-                    in enim tristique eget. Auctor eu ac, aliquet
-                  </Paragraph>
+                  <Paragraph>- 평가가 아직 작성되지 않았습니다.</Paragraph>
                 )
               }
             />
