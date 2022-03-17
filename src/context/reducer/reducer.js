@@ -11,7 +11,6 @@ const reducer = (state, action) => {
     case "SET_USERINFO":
       return { ...state, userInfo: action.payload };
     case "LOGOUT":
-      console.log("runned");
       return { ...state, isLogin: false, userInfo: null };
     default:
       return state;

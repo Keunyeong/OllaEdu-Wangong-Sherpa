@@ -4,6 +4,7 @@ import styled from "styled-components";
 import MypageSection from "../../elements/MypageSection";
 import Light from "../../elements/Light";
 import { Context } from "../../context/Context";
+import { LogOut } from "../../context/reducer/action";
 
 const Profile = () => {
   const { userInfo, dispatch } = useContext(Context);
@@ -60,7 +61,15 @@ const Profile = () => {
             <button>변경하러 가기</button>
             <p>클릭시 올라에듀 홈페이지로 이동합니다.</p>
           </div>
-          <LogOut onClick={e => {}}>로그아웃</LogOut>
+          <LogOutLink
+            onClick={e => {
+              e.preventDefault();
+              dispatch(LogOut());
+              navigate("/");
+            }}
+          >
+            로그아웃
+          </LogOutLink>
         </Info>
       </MypageSection>
     </>
@@ -166,7 +175,7 @@ const Info = styled.div`
   }
 `;
 
-const LogOut = styled.span`
+const LogOutLink = styled.a`
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;

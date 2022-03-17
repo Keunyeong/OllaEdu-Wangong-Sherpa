@@ -23,9 +23,13 @@ export const setUserInfo = userInfo => ({
   payload: userInfo
 });
 
-export const LogOut = () => ({
-  type: "LOGOUT"
-});
+export const LogOut = () => {
+  localStorage.removeItem("isLogin");
+  localStorage.removeItem("userInfo");
+  return {
+    type: "LOGOUT"
+  };
+};
 
 export const loadData = () => async (dispatch, state) => {
   dispatch(setLoading(true));
