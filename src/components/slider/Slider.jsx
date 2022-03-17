@@ -107,6 +107,10 @@ export default function SliderTest({ grade }) {
         </SpanBox>
         <TouchSlideBox>
           {slice.map((obj, index) => {
+            let sliceLength = false;
+            if (index >= 5) {
+              sliceLength = true;
+            }
             let { 전월점수, 당월점수, 과목, 시험명 } = obj;
 
             if (시험명 === "체력측정 결과") {
@@ -121,12 +125,23 @@ export default function SliderTest({ grade }) {
             ];
 
             return (
-              <TouchSlide key={과목}>
-                <GrowthGraph scoreData={data} title={과목} screen={true} />
-              </TouchSlide>
+              <LittleBox sliceLength={sliceLength}>
+                <TouchSlide key={과목}>
+                  <GrowthGraph scoreData={data} title={과목} screen={true} />
+                </TouchSlide>
+              </LittleBox>
             );
           })}
+
           {slice.map((obj, index) => {
+            if (index >= 1) {
+              return (
+                <TouchSlide key={과목}>
+                  <GrowthGraph scoreData={data} title={과목} screen={true} />
+                </TouchSlide>
+              );
+            }
+
             let { 전월점수, 당월점수, 과목, 시험명 } = obj;
 
             if (시험명 === "체력측정 결과") {
@@ -139,13 +154,6 @@ export default function SliderTest({ grade }) {
               Math.round(Number(전월점수)),
               Math.round(Number(당월점수))
             ];
-            if (index >= 1) {
-              return (
-                <TouchSlide key={과목}>
-                  <GrowthGraph scoreData={data} title={과목} screen={true} />
-                </TouchSlide>
-              );
-            }
           })}
         </TouchSlideBox>
 
@@ -223,7 +231,11 @@ const TouchSlideBox = styled.div`
   align-items: center;
   overflow-x: scroll;
 
+<<<<<<< HEAD
   padding-left: 7%;
+=======
+  
+>>>>>>> b298d639d8e55c7a7212ac49f14d30a051ef2e5f
 
   &::-webkit-scrollbar {
     height: 7px;
@@ -234,9 +246,18 @@ const TouchSlideBox = styled.div`
     border-radius: 5px;
   }
 
+<<<<<<< HEAD
   @media (max-width: 845px) {
     padding-left: 200px;
+=======
+  @media (max-width: 845px){
+    
+>>>>>>> b298d639d8e55c7a7212ac49f14d30a051ef2e5f
   }
+`;
+const LittleBox = styled.div`
+  display: flex;
+  margin-left: ${props => (props.sliceLength ? "250px" : "0")};
 `;
 const TouchSlide = styled.div`
   height: 100%;

@@ -31,7 +31,7 @@ export default function Schedule() {
 
 const Main = styled.div`
   width: 100%;
-  height: 60vh;
+  height: 100%;
   margin-bottom: 80px;
   img {
     height: 100%;
@@ -41,7 +41,7 @@ const Main = styled.div`
     width: 70vw;
   }
   @media screen and (max-width: 668px) {
-    height: 50vh;
+    height: 51vh;
     img {
       height: 100%;
       object-fit: cover;

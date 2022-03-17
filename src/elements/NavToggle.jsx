@@ -23,16 +23,6 @@ export default function NavToggle({ cn }) {
         >
           전체공지
         </div>
-        <div
-          className={
-            location.pathname === "/notice/main" ? "list selected" : "list"
-          }
-          onClick={() => {
-            navigate("/notice/main");
-          }}
-        >
-          학원비 납입
-        </div>
       </div>
       <div className="toggle_list">
         <div className="title">
