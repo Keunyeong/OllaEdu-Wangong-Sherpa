@@ -24,7 +24,7 @@ const TotalGraph = ({ width = 296, grade }) => {
     목표등급 = (목표점수 * 10) / 만점;
   }
 
-  const 달성도 = total[0]["달성도"].split(".")[0];
+  const 달성도 = total[0]["달성도"].split("%")[0];
 
   const data = {
     studentScore: 학생총점,
@@ -89,7 +89,7 @@ const TotalGraph = ({ width = 296, grade }) => {
       .duration(750)
       .attrTween("d", function (d) {
         const iChart = d3.interpolate({ endAngle: 0 }, d);
-        const iText = d3.interpolate(0, data.achievement);
+        const iText = d3.interpolate(0, Math.floor(data.achievement));
         return function (t) {
           numberDOM.text(d3.format(",d")(iText(t)) + "%");
           return innerArc(iChart(t));

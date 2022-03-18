@@ -80,6 +80,10 @@ const Card = styled.div`
   @media (max-width: 991px) {
     width: 384px;
   }
+
+  @media (max-width: 480px) {
+    width: 320px;
+  }
 `;
 
 const Title = styled.h3`
@@ -117,10 +121,13 @@ const Question = styled.h2`
   font-style: normal;
   line-height: 24px;
   color: #fff;
-  white-space: nowrap;
 
   @media (max-width: 667px) {
     font-size: 32px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 24px;
   }
 `;
 
@@ -134,7 +141,6 @@ const SubText = styled.p`
   font-weight: 400;
   line-height: 24px;
   color: #fff;
-  white-space: nowrap;
 
   @media (max-width: 667px) {
     display: flex;

@@ -42,9 +42,20 @@ export default function SliderTest({ grade }) {
     return (
       <ContainerSlider>
         {slice.map((obj, index) => {
-          const { 전월점수, 당월점수, 과목 } = obj;
+          let { 전월점수, 당월점수, 과목, 시험명 } = obj;
+
+          if (시험명 === "체력측정 결과") {
+            전월점수 *= 10;
+            당월점수 *= 10;
+          }
 
           const growth = Math.round(Number(당월점수 - 전월점수));
+
+          const data = [
+            과목,
+            Math.round(Number(전월점수)),
+            Math.round(Number(당월점수))
+          ];
 
           return (
             <Slider
@@ -58,15 +69,7 @@ export default function SliderTest({ grade }) {
                 </span>
                 <img src={growth < 0 ? ArrowDown : ArrowUp} alt="" />
               </Increase>
-              <GrowthGraph
-                scoreData={[
-                  과목,
-                  Math.round(Number(전월점수)),
-                  Math.round(Number(당월점수))
-                ]}
-                title={과목}
-                screen={false}
-              />
+              <GrowthGraph scoreData={data} title={과목} screen={false} />
             </Slider>
           );
         })}
@@ -104,24 +107,29 @@ export default function SliderTest({ grade }) {
         </SpanBox>
         <TouchSlideBox>
           {slice.map((obj, index) => {
-            const { 전월점수, 당월점수, 과목 } = obj;
+            let { 전월점수, 당월점수, 과목, 시험명 } = obj;
+
+            if (시험명 === "체력측정 결과") {
+              전월점수 *= 10;
+              당월점수 *= 10;
+            }
+
+            const data = [
+              과목,
+              Math.round(Number(전월점수)),
+              Math.round(Number(당월점수))
+            ];
+
             let sliceLength = false;
-            if(index>=5){
+            if (index >= 5) {
               sliceLength = true;
             }
+
             return (
-              <LittleBox sliceLength={sliceLength}>
-              <TouchSlide key={과목}>
-                <GrowthGraph
-                  scoreData={[
-                    과목,
-                    Math.round(Number(전월점수)),
-                    Math.round(Number(당월점수))
-                  ]}
-                  title={과목}
-                  screen={true}
-                />
-              </TouchSlide>
+              <LittleBox sliceLength={sliceLength} key={과목}>
+                <TouchSlide key={과목}>
+                  <GrowthGraph scoreData={data} title={과목} screen={true} />
+                </TouchSlide>
               </LittleBox>
             );
           })}
@@ -159,11 +167,9 @@ const Increase = styled.div`
   left: 8%;
   display: flex;
   justify-content: center;
-
   span {
     margin-left: 5px;
   }
-
   @media (max-width: 992px) {
     display: none;
   }
@@ -182,7 +188,6 @@ const Slider = styled.div`
   left: 12%;
   opacity: ${props => (props.activity === "active-anim" ? "1" : "0")};
   transition: opacity ease-in-out 0.4s;
-
   @media (max-width: 667px) {
     left: 28%;
   }
@@ -201,8 +206,6 @@ const TouchSlideBox = styled.div`
   align-items: center;
   overflow-x: scroll;
 
-  
-
   &::-webkit-scrollbar {
     height: 7px;
     border-radius: 5px;
@@ -211,14 +214,12 @@ const TouchSlideBox = styled.div`
     background-color: #d8d8d8;
     border-radius: 5px;
   }
-
-  @media (max-width: 845px){
-    
+  @media (max-width: 845px) {
   }
 `;
 const LittleBox = styled.div`
-display: flex;
-margin-left: ${props =>  props.sliceLength ? "250px" :  "0"};
+  display: flex;
+  margin-left: ${props => (props.sliceLength ? "250px" : "0")};
 `;
 const TouchSlide = styled.div`
   height: 100%;
@@ -261,12 +262,12 @@ const Span = styled.span`
 `;
 
 const Svg = styled.svg`
-width: 7.74px;
-height: 7.74px;
+  width: 7.74px;
+  height: 7.74px;
 `;
 
 const SmallCircle = styled.circle`
-cx: 3.87px;
-cy: 3.87px;
-r: 3.87px;
+  cx: 3.87px;
+  cy: 3.87px;
+  r: 3.87px;
 `;
