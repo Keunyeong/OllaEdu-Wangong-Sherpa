@@ -20,7 +20,7 @@ export default function Schedule() {
       >
         <Main>
           <img
-            src="https://user-images.githubusercontent.com/71649055/158407166-f46da682-5e2c-4168-b7ad-cd43f7ae3675.png"
+            src="https://user-images.githubusercontent.com/71649055/158953198-91fea9b1-0b3c-4614-8f78-e1b995718ab4.png"
             alt="schedule"
           />
         </Main>
@@ -33,7 +33,9 @@ const Main = styled.div`
   width: 100%;
   height: 100%;
   margin-bottom: 80px;
+
   img {
+    width: 100%;
     height: 100%;
     object-fit: cover;
   }
@@ -43,6 +45,7 @@ const Main = styled.div`
   @media screen and (max-width: 668px) {
     height: 51vh;
     img {
+      width: 100%;
       height: 100%;
       object-fit: cover;
     }
