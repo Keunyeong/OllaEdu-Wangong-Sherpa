@@ -32,7 +32,7 @@ const Report = () => {
   const pdfRef = useRef();
   const [date, setDate] = useState(null);
   const [grade, setGrade] = useState([]);
-  const { data, isLoading } = useContext(Context);
+  const { data, isLoading, userInfo } = useContext(Context);
   const { 응시월, 응시내역 } = data;
   const location = useLocation().pathname.split("/")[2];
 
@@ -47,6 +47,8 @@ const Report = () => {
   const selectData = useCallback(selection => {
     setDate(selection);
   }, []);
+
+  const { name } = userInfo;
 
   useEffect(() => {
     if (Object.keys(data).length !== 0) {
@@ -122,7 +124,7 @@ const Report = () => {
                   key={idx}
                   width="100%"
                   height="100%"
-                  title={`강병석 님의 ${year}년 ${day}월 ${title} 결과`}
+                  title={`${name} 님의 ${year}년 ${day}월 ${title} 결과`}
                   children={
                     isLoading || !grade.length ? (
                       <SkeletonCircle />
