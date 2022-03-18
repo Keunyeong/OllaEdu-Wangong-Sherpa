@@ -92,7 +92,7 @@ export const tryLogin = userData => async (dispatch, state, navigate) => {
   try {
     if (id === "fastcampus1" && Number(pw) === 1234) {
       await fetch(
-        "https://gist.githubusercontent.com/himchan94/8abfadc76052ee4cf393ce7abf0662b9/raw/021ce418e4876da198cad3faf48291d5e237a44d/login%2525id=fastcampus1%2525pw=1234"
+        "https://gist.githubusercontent.com/himchan94/8abfadc76052ee4cf393ce7abf0662b9/raw/e55e598ae263da2bcac2657de912deba7a96d0bd/login%2525id=fastcampus1%2525pw=1234"
       )
         .then(res => res.json())
         .then(res => {
