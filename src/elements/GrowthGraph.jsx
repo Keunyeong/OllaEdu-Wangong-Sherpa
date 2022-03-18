@@ -120,7 +120,7 @@ const GrowthGraph = ({ scoreData, title, screen }) => {
         })
         .attr("y", (d, i) => {
           if (i === 0) return null;
-          else return height - d + 5;
+          else return height - d + 15;
         })
         .attr("width", "1.3rem")
         .attr("height", (d, i) => {
