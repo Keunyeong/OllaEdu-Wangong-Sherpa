@@ -36,6 +36,10 @@ export default function SliderTest({ grade }) {
 
   useEffect(() => {
     window.addEventListener("resize", windowSize);
+    return () => {
+      window.removeEventListener("resize", windowSize);
+    }
+    
   }, [screenSize]);
 
   if (screenSize > 990 || screenSize < 668) {
