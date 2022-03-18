@@ -72,3 +72,11 @@ Powered by EduHashGlobalPartners
 - UX/UI : 이소혜, 이정민, 하상집
 - FE : 권은서, 김힘찬, 이근영, 조혜빈
   ![FE개발팀](src/assets/readmeImg/developer.png)
+  
+# 7. 페이지 사용 튜토리얼 영상
+[📹  페이지 시연영상](https://www.youtube.com/watch?v=WDNLef7isgw)
+<br>
+Click video!
+<br>
+[![](https://img.youtube.com/vi/WDNLef7isgw/0.jpg)](http://www.youtube.com/watch?v=WDNLef7isgw "Click to play on Youtube.com")
+<br>
