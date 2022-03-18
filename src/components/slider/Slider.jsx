@@ -155,7 +155,7 @@ const Increase = styled.div`
   box-sizing: border-box;
   border-radius: 93px;
   position: absolute;
-  top: 3%;
+  top: -3%;
   left: 8%;
   display: flex;
   justify-content: center;
