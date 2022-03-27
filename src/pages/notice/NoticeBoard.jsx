@@ -19,20 +19,20 @@ const NoticeBoard = ({ data }) => {
         />
         공지사항
       </H1>
-      <Ul>
+      <Ol>
         {data.map((el, i) => {
           return (
             <NavLink to={`main/${i}`} key={i}>
               <Li>
-                <h5>{el.title}</h5>
-                <h6>{el.author}</h6>
-                <span>{el.date}</span>
-                <p>{el.text}</p>
+                <H5>{el.title}</H5>
+                <H6>{el.author}</H6>
+                <Span>{el.date}</Span>
+                <P>{el.text}</P>
               </Li>
             </NavLink>
           );
         })}
-      </Ul>
+      </Ol>
     </NoticeList>
   );
 };
@@ -40,28 +40,25 @@ const NoticeBoard = ({ data }) => {
 export default NoticeBoard;
 
 const NoticeList = styled.div`
+  font-family: Noto Sans KR;
   @media screen and (max-width: 991px) {
-    display: ${props => (props.params ? "block" : "none")};
-  }
-
-  @media screen and (max-width: 667px) {
     display: ${props => (props.params ? "block" : "none")};
   }
 `;
 
 const H1 = styled.h1`
-  font-size: 34px;
+  font-size: 2.125rem;
   font-weight: 700;
-  line-height: 49px;
+  line-height: 3.0625rem;
   margin: 71px 0 27px 26px;
 
   @media screen and (max-width: 667px) {
-    font-size: 24px;
+    font-size: 1.5rem;
     margin: 64px 0 32px 35px;
   }
 `;
 
-const Ul = styled.ul`
+const Ol = styled.ol`
   width: ${(358 / 1512) * 100 + "vw"};
   height: ${(739 / 982) * 100 + "vh"};
   margin-left: 16px;
@@ -88,7 +85,6 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
-  font-family: Noto Sans KR;
   padding: 1rem;
   overflow: hidden;
   border-bottom: 1px solid #e8e8e8;
@@ -96,29 +92,33 @@ const Li = styled.li`
   &:hover {
     background-color: rgba(241, 243, 255, 1);
   }
-  h5 {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 0.125rem;
-  }
-  h6 {
-    display: inline;
-    font-size: 0.75rem;
-    font-weight: 400;
-    margin-right: 0.3125rem;
-  }
-  span {
-    font-size: 0.75rem;
-    font-weight: 400;
-    color: #6a6a6a;
-  }
-  p {
-    font-size: 0.875rem;
-    font-weight: 400;
-    margin-top: 0.25rem;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-  }
+`;
+
+const H5 = styled.h5`
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.125rem;
+`;
+
+const H6 = styled.h6`
+  display: inline;
+  font-size: 0.75rem;
+  font-weight: 400;
+  margin-right: 0.3125rem;
+`;
+
+const Span = styled.span`
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #6a6a6a;
+`;
+
+const P = styled.p`
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-top: 0.25rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;
