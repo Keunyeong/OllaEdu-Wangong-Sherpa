@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { NoticeContext } from "./Notice";
 import { useContext, useState, useEffect, useRef, useCallback } from "react";
 import { notice_arrow } from "../../assets";
+import Attachment from "../../components/slider/attachment";
 
 const NoticeDetail = () => {
   const navigate = useNavigate();
@@ -45,6 +46,14 @@ const NoticeDetail = () => {
         <Author>{notice.REG_ID}</Author>
         <Date>{notice.REG_DATE}</Date>
       </Span>
+      {notice.FLA_ORG_NAME && (
+        <Attachment
+          orgName={notice.FLA_ORG_NAME}
+          saveName={notice.FLA_SAVE_NAME}
+          path={notice.FLA_SAVE_PATH}
+          ext={notice.FLA_EXT}
+        />
+      )}
       <P
         dangerouslySetInnerHTML={{
           __html: htmlDecode(notice.NTC_CONTENTS)
