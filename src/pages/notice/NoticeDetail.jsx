@@ -23,6 +23,12 @@ const NoticeDetail = () => {
     });
   }, [params.id]);
 
+  const htmlDecode = text => {
+    const e = document.createElement("div");
+    e.innerHTML = text;
+    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+  };
+
   return (
     <Notice
       params={params["*"] === "main" || params["*"] === "main/" ? true : false}
@@ -34,12 +40,16 @@ const NoticeDetail = () => {
       >
         <img src={notice_arrow} alt="arrow_left" />
       </Button>
-      <H2 ref={scrollRef}>{notice.title}</H2>
+      <H2 ref={scrollRef}>{notice.NTC_TITLE}</H2>
       <Span>
-        <Author>{notice.author}</Author>
-        <Date>{notice.date}</Date>
+        <Author>{notice.REG_ID}</Author>
+        <Date>{notice.REG_DATE}</Date>
       </Span>
-      <P>{notice.text}</P>
+      <P
+        dangerouslySetInnerHTML={{
+          __html: htmlDecode(notice.NTC_CONTENTS)
+        }}
+      ></P>
       <Img src={notice.image} alt={notice.title} />
     </Notice>
   );

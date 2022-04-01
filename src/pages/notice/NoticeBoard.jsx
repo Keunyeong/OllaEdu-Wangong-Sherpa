@@ -1,9 +1,26 @@
 import styled from "styled-components";
 import { NavLink, useParams } from "react-router-dom";
 import Light from "../../elements/Light";
+import { useCallback } from "react";
 
-const NoticeBoard = ({ data }) => {
+const NoticeBoard = ({ data, getNotice }) => {
   const params = useParams();
+
+  const scrollEvent = e => {
+    var bottom =
+      e.target.scrollHeight - e.target.scrollTop - e.target.clientHeight < 1;
+    if (bottom) {
+      const a = Number(data[data.length - 1].NTC_ROW_NUM) + 1;
+      getNotice(a, a + 9);
+    }
+  };
+
+  const htmlDecode = text => {
+    const e = document.createElement("div");
+    e.innerHTML = text;
+    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+  };
+
   return (
     <NoticeList
       params={params["*"] === "main" || params["*"] === "main/" ? true : false}
@@ -19,15 +36,19 @@ const NoticeBoard = ({ data }) => {
         />
         공지사항
       </H1>
-      <Ol>
+      <Ol onScroll={scrollEvent}>
         {data.map((el, i) => {
           return (
             <NavLink to={`main/${i}`} key={i}>
               <Li>
-                <H5>{el.title}</H5>
-                <H6>{el.author}</H6>
-                <Span>{el.date}</Span>
-                <P>{el.text}</P>
+                <H5>{el.NTC_TITLE}</H5>
+                <H6>{el.REG_ID}</H6>
+                <Span>{el.REG_DATE}</Span>
+                <P
+                  dangerouslySetInnerHTML={{
+                    __html: htmlDecode(el.NTC_CONTENTS)
+                  }}
+                ></P>
               </Li>
             </NavLink>
           );
@@ -114,6 +135,7 @@ const Span = styled.span`
 `;
 
 const P = styled.p`
+  max-height: 28px;
   font-size: 0.875rem;
   font-weight: 400;
   margin-top: 0.25rem;
