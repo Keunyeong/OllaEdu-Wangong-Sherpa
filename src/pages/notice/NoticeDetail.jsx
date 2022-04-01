@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { NoticeContext } from "./Notice";
 import { useContext, useState, useEffect, useRef, useCallback } from "react";
 import { notice_arrow } from "../../assets";
+import Attachment from "../../components/slider/attachment";
 
 const NoticeDetail = () => {
   const navigate = useNavigate();
@@ -23,6 +24,12 @@ const NoticeDetail = () => {
     });
   }, [params.id]);
 
+  const htmlDecode = text => {
+    const e = document.createElement("div");
+    e.innerHTML = text;
+    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+  };
+
   return (
     <Notice
       params={params["*"] === "main" || params["*"] === "main/" ? true : false}
@@ -34,12 +41,24 @@ const NoticeDetail = () => {
       >
         <img src={notice_arrow} alt="arrow_left" />
       </Button>
-      <H2 ref={scrollRef}>{notice.title}</H2>
+      <H2 ref={scrollRef}>{notice.NTC_TITLE}</H2>
       <Span>
-        <Author>{notice.author}</Author>
-        <Date>{notice.date}</Date>
+        <Author>{notice.REG_ID}</Author>
+        <Date>{notice.REG_DATE}</Date>
       </Span>
-      <P>{notice.text}</P>
+      {notice.FLA_ORG_NAME && (
+        <Attachment
+          orgName={notice.FLA_ORG_NAME}
+          saveName={notice.FLA_SAVE_NAME}
+          path={notice.FLA_SAVE_PATH}
+          ext={notice.FLA_EXT}
+        />
+      )}
+      <P
+        dangerouslySetInnerHTML={{
+          __html: htmlDecode(notice.NTC_CONTENTS)
+        }}
+      ></P>
       <Img src={notice.image} alt={notice.title} />
     </Notice>
   );
@@ -53,7 +72,7 @@ const Notice = styled.div`
   margin-right: 1rem;
   margin-top: 2.5rem;
   width: ${(1100 / 1512) * 100 + "vw"};
-  max-height: ${(846 / 982) * 100 + "vh"};
+  height: ${(846 / 982) * 100 + "vh"};
   box-shadow: 0rem 0.5rem 1.375rem -0.375rem rgba(24, 39, 75, 0.12),
     0rem 0.875rem 4rem -0.25rem rgba(24, 39, 75, 0.12);
   background-color: #ffffff;
