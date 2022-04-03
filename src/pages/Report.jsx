@@ -125,6 +125,7 @@ const Report = () => {
                   width="100%"
                   height="100%"
                   title={`${name} 님의 ${year}년 ${day}월 ${title} 결과`}
+                  star={false}
                   children={
                     isLoading || !grade.length ? (
                       <SkeletonCircle />
