@@ -7,7 +7,7 @@ const ScoreTitle = ({ grade }) => {
     <ScoreContainer>
       총점
       <Score>
-        {total[0]["당월점수"]}
+        <Text> {total[0]["당월점수"]}</Text>
         <Background />
       </Score>
     </ScoreContainer>
@@ -34,6 +34,10 @@ const Score = styled.div`
   margin-left: 44px;
   display: flex;
   justify-content: center;
+`;
+
+const Text = styled.div`
+  z-index: 1;
 `;
 
 const Background = styled.div`
