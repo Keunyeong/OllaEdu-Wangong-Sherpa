@@ -32,3 +32,5 @@ export { default as footer_logo } from "./footer_logo.svg";
 export { default as toggle } from "./toggle.svg";
 export { default as Login_image } from "./Login_image.svg";
 export { default as Logo_new } from "./logo_new.svg";
+export { default as imgfile_icon } from "./imgfile_icon.svg";
+export { default as document_icon } from "./document_icon.svg";

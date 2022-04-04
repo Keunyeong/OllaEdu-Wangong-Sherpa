@@ -9,24 +9,28 @@ export const NoticeContext = createContext();
 export const Notice = () => {
   const [noticeList, setNoticeList] = useState([{}]);
 
-  const getNotice = async () => {
+  const getNotice = async (a, b) => {
     const response = await fetch(
-      "https://gist.githubusercontent.com/himchan94/671b7807f4386fa8a8cc6d2b4209011d/raw/98aae8092db5245767aa8614b843795eb9620227/notice"
+      `https://kimcodi.kr/external_api/report/notice.php?start=${a}&end=${b}`
     )
       .then(res => res.json())
-      .then(res => res.items)
-      .then(res => setNoticeList(res));
+      .then(res => res.result)
+      .then(res => {
+        noticeList.length === 1
+          ? setNoticeList(res)
+          : setNoticeList(noticeList.concat(res));
+      });
   };
 
   useEffect(() => {
-    getNotice();
+    getNotice(1, 10);
   }, []);
 
   return (
     <Page>
       <NoticeContext.Provider value={noticeList}>
         <div>
-          <NoticeBoard data={noticeList} />
+          <NoticeBoard data={noticeList} getNotice={getNotice} />
         </div>
         <Routes>
           <Route path="main" element={<NoticeDetail />} />
