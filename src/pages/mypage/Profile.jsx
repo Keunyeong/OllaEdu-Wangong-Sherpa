@@ -12,8 +12,9 @@ const Profile = () => {
 
   if (!userInfo) return null;
 
-  const { name, birth, address, phone } = userInfo;
-  const [year, month, day] = birth.split("-");
+  const { MEM_NAME, MEM_BIRTH_DATE, MEM_ADDRESS1, MEM_ADDRESS2, MEM_MOBILE } =
+    userInfo;
+  const [year, month, day] = MEM_BIRTH_DATE.split(" ")[0].split("-");
 
   return (
     <>
@@ -31,19 +32,19 @@ const Profile = () => {
             <div className="name">
               <div className="title">이름</div>
               <div className="box">
-                <span>{name}</span>
+                <span>{MEM_NAME}</span>
               </div>
             </div>
             <div className="phone">
               <div className="title">휴대폰</div>
               <div className="box">
-                <span>{phone}</span>
+                <span>{MEM_MOBILE}</span>
               </div>
             </div>
             <div className="adress">
               <div className="title">주소</div>
               <div className="box">
-                <span>{address}</span>
+                <span>{MEM_ADDRESS1 + MEM_ADDRESS2}</span>
               </div>
             </div>
             <div className="birthday">

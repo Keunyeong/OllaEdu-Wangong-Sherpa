@@ -48,7 +48,7 @@ const Report = () => {
     setDate(selection);
   }, []);
 
-  const { name } = userInfo;
+  const { MEM_NAME } = userInfo;
 
   useEffect(() => {
     if (Object.keys(data).length !== 0) {
@@ -124,7 +124,7 @@ const Report = () => {
                   key={idx}
                   width="100%"
                   height="100%"
-                  title={`${name} 님의 ${year}년 ${day}월 ${title} 결과`}
+                  title={`${MEM_NAME} 님의 ${year}년 ${day}월 ${title} 결과`}
                   star={false}
                   children={
                     isLoading || !grade.length ? (

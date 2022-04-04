@@ -8,7 +8,7 @@ const Main = () => {
 
   if (!userInfo) return;
 
-  const category = userInfo.class;
+  const category = userInfo.SRC_TITLE;
 
   const sub = category.substring(0, 2);
   const depart = useMemo(() => {
