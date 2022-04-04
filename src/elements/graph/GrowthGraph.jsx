@@ -247,12 +247,12 @@ const SubjectSpan = styled.span`
 `;
 
 const Span = styled.span`
-  font-size: 0.875rem;
-  font-weight: 500;
   display: flex;
-  height: 1.5625rem;
   justify-content: space-between;
   align-items: center;
+  height: 1.5625rem;
+  font-size: 0.875rem;
+  font-weight: 500;
 `;
 
 const Svg = styled.svg`
