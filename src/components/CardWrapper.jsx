@@ -9,12 +9,13 @@ const CardWrapper = ({
   title,
   children,
   padding = "none",
+  star = true,
   max
 }) => {
   return (
     <Article max={max}>
       <TitleContainer>
-        <StarIcon src={Star} alt="starIcon" />
+        {star ? <StarIcon src={Star} alt="starIcon" /> : null}
         <Title>{title}</Title>
       </TitleContainer>
       <Center>
@@ -40,13 +41,13 @@ const TitleContainer = styled.div`
 const StarIcon = styled.img`
   width: 1.5em;
   height: 1.438em;
+  margin-right: 0.25em;
 `;
 
 const Title = styled.h3`
   font-size: 18px;
   font-weight: 700;
   line-height: 1.5em;
-  margin-left: 0.25em;
 `;
 
 const Center = styled.div`

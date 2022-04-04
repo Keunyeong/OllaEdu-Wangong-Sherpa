@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { NoticeContext } from "./Notice";
 import { useContext, useState, useEffect, useRef, useCallback } from "react";
 import { notice_arrow } from "../../assets";
-import Attachment from "../../components/slider/attachment";
+import Attachment from "../../components/slider/Attachment";
 
 const NoticeDetail = () => {
   const navigate = useNavigate();

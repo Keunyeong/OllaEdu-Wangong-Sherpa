@@ -89,37 +89,28 @@ export const tryLogin = userData => async (dispatch, state, navigate) => {
   dispatch(setLoading(true));
 
   const { id, pw } = userData;
+
   try {
-    if (id === "fastcampus1" && Number(pw) === 1234) {
-      await fetch(
-        "https://gist.githubusercontent.com/himchan94/8abfadc76052ee4cf393ce7abf0662b9/raw/e55e598ae263da2bcac2657de912deba7a96d0bd/login%2525id=fastcampus1%2525pw=1234"
-      )
-        .then(res => res.json())
-        .then(res => {
-          dispatch(setLogin(true));
-          dispatch(setUserInfo(res));
-        });
+    const response = await fetch(
+      "https://kimcodi.kr/external_api/report/login.php",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          api_key: "EZVrTC4VVKNeeGQ7wbxdP4NzMNpgEmC2",
+          user_id: id,
+          user_pw: pw
+        })
+      }
+    ).then(res => res.json());
 
-      dispatch(setLoading(false));
+    if (response.success === "true") {
+      dispatch(setLogin(true));
+      dispatch(setUserInfo(response.result[0]));
       navigate("/rating");
-      return;
+    } else {
+      dispatch(setError(response.msg));
     }
 
-    if (id === "fastcampus2" && Number(pw) === 1234) {
-      await fetch(
-        "https://gist.githubusercontent.com/himchan94/6469896107892d5e54f6233f64b7f987/raw/887c258017ba1a1f2ca4ba15bfbb9367121e1900/login%2525id=fastcampus2%2525pw=1234"
-      )
-        .then(res => res.json())
-        .then(res => {
-          dispatch(setLogin(true));
-          dispatch(setUserInfo(res));
-        });
-
-      dispatch(setLoading(false));
-      navigate("/rating");
-      return;
-    }
-    dispatch(setError("invalid id or password"));
     dispatch(setLoading(false));
   } catch (error) {
     dispatch(setError(error));
