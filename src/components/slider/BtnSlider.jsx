@@ -20,19 +20,19 @@ export default function BtnSlider({ direction, moveSlide }) {
 }
 
 const Btn = styled.button`
+  position: absolute;
+  top: ${props => (props.btnDirection === "next" ? "50%" : "50%")};
+  right: ${props => (props.btn === "next" ? "10px" : "0")};
+  left: ${props => (props.btn === "prev" ? "10px" : null)};
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 10px;
   height: 10px;
   background-color: transparent;
   border: transparent;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
-  top: ${props => (props.btnDirection === "next" ? "50%" : "50%")};
-  right: ${props => (props.btn === "next" ? "10px" : "0")};
-  left: ${props => (props.btn === "prev" ? "10px" : null)};
-
+  
   img {
     width: 20px;
     height: 20px;
