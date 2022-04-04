@@ -8,20 +8,22 @@ const LoginErrorModal = ({ onRemoveInputValue }) => {
   return (
     <ModalContainer>
       <Modal>
-        <h3>인증실패</h3>
-        <p>아이디 또는 비밀번호가 일치하지 않습니다.</p>
-        <button
+        <H3>인증실패</H3>
+        <P>아이디 또는 비밀번호가 일치하지 않습니다.</P>
+        <Button
           onClick={() => {
             onRemoveInputValue();
             dispatch(setError(null));
           }}
         >
           OK
-        </button>
+        </Button>
       </Modal>
     </ModalContainer>
   );
 };
+
+export default LoginErrorModal;
 
 const ModalContainer = styled.div`
   position: fixed;
@@ -40,48 +42,48 @@ const Modal = styled.aside`
   border-radius: 10px;
   overflow: hidden;
   background-color: #ffffff;
-  h3 {
-    background-color: #ff3737;
-    padding: 10px 16px;
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 26.06px;
-    height: 48px;
-  }
-  p {
-    font-size: 14px;
-    font-weight: 500;
-    color: #1b1b1b;
-    padding: 30px 16px 14px;
-    border-bottom: 1px solid #d8d8d8;
-  }
-  button {
-    position: absolute;
-    right: 16px;
-    bottom: 15px;
-    color: #ffffff;
-    border: none;
-    background-color: #ff3737;
-    width: 40px;
-    height: 32px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: 700;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
   @media screen and (max-width: 667px) {
     width: 272px;
-    h3 {
-      font-size: 14px;
-    }
-    p {
-      font-size: 12px;
-    }
   }
 `;
 
-export default LoginErrorModal;
+const H3 = styled.h3`
+  background-color: #ff3737;
+  padding: 10px 16px;
+  color: #ffffff;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.63rem;
+  height: 48px;
+  @media screen and (max-width: 667px) {
+    font-size: 0.875rem;
+  }
+`;
+
+const P = styled.p`
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1b1b1b;
+  padding: 30px 16px 14px;
+  border-bottom: 1px solid #d8d8d8;
+  @media screen and (max-width: 667px) {
+    font-size: 0.75rem;
+  }
+`;
+
+const Button = styled.button`
+  position: absolute;
+  right: 16px;
+  bottom: 15px;
+  color: #ffffff;
+  border: none;
+  background-color: #ff3737;
+  width: 40px;
+  height: 32px;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  &:hover {
+    cursor: pointer;
+  }
+`;
