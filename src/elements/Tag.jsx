@@ -3,10 +3,21 @@ import styled from "styled-components";
 import { Popper } from "../assets";
 
 const Tag = ({ percent }) => {
-  const slice = percent.split(".")[0];
+  const slice = Number(percent.split(".")[0]);
+
+  let comment = "여정의 시작";
+
+  if (slice > 100) {
+    comment = "마라톤의 승리자";
+  }
+
+  if (slice >= 61 && slice <= 99) {
+    comment = "불굴의 러너";
+  }
+
   return (
     <Container>
-      목표달성률 {slice}%&nbsp;<b>마라톤의 승리자</b>
+      목표달성률 {slice}%&nbsp;<b>{comment}</b>
       <Image src={Popper} alt="popper icon" />
     </Container>
   );
