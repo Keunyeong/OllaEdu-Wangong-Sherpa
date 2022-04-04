@@ -146,37 +146,40 @@ export default function SliderTest({ grade }) {
 }
 
 const TouchSlideBigBox = styled.div`
+  position: relative;
   width: 100%;
   height: 100%;
-  position: relative;
 `;
 const ContainerSlider = styled.div`
+  position: relative;
   width: 100%;
   height: 100%;
-  position: relative;
   overflow: hidden;
 `;
 
 const Increase = styled.div`
-  width: 27%;
-  height: 11%;
-  font-size: 0.775rem;
-  text-align: center;
-  line-height: 150%;
-  border: 1px solid #9498ef;
-  box-sizing: border-box;
-  border-radius: 93px;
   position: absolute;
   top: -3%;
   left: 8%;
   display: flex;
   justify-content: center;
+  width: 27%;
+  height: 11%;
+  border: 1px solid #9498ef;
+  font-size: 0.775rem;
+  text-align: center;
+  line-height: 150%;
+  box-sizing: border-box;
+  border-radius: 93px;
+  
   span {
     margin-left: 5px;
   }
+
   @media (max-width: 992px) {
     display: none;
   }
+
   @media (max-width: 668px) {
     display: block;
     width: 5.5rem;
@@ -185,13 +188,14 @@ const Increase = styled.div`
 `;
 
 const Slider = styled.div`
-  width: 100%;
-  height: 100%;
   position: absolute;
   top: 15%;
   left: 12%;
+  width: 100%;
+  height: 100%;
   opacity: ${props => (props.activity === "active-anim" ? "1" : "0")};
   transition: opacity ease-in-out 0.4s;
+
   @media (max-width: 667px) {
     left: 28%;
   }
@@ -203,11 +207,11 @@ const Slider = styled.div`
   }
 `;
 const TouchSlideBox = styled.div`
-  width: 95%;
-  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 95%;
+  margin: auto;
   overflow-x: scroll;
 
   &::-webkit-scrollbar {
@@ -227,42 +231,42 @@ const LittleBox = styled.div`
 `;
 const TouchSlide = styled.div`
   height: 100%;
-  margin-bottom: 7px;
   padding-right: 30px;
+  margin-bottom: 7px;
 `;
 
 const ContainerDots = styled.div`
   position: absolute;
-  bottom: 10px;
   left: 50%;
-  transform: translateX(-50%);
+  bottom: 10px;
   display: flex;
+  transform: translateX(-50%);
 `;
 const Dot = styled.div`
+  background: ${props => (props.activity === "active" ? "#6A6A6A" : "#D8D8D8")};
   width: 10px;
   height: 10px;
-  border-radius: 50%;
   border: 3px solid #f1f1f1;
+  border-radius: 50%;
   margin: 0 5px;
-  background: ${props => (props.activity === "active" ? "#6A6A6A" : "#D8D8D8")};
 `;
 const SpanBox = styled.div`
-  font-size: 0.75rem;
-  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
   width: 150px;
   box-sizing: border-box;
   padding-top: 10px;
   padding-left: 20px;
-  display: flex;
-  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 500;
 `;
 
 const Span = styled.span`
-  width: 45%;
   display: flex;
-  height: 20px;
   justify-content: space-between;
   align-items: center;
+  width: 45%;
+  height: 20px;
 `;
 
 const Svg = styled.svg`
