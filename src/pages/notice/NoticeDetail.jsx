@@ -27,7 +27,7 @@ const NoticeDetail = () => {
   const htmlDecode = text => {
     const e = document.createElement("div");
     e.innerHTML = text;
-    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+    return e.childNodes[0].nodeValue ? e.childNodes[0].nodeValue : text;
   };
 
   return (
