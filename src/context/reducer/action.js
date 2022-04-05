@@ -34,7 +34,6 @@ export const loadData = () => async (dispatch, state, navigate) => {
   dispatch(setLoading(true));
 
   const id = JSON.parse(sessionStorage.getItem("userId"));
-
   const data = await fetch(
     `https://kimcodi.kr/external_api/report/resultSearch.php?mem_id=${id}`
   )
@@ -42,7 +41,7 @@ export const loadData = () => async (dispatch, state, navigate) => {
     .then(data => data.result)
     .catch(error => console.log(error));
 
-  if (!data) {
+  if (!data.length) {
     navigate("/noresult");
     return;
   }

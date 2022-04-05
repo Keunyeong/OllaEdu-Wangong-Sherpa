@@ -73,7 +73,7 @@ const Report = () => {
     }
   }, [data, title, date]);
 
-  if (!data.length) {
+  if (!data["응시내역"]) {
     return <NoResult />;
   }
 
