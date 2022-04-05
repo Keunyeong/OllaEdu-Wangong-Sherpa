@@ -13,8 +13,22 @@ const Rating = () => {
   const [star, setStar] = useState({});
   const navigate = useNavigate();
   useEffect(() => {
-    if (Object.keys(star).length === 3) {
+    const id = JSON.parse(sessionStorage.getItem("userId"));
+
+    const sendStar = async () => {
+      const key = Object.keys(star);
+
+      await fetch(
+        `https://kimcodi.kr/external_api/report/putStarRating.php?userid=${id}&${
+          key[0]
+        }=${star[key[0]]}&${key[1]}=${star[key[1]]}&${key[2]}=${star[key[2]]}`
+      );
+
       navigate("/report/monthly");
+    };
+
+    if (Object.keys(star).length === 3) {
+      sendStar();
     }
   }, [star]);
   return (
