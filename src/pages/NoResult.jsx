@@ -1,14 +1,8 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
 import { Light } from "../elements";
-import { Context } from "../context/Context";
 
-const Error = () => {
-  const { error } = useContext(Context);
-
-  const navigate = useNavigate();
-
+const NoResult = () => {
   return (
     <Section>
       <Container>
@@ -19,21 +13,14 @@ const Error = () => {
           highLightTop={12}
           highLightTop2={12}
         />
-        <ErrorTitle>Error</ErrorTitle>
-        <ErrorMsg>{error}</ErrorMsg>
-        <Button
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
-          이전으로
-        </Button>
+        <ErrorTitle>시험정보가 없습니다</ErrorTitle>
+        <ErrorMsg>시험을 응시해주세요</ErrorMsg>
       </Container>
     </Section>
   );
 };
 
-export default Error;
+export default NoResult;
 
 const Section = styled.section`
   width: 100%;

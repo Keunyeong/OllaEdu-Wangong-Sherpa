@@ -1,9 +1,9 @@
 const INITIAL_STATE = {
   data: [],
   isLoading: false,
-  isLogin: JSON.parse(localStorage.getItem("isLogin")) || null,
+  isLogin: JSON.parse(sessionStorage.getItem("isLogin")) || null,
   error: null,
-  userInfo: JSON.parse(localStorage.getItem("userInfo")) || null
+  userInfo: JSON.parse(sessionStorage.getItem("userInfo")) || null
 };
 
 export default INITIAL_STATE;
