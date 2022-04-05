@@ -17,8 +17,11 @@ const NoticeBoard = ({ data, getNotice }) => {
 
   const htmlDecode = text => {
     const e = document.createElement("div");
+    const RegExp = /<img(.*?)>/gi;
     e.innerHTML = text;
-    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+    if (e.childNodes[0].nodeValue)
+      return e.childNodes[0].nodeValue.replace(RegExp, "");
+    else return text.replace(RegExp, "");
   };
 
   return (
