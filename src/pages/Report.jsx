@@ -6,7 +6,7 @@ import React, {
   useMemo,
   useCallback
 } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ReactToPdf from "react-to-pdf";
 import styled from "styled-components";
 import { Context } from "../context/Context";
@@ -23,6 +23,7 @@ import { RankList, ScoreList } from "../containers";
 import Sliders from "../components/slider/Slider";
 import { PDFIcon, Runner } from "../assets";
 import Light from "../elements/Light";
+import NoResult from "./NoResult";
 
 const options = {
   orientation: "p"
@@ -35,7 +36,7 @@ const Report = () => {
   const { data, isLoading, userInfo } = useContext(Context);
   const { 응시월, 응시내역 } = data;
   const location = useLocation().pathname.split("/")[2];
-
+  const navigate = useNavigate();
   const title = useMemo(() => {
     if (location === "monthly") return "모의고사";
 
@@ -71,6 +72,10 @@ const Report = () => {
       setGrade(응시내역[selection][category]);
     }
   }, [data, title, date]);
+
+  if (!data.length) {
+    return <NoResult />;
+  }
 
   if (!date) {
     return null;
