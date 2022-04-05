@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Light } from "../elements";
+import { Context } from "../context/Context";
 
 const Error = () => {
+  const { error } = useContext(Context);
+
   const navigate = useNavigate();
 
   return (
@@ -17,7 +20,7 @@ const Error = () => {
           highLightTop2={12}
         />
         <ErrorTitle>Error</ErrorTitle>
-        <ErrorMsg>오류가 발생하였습니다.</ErrorMsg>
+        <ErrorMsg>{error}</ErrorMsg>
         <Button
           onClick={() => {
             navigate(-1);
