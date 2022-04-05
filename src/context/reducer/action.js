@@ -24,22 +24,28 @@ export const setUserInfo = userInfo => ({
 });
 
 export const LogOut = () => {
-  localStorage.removeItem("isLogin");
-  localStorage.removeItem("userInfo");
+  sessionStorage.clear();
   return {
     type: "LOGOUT"
   };
 };
 
-export const loadData = () => async (dispatch, state) => {
+export const loadData = () => async (dispatch, state, navigate) => {
   dispatch(setLoading(true));
 
+  const id = JSON.parse(sessionStorage.getItem("userId"));
+
   const data = await fetch(
-    "https://gist.githubusercontent.com/himchan94/74258d92c0af3f9d0cce70202f17f406/raw/0dd3abeca38b805cf0525a14a6da98fc89892b52/fastcampus1%2525data"
+    `https://kimcodi.kr/external_api/report/resultSearch.php?mem_id=${id}`
   )
     .then(res => res.json())
     .then(data => data.result)
     .catch(error => console.log(error));
+
+  if (!data) {
+    navigate("/noresult");
+    return;
+  }
 
   const groups = data.reduce((groups, list) => {
     const date = list["응시년월"];
@@ -104,6 +110,7 @@ export const tryLogin = userData => async (dispatch, state, navigate) => {
     ).then(res => res.json());
 
     if (response.success === "true") {
+      sessionStorage.setItem("userId", JSON.stringify(id));
       dispatch(setLogin(true));
       dispatch(setUserInfo(response.result[0]));
       navigate("/rating");
