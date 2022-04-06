@@ -4,9 +4,9 @@ import ReactStars from "react-rating-stars-component";
 import { FilledStar, UnfilledStar } from "../assets";
 import { useNavigate } from "react-router-dom";
 const title = [
-  { title: "경찰학", teacher: "김만일" },
-  { title: "형법", teacher: "김만이" },
-  { title: "형사법", teacher: "김만삼" }
+  { title: "경찰학", teacher: "김만일", tag: "objec1" },
+  { title: "형법", teacher: "김만이", tag: "object2" },
+  { title: "형사법", teacher: "김만삼", tag: "object3" }
 ];
 
 const Rating = () => {
@@ -18,10 +18,12 @@ const Rating = () => {
     const sendStar = async () => {
       const key = Object.keys(star);
 
-      await fetch(
+      const data = await fetch(
         `https://kimcodi.kr/external_api/report/putStarRating.php?userid=${id}&${
-          key[0]
-        }=${star[key[0]]}&${key[1]}=${star[key[1]]}&${key[2]}=${star[key[2]]}`
+          key[0].tag
+        }=${star[key[0]]}&${key[1].tag}=${star[key[1]]}&${key[2].tag}=${
+          star[key[2]]
+        }`
       );
 
       navigate("/report/monthly");
