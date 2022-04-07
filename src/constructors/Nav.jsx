@@ -10,10 +10,8 @@ const Nav = props => {
   const el = useRef();
   let jobLogo = "경찰";
   if (props.depart === "fire") {
-    jobIcon = "../src/assets/nav/firefighter.png";
     jobLogo = "소방";
   } else if (props.depart === "admin") {
-    jobIcon = "../src/assets/nav/administrator.png";
     jobLogo = "행정";
   }
   const toggleEvent = () => {
