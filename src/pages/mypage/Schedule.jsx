@@ -1,9 +1,23 @@
+import { useContext, useMemo } from "react";
 import styled from "styled-components";
 import MypageSection from "../../elements/MypageSection";
 import Light from "../../elements/Light";
-import "react-big-calendar/lib/css/react-big-calendar.css";
+import { Context } from "../../context/Context";
+
+const currentDate = new Date();
+const year = currentDate.getFullYear();
+const month = currentDate.getMonth();
 
 export default function Schedule() {
+  const { SRC_TITLE } = useContext(Context).userInfo;
+
+  let category = useMemo(() => {
+    const job = SRC_TITLE.slice(0, 2);
+    if (job === "경찰") return "police";
+    if (job === "소방") return "fire;";
+    if (job === "행정") return "admin";
+  }, [SRC_TITLE]);
+
   return (
     <>
       <Light
@@ -20,7 +34,9 @@ export default function Schedule() {
       >
         <Main>
           <img
-            src="https://user-images.githubusercontent.com/71649055/158953198-91fea9b1-0b3c-4614-8f78-e1b995718ab4.png"
+            src={`https://kimcodi.kr\/upload\/notice_schedule\/${year}${
+              (month + "").length === 1 ? "0" + month : month
+            }${category}.png`}
             alt="schedule"
           />
         </Main>
