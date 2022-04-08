@@ -6,7 +6,7 @@ import { Context } from "../../context/Context";
 
 const currentDate = new Date();
 const year = currentDate.getFullYear();
-const month = currentDate.getMonth();
+const month = currentDate.getMonth() + 1;
 
 export default function Schedule() {
   const { SRC_TITLE } = useContext(Context).userInfo;
