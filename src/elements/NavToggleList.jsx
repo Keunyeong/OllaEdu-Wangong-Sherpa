@@ -13,6 +13,10 @@ const NavToggleList = ({ list, job, state }) => {
     listArr = ["기본정보", "시간표"];
     urlArr = ["/mypage/main", "/mypage/schedule"];
   }
+  if (job === "admin") {
+    listArr = ["모의고사", "중간종합"];
+    urlArr = ["/report/monthly", "/report/weekly"];
+  }
 
   return (
     <ToggleList job={job} className="toggle_list" state={state} arr={listArr}>
