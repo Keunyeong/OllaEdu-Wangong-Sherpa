@@ -6,6 +6,10 @@ const NavToggleList = ({ list, job, state }) => {
   let location = useLocation();
   let listArr = ["모의고사", "중간종합", "체력증감"];
   let urlArr = ["/report/monthly", "/report/weekly", "/report/physical"];
+  if (job === "admin") {
+    listArr = ["모의고사", "중간종합"];
+    urlArr = ["/report/monthly", "/report/weekly"];
+  }
   if (list === "notice") {
     listArr = ["전체공지"];
     urlArr = ["/notice/main"];
