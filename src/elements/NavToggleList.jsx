@@ -6,12 +6,20 @@ const NavToggleList = ({ list, job, state }) => {
   let location = useLocation();
   let listArr = ["모의고사", "중간종합", "체력증감"];
   let urlArr = ["/report/monthly", "/report/weekly", "/report/physical"];
+  if (job === "admin") {
+    listArr = ["모의고사", "중간종합"];
+    urlArr = ["/report/monthly", "/report/weekly"];
+  }
   if (list === "notice") {
     listArr = ["전체공지"];
     urlArr = ["/notice/main"];
   } else if (list === "mypage") {
     listArr = ["기본정보", "시간표"];
     urlArr = ["/mypage/main", "/mypage/schedule"];
+  }
+  if (job === "admin") {
+    listArr = ["모의고사", "중간종합"];
+    urlArr = ["/report/monthly", "/report/weekly"];
   }
 
   return (
