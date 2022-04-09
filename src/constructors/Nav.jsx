@@ -45,7 +45,7 @@ const Nav = props => {
       </div>
       <div className="toggle" onClick={toggleEvent} ref={el}>
         <img src={toggle} alt="TOGGLE" />
-        <NavToggle cn={menuToggle} />
+        <NavToggle cn={menuToggle} job={props.depart} />
       </div>
       <div className="menu">
         <MenuList
