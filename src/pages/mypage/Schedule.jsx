@@ -3,6 +3,7 @@ import styled from "styled-components";
 import MypageSection from "../../elements/MypageSection";
 import Light from "../../elements/Light";
 import { Context } from "../../context/Context";
+import { getClass } from "../../utils/getClass";
 
 const currentDate = new Date();
 const year = currentDate.getFullYear();
@@ -11,12 +12,7 @@ const month = currentDate.getMonth() + 1;
 export default function Schedule() {
   const { SRC_TITLE } = useContext(Context).userInfo;
 
-  let category = useMemo(() => {
-    const job = SRC_TITLE.slice(0, 2);
-    if (job === "경찰") return "police";
-    if (job === "소방") return "fire";
-    if (job === "행정") return "admin";
-  }, [SRC_TITLE]);
+  const category = getClass(SRC_TITLE);
 
   return (
     <>

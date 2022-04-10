@@ -1,35 +1,48 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import ReactStars from "react-rating-stars-component";
 import { FilledStar, UnfilledStar } from "../assets";
 import { useNavigate } from "react-router-dom";
-const title = [
-  { title: "경찰학", teacher: "김만일", tag: "objec1" },
-  { title: "형법", teacher: "김만이", tag: "object2" },
-  { title: "형사법", teacher: "김만삼", tag: "object3" }
-];
+import { Context } from "../context/Context";
+import { getClass, getSubject } from "../utils";
 
 const Rating = () => {
   const [star, setStar] = useState({});
   const navigate = useNavigate();
+  const { userInfo } = useContext(Context);
+
+  const subject = getSubject(getClass(userInfo["SRC_TITLE"]));
+
   useEffect(() => {
     const id = JSON.parse(sessionStorage.getItem("userId"));
 
     const sendStar = async () => {
       const key = Object.keys(star);
 
-      const data = await fetch(
-        `https://kimcodi.kr/external_api/report/putStarRating.php?userid=${id}&${
-          key[0].tag
-        }=${star[key[0]]}&${key[1].tag}=${star[key[1]]}&${key[2].tag}=${
-          star[key[2]]
-        }`
-      );
+      if (key.length === 3) {
+        await fetch(
+          `https://kimcodi.kr/external_api/report/putStarRating.php?userid=${id}&${
+            key[0].tag
+          }=${star[key[0]]}&${key[1].tag}=${star[key[1]]}&${key[2].tag}=${
+            star[key[2]]
+          }`
+        );
+      }
+
+      if (key.length === 5) {
+        await fetch(
+          `https://kimcodi.kr/external_api/report/putStarRating.php?userid=${id}&${
+            key[0].tag
+          }=${star[key[0]]}&${key[1].tag}=${star[key[1]]}&${key[2].tag}=${
+            star[key[2]]
+          }&${key[3].tag}=${star[key[3]]}&${key[4].tag}=${star[key[4]]}`
+        );
+      }
 
       navigate("/report/monthly");
     };
 
-    if (Object.keys(star).length === 3) {
+    if (Object.keys(star).length === subject.length) {
       sendStar();
     }
   }, [star]);
@@ -38,7 +51,7 @@ const Rating = () => {
       <Question>모의고사 난이도는 어땠나요?</Question>
       <SubText>성적 열람을 위해 난이도 평가를 먼저 진행해주세요.</SubText>
       <CardContainer>
-        {title.map((list, idx) => (
+        {subject.map((list, idx) => (
           <Card key={list.title}>
             <Title>{list.title}</Title>
             <SubTitle>{list.teacher}</SubTitle>
@@ -121,6 +134,7 @@ const CardContainer = styled.div`
   gap: 24px;
   margin: 356px auto 0 auto;
   justify-content: center;
+  flex-wrap: wrap;
 
   @media (max-width: 991px) {
     flex-direction: column;
