@@ -2,12 +2,12 @@ import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 import { notice_icon, report_icon, mypage_icon } from "../assets";
 
-export default function NavToggle({ cn }) {
+export default function NavToggle({ cn, job }) {
   const navigate = useNavigate();
   const location = useLocation();
 
   return (
-    <Toggle className={cn}>
+    <Toggle className={cn} job={job}>
       <div className="toggle_list">
         <div className="title">
           <img src={notice_icon} alt="NOTICE_ICON" />
@@ -76,16 +76,20 @@ export default function NavToggle({ cn }) {
         >
           중간종합
         </div>
-        <div
-          className={
-            location.pathname === "/report/physical" ? "list selected" : "list"
-          }
-          onClick={() => {
-            navigate("/report/physical");
-          }}
-        >
-          체력증감
-        </div>
+        {job !== "admin" && (
+          <div
+            className={
+              location.pathname === "/report/physical"
+                ? "list selected"
+                : "list"
+            }
+            onClick={() => {
+              navigate("/report/physical");
+            }}
+          >
+            체력증감
+          </div>
+        )}
       </div>
     </Toggle>
   );
