@@ -67,7 +67,6 @@ const LoginPage = styled.div`
   justify-content: center;
   height: 100vh;
   width: 100%;
-  }
 `;
 
 const LoginImg = styled.div`
@@ -96,6 +95,7 @@ const Form = styled.form`
     padding: 0;
     width: 291px;
     height: 224px;
+  }
 `;
 
 const Logo = styled.img`

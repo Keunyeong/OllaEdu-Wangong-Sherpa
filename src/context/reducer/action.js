@@ -112,21 +112,11 @@ export const tryLogin = userData => async (dispatch, state, navigate) => {
       sessionStorage.setItem("userId", JSON.stringify(id));
       dispatch(setLogin(true));
       dispatch(setUserInfo(response.result[0]));
-
-      const res = await fetch(
-        `https://kimcodi.kr/external_api/report/getStarRating.php?userid=${id}`
-      ).then(res => res.json());
-
-      if (res.success === "true") {
-        navigate("/report/monthly");
-        return;
-      }
-
-      navigate("/rating");
+      navigate("/report/monthly");
+      return;
     } else {
       dispatch(setError(response.msg));
     }
-
     dispatch(setLoading(false));
   } catch (error) {
     dispatch(setError(error));
