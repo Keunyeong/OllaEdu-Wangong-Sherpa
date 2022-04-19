@@ -27,13 +27,9 @@ export default function SlideCard({
         if (당월점수 === "N/A") {
           당월점수 = 0;
         }
-        const growth = Math.round(Number(당월점수 - 전월점수));
+        const growth = Number(당월점수 - 전월점수);
 
-        const data = [
-          과목,
-          Math.round(Number(전월점수)),
-          Math.round(Number(당월점수))
-        ];
+        const data = [과목, Number(전월점수), Number(당월점수)];
         return (
           <Slider
             key={과목}
@@ -76,11 +72,11 @@ const ContainerSlider = styled.div`
 
 const Increase = styled.div`
   position: absolute;
-  top: -8%;
-  left: 7%;
+  top: -10%;
+  left: 6%;
   display: flex;
   justify-content: center;
-  width: 27%;
+  width: 30%;
   height: 11%;
   border: 1px solid #9498ef;
   font-size: 0.775rem;
