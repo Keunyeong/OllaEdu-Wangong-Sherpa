@@ -96,7 +96,6 @@ const GrowthGraph = ({ scoreData, title }) => {
           return null;
         }
       });
-    console.log("chart(false)-rendering");
   });
 
   return (
