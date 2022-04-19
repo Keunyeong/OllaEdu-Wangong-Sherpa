@@ -12,6 +12,7 @@ const Card = ({ children, width, height, padding }) => {
 export default Card;
 
 const CardContainer = styled.div`
+  position: relative;
   width: ${props => props.width};
   height: ${props => props.height};
   box-shadow: 0rem 0.5rem 1.375rem -0.375rem rgba(24, 39, 75, 0.12),

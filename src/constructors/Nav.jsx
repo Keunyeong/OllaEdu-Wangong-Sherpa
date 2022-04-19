@@ -81,9 +81,6 @@ const Nav = props => {
         >
           성적현황
         </MenuList>
-        <div className="d_day" depart={props.depart}>
-          D-<span>209</span>
-        </div>
       </div>
     </Navbar>
   );

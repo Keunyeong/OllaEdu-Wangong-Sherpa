@@ -56,7 +56,14 @@ const Profile = () => {
             </div>
           </div>
           <div className="btn-box">
-            <button>변경하러 가기</button>
+            <button>
+              <a
+                href="https://kimcodi.kr/p/member/login-new?rUrl=https://kimcodi.kr/p/product/submain-1"
+                target="_blank"
+              >
+                변경하러 가기
+              </a>
+            </button>
             <p>클릭시 올라에듀 홈페이지로 이동합니다.</p>
           </div>
           <LogOutLink

@@ -2,16 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import * as d3 from "d3";
 import styled from "styled-components";
 
-const GrowthGraph = ({ scoreData, title }) => {
+const GrowthGraph = ({ scoreData, title, screen }) => {
   const score = useRef();
   const scoreText = useRef();
-  const [data, setData] = useState("");
+  const [data, setData] = useState(scoreData);
   const width = 130;
   const height = 110;
+  console.log("rendering");
+  console.log(scoreData);
   useEffect(() => {
-    setData(scoreData);
-    d3.select(score.current).selectAll("*").remove();
-    d3.select(scoreText.current).selectAll("*").remove();
     const svg = d3
       .select(score.current)
       .append("svg")
@@ -24,9 +23,6 @@ const GrowthGraph = ({ scoreData, title }) => {
       .enter()
       .append("rect")
       .attr("x", (d, i) => {
-        if (i === "NaN") {
-          console.log("NAN제발");
-        }
         return i * 40 - 10;
       })
       .attr("y", (d, i) => {
@@ -97,7 +93,7 @@ const GrowthGraph = ({ scoreData, title }) => {
         }
       });
     console.log("chart(false)-rendering");
-  });
+  }, []);
 
   return (
     <RankCard>

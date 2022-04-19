@@ -5,55 +5,65 @@ import { GrowthGraph } from "../../elements";
 import ArrowUp from "../../assets/arrow_Up_MD.svg";
 import ArrowDown from "../../assets/arrow_Down_MD.svg";
 
-export default function SlideCard({slice, slideIndex, nextSlide, prevSlide, moveDot}) {
+export default function SlideCard({
+  slice,
+  slideIndex,
+  nextSlide,
+  prevSlide,
+  moveDot
+}) {
   return (
     <ContainerSlider>
-    {slice.map((obj, index) => {
-      let { 전월점수, 당월점수, 과목, 시험명 } = obj;
+      {slice.map((obj, index) => {
+        let { 전월점수, 당월점수, 과목, 시험명 } = obj;
 
-      if (시험명 === "체력측정 결과") {
-        전월점수 *= 10;
-        당월점수 *= 10;
-      }
+        if (시험명 === "체력측정 결과") {
+          전월점수 *= 10;
+          당월점수 *= 10;
+        }
+        if (전월점수 === "N/A") {
+          전월점수 = 0;
+        }
+        if (당월점수 === "N/A") {
+          당월점수 = 0;
+        }
+        const growth = Math.round(Number(당월점수 - 전월점수));
 
-      const growth = Math.round(Number(당월점수 - 전월점수));
+        const data = [
+          과목,
+          Math.round(Number(전월점수)),
+          Math.round(Number(당월점수))
+        ];
+        return (
+          <Slider
+            key={과목}
+            activity={slideIndex === index + 1 ? "active-anim" : null}
+          >
+            <Increase>
+              <span>
+                {growth < 0 ? Math.abs(growth) : growth}점{" "}
+                {growth < 0 ? "감소" : "증가"}
+              </span>
+              <img src={growth < 0 ? ArrowDown : ArrowUp} alt="" />
+            </Increase>
+            <GrowthGraph scoreData={data} title={과목} />
+          </Slider>
+        );
+      })}
 
-      const data = [
-        과목,
-        Math.round(Number(전월점수)),
-        Math.round(Number(당월점수))
-      ];
+      <BtnSlider moveSlide={nextSlide} direction={"next"} />
+      <BtnSlider moveSlide={prevSlide} direction={"prev"} />
 
-      return (
-        <Slider
-          key={과목}
-          activity={slideIndex === index + 1 ? "active-anim" : null}
-        >
-          <Increase>
-            <span>
-              {growth < 0 ? Math.abs(growth) : growth}점{" "}
-              {growth < 0 ? "감소" : "증가"}
-            </span>
-            <img src={growth < 0 ? ArrowDown : ArrowUp} alt="" />
-          </Increase>
-          <GrowthGraph scoreData={data} title={과목} screen={false} />
-        </Slider>
-      );
-    })}
-
-    <BtnSlider moveSlide={nextSlide} direction={"next"} />
-    <BtnSlider moveSlide={prevSlide} direction={"prev"} />
-
-    <ContainerDots>
-      {Array.from({ length: slice.length }).map((item, index) => (
-        <Dot
-          key={index}
-          onClick={() => moveDot(index + 1)}
-          activity={slideIndex === index + 1 ? "active" : null}
-        ></Dot>
-      ))}
-    </ContainerDots>
-  </ContainerSlider>
+      <ContainerDots>
+        {Array.from({ length: slice.length }).map((item, index) => (
+          <Dot
+            key={index}
+            onClick={() => moveDot(index + 1)}
+            activity={slideIndex === index + 1 ? "active" : null}
+          ></Dot>
+        ))}
+      </ContainerDots>
+    </ContainerSlider>
   );
 }
 
@@ -66,8 +76,8 @@ const ContainerSlider = styled.div`
 
 const Increase = styled.div`
   position: absolute;
-  top: -3%;
-  left: 8%;
+  top: -8%;
+  left: 7%;
   display: flex;
   justify-content: center;
   width: 27%;
@@ -78,7 +88,7 @@ const Increase = styled.div`
   line-height: 150%;
   box-sizing: border-box;
   border-radius: 93px;
-  
+
   span {
     margin-left: 5px;
   }
@@ -96,21 +106,21 @@ const Increase = styled.div`
 
 const Slider = styled.div`
   position: absolute;
-  top: 15%;
-  left: 12%;
+  top: 40px;
+  left: 28%;
   width: 100%;
   height: 100%;
   opacity: ${props => (props.activity === "active-anim" ? "1" : "0")};
   transition: opacity ease-in-out 0.4s;
 
   @media (max-width: 667px) {
-    left: 28%;
+    left: 40%;
   }
   @media (max-width: 440px) {
-    left: 22%;
+    left: 40%;
   }
   @media (max-width: 400px) {
-    left: 20%;
+    left: 33%;
   }
 `;
 const ContainerDots = styled.div`
