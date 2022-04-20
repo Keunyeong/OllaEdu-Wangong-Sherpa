@@ -73,10 +73,10 @@ const ContainerSlider = styled.div`
 const Increase = styled.div`
   position: absolute;
   top: -10%;
-  left: 6%;
+  left: 8%;
   display: flex;
   justify-content: center;
-  width: 30%;
+  width: auto;
   height: 11%;
   border: 1px solid #9498ef;
   font-size: 0.775rem;
@@ -84,6 +84,7 @@ const Increase = styled.div`
   line-height: 150%;
   box-sizing: border-box;
   border-radius: 93px;
+  padding: 0 3px;
 
   span {
     margin-left: 5px;
